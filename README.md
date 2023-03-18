@@ -10,3 +10,15 @@ A work in progress that aims to:
 * Support hypothetical donation targets
 * Provide accurate information, both in terms of the calculator and in terms of summarising the process
 * Provide references to official information
+
+## Progress
+
+- [ ] Can apply marginal tax rates to calculate PAYE for a given salary income
+- [ ] Account for student loans, ACC, Kiwisaver, IETC
+- [ ] Support income by hour/week/fortnight/month/year
+- [ ] Display amount required to donate to fully refund PAYE
+- [ ] Add a slider to target refunding a % of PAYE
+- [ ] Add support for refunding RWT
+- [ ] Add support for secondary income
+- [ ] Add relevant links to other resources and guide towards the IRD refund process
+- [ ] Give an example use case
