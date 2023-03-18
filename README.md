@@ -1,24 +1,12 @@
-# React Boilerplate
+# Tax Credit Project
 
-## Packages Included
+## A tool to streamline and promote charitable giving in New Zealand by combining a tax calculator with a tax credit calculator.
 
-- react (webpack, babel, etc.)
-- react-router-dom
-- express
-- jest
-- eslint
+A work in progress that aims to: 
 
-## Setup
-
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-    ```sh
-    npm install
-    npm run dev
-    ```
-  </details>
-
----
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-react)
+* Guide users towards getting a tax refund at the end of the year for their charitable donations
+* Inspire users to donate more
+* Promote effective giving
+* Support hypothetical donation targets
+* Provide accurate information, both in terms of the calculator and in terms of summarising the process
+* Provide references to official information
