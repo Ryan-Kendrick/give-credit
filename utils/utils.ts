@@ -16,7 +16,7 @@ export function calculateTotal(income: number) {
       totalTax += (bracket[1] - bracket[0]) * bracket[2]
     }
   }
-  return totalTax
+  return totalTax.toFixed(2) // Imprecise round but fit for purpose?
 }
 
 /*

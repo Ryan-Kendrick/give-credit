@@ -3,9 +3,7 @@ import { Button } from 'semantic-ui-react'
 import { Props } from '../../common/interface'
 import { calculateTotal } from '../../utils/utils'
 
-function Output(props: Props) {
-  const income = 50000
-
+function Output({ income }: Props) {
   return (
     <>
       <p>Testing semanticUI!</p>
