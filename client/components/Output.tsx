@@ -9,7 +9,7 @@ function Output(props: Props) {
   return (
     <>
       <p>Testing semanticUI!</p>
-      <Button class="ui button">test button</Button>
+      <Button>test button</Button>
       <p>{calculateTotal(income)}</p>
     </>
   )

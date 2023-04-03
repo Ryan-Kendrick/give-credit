@@ -1,25 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Output from './Output'
 import Input from './Input'
+import ButtonExampleShorthand from './Button'
 
 function App() {
   const [income, setIncome] = useState(0)
 
+  useEffect(() => {
+    document.title = 'Tax Credit Project'
+  })
+
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tax Credit Project</title>
-      </head>
-      <body>
-        <header></header>
-        <Input setIncome={setIncome} />
-        <Output income={income} />
-      </body>
-    </html>
+    <>
+      <header></header>
+      <Input setIncome={setIncome} />
+      <Output income={income} />
+      <ButtonExampleShorthand />
+      <button>Ordinary button</button>
+    </>
   )
 }
 
 export default App
+
+// https://stackoverflow.com/questions/51739973/cannot-import-semantic-ui-css
