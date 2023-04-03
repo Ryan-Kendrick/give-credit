@@ -13,6 +13,7 @@ A work in progress that aims to:
 
 ## Progress
 
+- [ ] Make a form with Semantic UI React components
 - [ ] Can apply marginal tax rates to calculate PAYE for a given salary income
 - [ ] Account for student loans, ACC, Kiwisaver, IETC
 - [ ] Support income by hour/week/fortnight/month/year
