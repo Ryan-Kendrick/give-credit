@@ -22,21 +22,24 @@ function Input() {
   }
 
   return (
-    <div className="form-cont">
-      <form onSubmit={submitHandler}>
-        <label htmlFor="Income">Income:</label>
-        <input
-          id="input-income"
-          name="income"
-          type="number"
-          value={formData.income}
-          onChange={changeHandler}
-        />
-        <button type="submit" className="formButton">
-          Go
-        </button>
-      </form>
-    </div>
+    <>
+      <h1>Tax Calculator Project</h1>
+      <div className="form-cont">
+        <form onSubmit={submitHandler}>
+          <label htmlFor="Income">Income:</label>
+          <input
+            id="input-income"
+            name="income"
+            type="number"
+            value={formData.income}
+            onChange={changeHandler}
+          />
+          <button type="submit" className="formButton">
+            Go
+          </button>
+        </form>
+      </div>
+    </>
   )
 }
 

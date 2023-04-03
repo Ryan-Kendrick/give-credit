@@ -1,6 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import Output from './Output'
 
-import Home from './Home'
 import Input from './Input'
 
 function App() {
@@ -14,8 +13,8 @@ function App() {
       </head>
       <body>
         <header></header>
-        <Home />
         <Input />
+        <Output />
       </body>
     </html>
   )
