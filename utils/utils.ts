@@ -1,3 +1,5 @@
+import { IncomeData } from '../common/interface'
+
 const taxBrackets = [
   [0, 14000, 0.105],
   [14000, 48000, 0.175], // Lower threshhold must be 1 less than actual to account for decimal numbers
@@ -5,6 +7,10 @@ const taxBrackets = [
   [70000, 180000, 0.33],
   [180000, Infinity, 0.39],
 ]
+
+export function calculate(incomeData: IncomeData): number {
+  return calculateTotal(incomeData.income)
+}
 
 export function calculateTotal(income: number) {
   let totalTax = 0
@@ -16,7 +22,7 @@ export function calculateTotal(income: number) {
       totalTax += (bracket[1] - bracket[0]) * bracket[2]
     }
   }
-  return totalTax.toFixed(2) // Imprecise round but fit for purpose?
+  return Number(totalTax.toFixed(2)) // Imprecise round but fit for purpose?
 }
 
 /*

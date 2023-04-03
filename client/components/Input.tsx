@@ -1,14 +1,10 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
 
-interface FormData {
-  income: number
-}
-
-interface Setincome {
+interface Props {
   setIncome: (num: number) => void
 }
 
-function Input(props: Setincome) {
+function Input(props: Props) {
   const [formData, setFormData] = useState({
     income: 0,
   })
@@ -22,7 +18,7 @@ function Input(props: Setincome) {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
-    props.setIncome(formData.income)
+    props.setIncome(Number(formData.income))
   }
 
   return (
