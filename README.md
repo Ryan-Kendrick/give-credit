@@ -26,6 +26,7 @@ A work in progress that aims to:
 - [ ] Add relevant links to other resources and guide towards the IRD refund process
 - [ ] Give an example use case
 - [ ] Tooltips for checkbox options
+- [ ] Change placeholder project name
 
 ### Stretch
 
