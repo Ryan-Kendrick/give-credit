@@ -23,3 +23,8 @@ A work in progress that aims to:
 - [ ] Add support for secondary income
 - [ ] Add relevant links to other resources and guide towards the IRD refund process
 - [ ] Give an example use case
+- [ ] Tooltips for checkbox options
+
+### Stretch
+
+- Graph generation
