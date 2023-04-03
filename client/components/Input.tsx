@@ -4,7 +4,11 @@ interface FormData {
   income: number
 }
 
-function Input() {
+interface Setincome {
+  setIncome: (num: number) => void
+}
+
+function Input(props: Setincome) {
   const [formData, setFormData] = useState({
     income: 0,
   })
@@ -18,7 +22,7 @@ function Input() {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
-    console.log('submitted')
+    props.setIncome(formData.income)
   }
 
   return (

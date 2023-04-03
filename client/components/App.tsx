@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import Output from './Output'
-
 import Input from './Input'
 
 function App() {
+  const [income, setIncome] = useState(0)
+
   return (
     <html lang="en">
       <head>
@@ -13,8 +15,8 @@ function App() {
       </head>
       <body>
         <header></header>
-        <Input />
-        <Output />
+        <Input setIncome={setIncome} />
+        <Output income={income} />
       </body>
     </html>
   )
