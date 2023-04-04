@@ -30,4 +30,5 @@ A work in progress that aims to:
 
 ### Stretch
 
+- PurgeCSS
 - Data visualisation
