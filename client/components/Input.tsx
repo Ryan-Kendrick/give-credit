@@ -1,4 +1,5 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
+import { Input } from 'semantic-ui-react'
 
 interface Props {
   setIncome: (num: number) => void
@@ -34,9 +35,6 @@ function Input(props: Props) {
             value={formData.income}
             onChange={changeHandler}
           />
-          <button type="submit" className="formButton">
-            Go
-          </button>
         </form>
       </div>
     </>
