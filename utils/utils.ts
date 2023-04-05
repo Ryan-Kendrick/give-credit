@@ -1,4 +1,4 @@
-import { IncomeData } from '../common/interface'
+import { IncomeData, OutputData } from '../common/interface'
 
 const taxBrackets = [
   [0, 14000, 0.105],
@@ -8,48 +8,33 @@ const taxBrackets = [
   [180000, Infinity, 0.39],
 ]
 
-export function calculate(incomeData: IncomeData): number {
-  return calculateTotal(incomeData.income)
+// Primary function, it routes to other functions as necessary based on options selected
+export function calculate(incomeData: IncomeData): OutputData {
+  const outputData = {
+    paye: null,
+    takehome: null,
+    acc: null,
+    ietc: null,
+    kiwiSaver: null,
+    studentLoan: null,
+  } as OutputData
+  outputData.paye = calculatePaye(incomeData.income as number)
+  return outputData
 }
 
-export function calculateTotal(income: number) {
-  let totalTax = 0
+// Income variable from props
+export function calculatePaye(income: number) {
+  let totalTax = 0 // Initialise variable for total tax paid - will need to divide this number to figure out PAYE, student loan etc.
+  // bracket[0] is threhold for this tax bracket, bracket[1] is upper limit, bracket[2] is the marginal tax rate
   for (const bracket of taxBrackets) {
+    // If total income is within this threshhold, then add to total taxes remaining income taxed at this treshhold
     if (income < bracket[1]) {
       totalTax += (income - bracket[0]) * bracket[2]
       break
+      // Else take the sum of money within this threshhold and multiply it by the tax rate
     } else {
       totalTax += (bracket[1] - bracket[0]) * bracket[2]
     }
   }
-  return Number(totalTax.toFixed(2)) // Imprecise round but fit for purpose?
+  return Number(totalTax.toFixed(2)) // Imprecise rounding to 2 decimal places but seems fit for purpose
 }
-
-/*
-
-const singleIntervals = [
-  [0, 9875, 0.1],
-  [9875, 40125, 0.12],
-  [40125, 85525, 0.22],
-  [85525, 163300, 0.24],
-  [163300, 207350, 0.32],
-  [207350, 518400, 0.35],
-  [518400, 900000000, 0.37],
-];
-
-const income = 50000;                                       // Income variable from props
-
-let totalTaxes = 0;                                         // Initialise variable for total tax paid - will need to divide this number to figure out PAYE, student loan etc.
-for (const interval of singleIntervals) {                  // inverval[0] is threhold for this tax bracket, interval[1] is upper limit, interval[2] is the marginal tax rate
-  if (income < interval[1]) {                              // If total income is within this threshhold, then add to total taxes remaining income taxed at this treshhold
-    totalTaxes += (income - interval[0]) * interval[2];    
-    break;
-  }
-  else {                                                   // Else take the sum of money within this threshhold and multiply it by the tax rate
-    totalTaxes += (interval[1] - interval[0]) * interval[2];
-  }
-}
-
-console.log(totalTaxes);
-
-*/

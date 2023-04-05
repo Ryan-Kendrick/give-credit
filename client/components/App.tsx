@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Header from './Header'
 import Input from './Input'
 import Output from './Output'
@@ -19,17 +19,13 @@ function App() {
     console.log(incomeData)
   }
 
-  useEffect(() => {
-    document.title = 'Tax Credit Project'
-  })
-
   return (
     <>
       <Header />
-      <Input setIncome={setIncome} />{' '}
       {/*Take the input data from the input bar and hold it within state*/}
-      <Output incomeData={incomeData} />{' '}
+      <Input setIncome={setIncome} />{' '}
       {/*Feed the input data into the Output component for processing and display*/}
+      <Output incomeData={incomeData} />{' '}
     </>
   )
 }

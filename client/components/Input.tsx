@@ -7,6 +7,7 @@ interface Props {
 }
 
 function Input(props: Props) {
+  // Local version of the incomeData object in App
   const [formData, setFormData] = useState({
     income: null,
     ietc: null,
@@ -22,6 +23,7 @@ function Input(props: Props) {
     })
   }
 
+  //  Update the incomeData state in App, rendering the Output component
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
     props.setIncome(Number(formData.income))
