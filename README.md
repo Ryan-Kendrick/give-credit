@@ -28,6 +28,7 @@ A work in progress that aims to:
 - [ ] Give an example use case
 - [ ] Tooltips for checkbox options
 - [ ] Change placeholder project name
+- [ ] Look into themes - https://semantic-ui-forest.com/themes/bootswatch/v3/cerulean / https://react.semantic-ui.com/theming/
 
 ### Stretch
 
