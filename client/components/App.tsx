@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
-import Output from './Output'
+import Header from './Header'
 import Input from './Input'
-import ButtonExampleShorthand from './Button'
+import Output from './Output'
 import { IncomeData } from '../../common/interface'
 
 function App() {
   const initialData = {
-    income: 0,
-    ietc: false,
-    acc: false,
-    kiwiSaver: false,
-    studentLoan: false,
+    income: null,
+    ietc: null,
+    acc: null,
+    kiwiSaver: null,
+    studentLoan: null,
   }
   const [incomeData, setIncomeData] = useState(initialData as IncomeData)
 
@@ -25,11 +25,11 @@ function App() {
 
   return (
     <>
-      <header></header>
-      <Input setIncome={setIncome} />
-      <Output incomeData={incomeData} />
-      <ButtonExampleShorthand />
-      <button>Ordinary button</button>
+      <Header />
+      <Input setIncome={setIncome} />{' '}
+      {/*Take the input data from the input bar and hold it within state*/}
+      <Output incomeData={incomeData} />{' '}
+      {/*Feed the input data into the Output component for processing and display*/}
     </>
   )
 }

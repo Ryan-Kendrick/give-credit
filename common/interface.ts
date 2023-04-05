@@ -1,7 +1,7 @@
 export interface IncomeData {
-  income: number
-  ietc: boolean
-  acc: boolean
-  kiwiSaver: boolean
-  studentLoan: boolean
+  income: number | null
+  ietc: boolean | null
+  acc: boolean | null
+  kiwiSaver: boolean | null
+  studentLoan: boolean | null
 }

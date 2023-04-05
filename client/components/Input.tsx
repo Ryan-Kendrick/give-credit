@@ -1,5 +1,6 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
 import { Input as Inpt, Label, Form } from 'semantic-ui-react'
+import { IncomeData } from '../../common/interface'
 
 interface Props {
   setIncome: (num: number) => void
@@ -7,8 +8,12 @@ interface Props {
 
 function Input(props: Props) {
   const [formData, setFormData] = useState({
-    income: 0,
-  })
+    income: null,
+    ietc: null,
+    acc: null,
+    kiwiSaver: null,
+    studentLoan: null,
+  } as IncomeData)
 
   function changeHandler(e: ChangeEvent<HTMLInputElement>) {
     setFormData({
@@ -24,17 +29,15 @@ function Input(props: Props) {
 
   return (
     <>
-      <h1>Tax Calculator Project</h1>
       <div className="form-cont">
         <form onSubmit={submitHandler}>
-          <label htmlFor="Income">Income:</label>
-          <Form.Input action="test" />
-          <Inpt
+          <Form.Input
+            label="Income: "
             action="Submit"
-            placeholder="Income"
+            placeholder="50000"
+            type="number"
             id="input-income"
             name="income"
-            value={formData.income}
             onChange={changeHandler}
           />
         </form>
