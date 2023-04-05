@@ -1,5 +1,5 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
-import { Input as Inpt, Label, Form } from 'semantic-ui-react'
+import { Input as Inpt, Label, Form, Radio, Checkbox } from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
 interface Props {
@@ -31,19 +31,22 @@ function Input(props: Props) {
 
   return (
     <>
-      <div className="form-cont">
-        <form onSubmit={submitHandler}>
-          <Form.Input
-            label="Income: "
-            action="Submit"
-            placeholder="50000"
-            type="number"
-            id="input-income"
-            name="income"
-            onChange={changeHandler}
-          />
-        </form>
-      </div>
+      <Form onSubmit={submitHandler}>
+        <Form.Checkbox label="IETC" />
+        <Form.Checkbox label="ACC" />
+        <Form.Checkbox label="KiwiSaver" />
+        <Form.Checkbox label="Student Loan" />
+
+        <Form.Input
+          label="Income: "
+          action="Submit"
+          placeholder="50000"
+          type="number"
+          id="input-income"
+          name="income"
+          onChange={changeHandler}
+        />
+      </Form>
     </>
   )
 }

@@ -1,5 +1,13 @@
+import { Header as Headr } from 'semantic-ui-react'
+
 function Header() {
-  return <header>Tax Calculator Project</header>
+  return (
+    <>
+      <Headr size="huge" textAlign="center">
+        Tax Credit Project
+      </Headr>
+    </>
+  )
 }
 
 export default Header

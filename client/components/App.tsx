@@ -3,6 +3,7 @@ import Header from './Header'
 import Input from './Input'
 import Output from './Output'
 import { IncomeData } from '../../common/interface'
+import { Segment, Transition } from 'semantic-ui-react'
 
 function App() {
   const initialData = {
@@ -22,10 +23,12 @@ function App() {
   return (
     <>
       <Header />
-      {/*Take the input data from the input bar and hold it within state*/}
-      <Input setIncome={setIncome} />{' '}
+      <Segment>
+        {/*Take the input data from the input bar and hold it within state*/}
+        <Input setIncome={setIncome} />
+      </Segment>
       {/*Feed the input data into the Output component for processing and display*/}
-      <Output incomeData={incomeData} />{' '}
+      <Output incomeData={incomeData} />
     </>
   )
 }
