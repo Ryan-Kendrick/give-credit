@@ -19,6 +19,7 @@ export function calculate(incomeData: IncomeData): OutputData {
     studentLoan: null,
   } as OutputData
   outputData.paye = calculatePaye(incomeData.income as number)
+  outputData.takehome = (incomeData.income as number) - outputData.paye
   return outputData
 }
 

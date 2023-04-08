@@ -9,14 +9,14 @@ function App() {
   const initialData = {
     income: null,
     ietc: null,
-    acc: null,
+    // acc: null,
     kiwiSaver: null,
     studentLoan: null,
   }
   const [incomeData, setIncomeData] = useState(initialData as IncomeData)
 
-  const setIncome = (income: number) => {
-    setIncomeData({ ...incomeData, ['income']: income })
+  const setIncome = (data: IncomeData) => {
+    setIncomeData({ ...incomeData, ...data })
     console.log(incomeData)
   }
 

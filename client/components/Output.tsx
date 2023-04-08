@@ -23,7 +23,16 @@ function Output({ incomeData }: Props) {
 
   // Display outputData when paye is calculated for the given income
   return (
-    <>{outputData.paye ? <p>{outputData.paye}</p> : <p>No income data</p>}</>
+    <>
+      {outputData.paye ? (
+        <>
+          <p>PAYE: {outputData.paye}</p>
+          <p>Take home pay: {outputData.takehome}</p>
+        </>
+      ) : (
+        <p>No income data</p>
+      )}
+    </>
   )
 }
 

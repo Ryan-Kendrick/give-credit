@@ -10,7 +10,7 @@ import {
 import { IncomeData } from '../../common/interface'
 
 interface Props {
-  setIncome: (num: number) => void
+  setIncome: (data: IncomeData) => void
 }
 
 function Input(props: Props) {
@@ -33,7 +33,7 @@ function Input(props: Props) {
   //  Update the incomeData state in App, rendering the Output component
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
-    props.setIncome(Number(formData.income))
+    props.setIncome({ ...formData, ['income']: Number(formData.income) })
   }
 
   return (
