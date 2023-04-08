@@ -1,5 +1,12 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
-import { Input as Inpt, Label, Form, Radio, Checkbox } from 'semantic-ui-react'
+import {
+  Input as Inpt,
+  Label,
+  Form,
+  Container,
+  Icon,
+  Popup,
+} from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
 interface Props {
@@ -11,7 +18,7 @@ function Input(props: Props) {
   const [formData, setFormData] = useState({
     income: null,
     ietc: null,
-    acc: null,
+    // acc: null,
     kiwiSaver: null,
     studentLoan: null,
   } as IncomeData)
@@ -32,20 +39,30 @@ function Input(props: Props) {
   return (
     <>
       <Form onSubmit={submitHandler}>
-        <Form.Checkbox label="IETC" />
-        <Form.Checkbox label="ACC" />
-        <Form.Checkbox label="KiwiSaver" />
-        <Form.Checkbox label="Student Loan" />
-
-        <Form.Input
-          label="Income: "
-          action="Submit"
-          placeholder="50000"
-          type="number"
-          id="input-income"
-          name="income"
-          onChange={changeHandler}
-        />
+        <Container fluid>
+          <Container fluid>
+            <Form.Checkbox label="IETC" defaultChecked />
+            <Popup
+              content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
+              trigger={<Icon name="info circle" size="large" />}
+            />
+            {/* <Form.Checkbox label="ACC" defaultChecked /> */}
+            {/* <Icon name="info circle" size="large" /> */}
+            <Form.Checkbox label="KiwiSaver" />
+            <Icon name="info circle" size="large" />
+            <Form.Checkbox label="Student Loan" />
+            <Icon name="info circle" size="large" />
+          </Container>
+          <Form.Input
+            label="Income: "
+            action="Submit"
+            placeholder="50000"
+            type="number"
+            id="input-income"
+            name="income"
+            onChange={changeHandler}
+          />
+        </Container>
       </Form>
     </>
   )

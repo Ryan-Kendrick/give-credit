@@ -3,9 +3,11 @@ import { Header as Headr } from 'semantic-ui-react'
 function Header() {
   return (
     <>
-      <Headr size="huge" textAlign="center">
-        Tax Credit Project
-      </Headr>
+      <div style={{ height: '40vh' }}>
+        <Headr size="huge" textAlign="center">
+          Tax Credit Project
+        </Headr>
+      </div>
     </>
   )
 }

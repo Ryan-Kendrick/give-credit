@@ -14,3 +14,18 @@ body {
   color: #0a1520;
   font-family: 'Poppins', sans-serif;
 }
+
+/* input container */
+form .ui.fluid.container {  
+  display: flex;
+  align-items: center;
+}
+
+/*  */
+form div .ui.fluid.container {
+}
+
+/*  */
+.ui.action.input {
+
+}
