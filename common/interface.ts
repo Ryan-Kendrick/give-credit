@@ -6,10 +6,10 @@ export interface IncomeData {
 }
 
 export interface OutputData {
-  paye: number
-  takehome?: number
-  acc?: number
-  ietc?: number
-  kiwiSaver?: number
-  studentLoan?: number
+  paye: string
+  takehome?: string
+  acc?: string
+  ietc?: string
+  kiwiSaver?: string
+  studentLoan?: string
 }

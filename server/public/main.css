@@ -1,4 +1,4 @@
-/* Remove input arrows
+/* Remove input arrows */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -6,8 +6,11 @@ input::-webkit-inner-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
-} */
+}
 
+* {
+  margin: 0 !important;
+}
 
 body {
   background-color: #faf8f1;
@@ -16,16 +19,24 @@ body {
   box-sizing: border-box;
 }
 
-/* Input container */
-form .ui.fluid.container {  
-  display: inline-flex;
-  align-items: center;
+
+.input-cont {  
+  display: inline-flex !important;
+  align-items: center !important;
+  width: 80vw !important;
 }
 
 /* App level container around input */
 #app .ui.segment{
   margin: 0;
   height: 10vh;
+}
+
+.checkbox-cont {
+  width: initial !important;
+  display: flex !important;
+  position: relative !important;
+  top: 0.6vh !important;
 }
 
 /* Output list */
@@ -40,13 +51,36 @@ form .ui.fluid.container {
 .output-cont{
   height: 50vh;
   background-color: #778899;
-  
+  /* margin: 0 !important; */
 }
 
+@media only screen and (max-width: 767px) {
+  #app > div.ui.fluid.container.output-cont {
+    margin: 0 !important;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
+  margin-left: auto !important;
+  margin-right: 2.5vw !important;
+}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
+  margin-left: auto !important;
+  margin-right: 3vw !important;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
+  margin-left: auto !important;
+  margin-right: 10vw !important;
+}
+}
 /*  */
-#app > div:nth-child(1) {
-
-}
 
 /* Output colours */
 .loss {

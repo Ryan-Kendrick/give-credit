@@ -38,8 +38,8 @@ function Input(props: Props) {
   return (
     <>
       <Form onSubmit={submitHandler}>
-        <Container fluid>
-          <Container fluid>
+        <Container fluid className="input-cont">
+          <Container fluid className="checkbox-cont">
             <Form.Checkbox label="IETC" defaultChecked />
             <Popup
               content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"

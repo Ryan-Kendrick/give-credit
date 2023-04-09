@@ -9,12 +9,12 @@ interface Props {
 function Output({ incomeData }: Props) {
   // Placeholder outputData object to be reassigned with result of calculate
   let outputData = {
-    paye: null,
-    takehome: null,
-    acc: null,
-    ietc: null,
-    kiwiSaver: null,
-    studentLoan: null,
+    paye: 0,
+    takehome: 0,
+    acc: 0,
+    ietc: 0,
+    kiwiSaver: 0,
+    studentLoan: 0,
   } as OutputData
 
   // Update outputData when income is received from state in App
