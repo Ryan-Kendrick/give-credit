@@ -21,6 +21,7 @@ A work in progress that aims to:
 - [ ] Account for student loans, ACC, Kiwisaver, IETC
 - [ ] Support income by hour/week/fortnight/month/year
 - [ ] Options for Kiwisaver, student loan repayment rate
+- [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
 - [ ] Add a slider to target refunding a % of PAYE
 - [ ] Add support for refunding RWT
