@@ -1,16 +1,15 @@
 export interface IncomeData {
-  income: number | null
+  income: number
   ietc: boolean | null
-  // acc: boolean | null
   kiwiSaver: boolean | null
   studentLoan: boolean | null
 }
 
 export interface OutputData {
-  paye: number | null
-  takehome: number | null
-  // acc: number | null
-  ietc: number | null
-  kiwiSaver: number | null
-  studentLoan: number | null
+  paye: number
+  takehome?: number
+  acc?: number
+  ietc?: number
+  kiwiSaver?: number
+  studentLoan?: number
 }

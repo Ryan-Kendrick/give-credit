@@ -1,4 +1,4 @@
-/* remove input arrows */
+/* Remove input arrows
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -6,26 +6,57 @@ input::-webkit-inner-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 
 body {
   background-color: #faf8f1;
   color: #0a1520;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
-/* input container */
+/* Input container */
 form .ui.fluid.container {  
   display: inline-flex;
   align-items: center;
 }
 
-/*  */
-form div .ui.fluid.container {
+/* App level container around input */
+#app .ui.segment{
+  margin: 0;
+  height: 10vh;
+}
+
+/* Output list */
+#app > div.ui.list {
+  margin-top: 0;
+}
+
+.header-cont {
+  height: 40vh;
+}
+
+.output-cont{
+  height: 50vh;
+  background-color: #778899;
+  
 }
 
 /*  */
-.ui.action.input {
+#app > div:nth-child(1) {
 
+}
+
+/* Output colours */
+.loss {
+  color: #BA0000 !important;
+}
+
+.gain {
+  color: #019f01 !important;
+}
+
+.opportunity {
+  color: #FEE767 !important;
 }

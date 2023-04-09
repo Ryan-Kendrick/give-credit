@@ -16,9 +16,8 @@ interface Props {
 function Input(props: Props) {
   // Local version of the incomeData object in App
   const [formData, setFormData] = useState({
-    income: null,
+    income: 0,
     ietc: null,
-    // acc: null,
     kiwiSaver: null,
     studentLoan: null,
   } as IncomeData)

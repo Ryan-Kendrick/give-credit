@@ -3,13 +3,12 @@ import Header from './Header'
 import Input from './Input'
 import Output from './Output'
 import { IncomeData } from '../../common/interface'
-import { Segment, Transition } from 'semantic-ui-react'
+import { Container, Segment, Transition } from 'semantic-ui-react'
 
 function App() {
   const initialData = {
-    income: null,
+    income: 0,
     ietc: null,
-    // acc: null,
     kiwiSaver: null,
     studentLoan: null,
   }
@@ -28,11 +27,14 @@ function App() {
         <Input setIncome={setIncome} />
       </Segment>
       {/*Feed the input data into the Output component for processing and display*/}
-      <Output incomeData={incomeData} />
+      <Container fluid className="output-cont">
+        <Output incomeData={incomeData} />
+      </Container>
     </>
   )
 }
 
 export default App
 
-// https://stackoverflow.com/questions/51739973/cannot-import-semantic-ui-css
+// Why is the income input not affected by justify-content
+// Why does 40vh + 10vh + 50vh not cover the page

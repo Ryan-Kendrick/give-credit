@@ -10,16 +10,18 @@ const taxBrackets = [
 
 // Primary function, it routes to other functions as necessary based on options selected
 export function calculate(incomeData: IncomeData): OutputData {
+  const income = incomeData.income
   const outputData = {
-    paye: null,
-    takehome: null,
-    acc: null,
-    ietc: null,
-    kiwiSaver: null,
-    studentLoan: null,
+    paye: 0,
+    takehome: undefined,
+    acc: undefined,
+    ietc: undefined,
+    kiwiSaver: undefined,
+    studentLoan: undefined,
   } as OutputData
-  outputData.paye = calculatePaye(incomeData.income as number)
-  outputData.takehome = (incomeData.income as number) - outputData.paye
+  outputData.paye = calculatePaye(income)
+  outputData.acc = calculateAcc(income)
+  outputData.takehome = calculateTakehome(income, outputData)
   return outputData
 }
 
@@ -38,4 +40,19 @@ export function calculatePaye(income: number) {
     }
   }
   return Number(totalTax.toFixed(2)) // Imprecise rounding to 2 decimal places but seems fit for purpose
+}
+
+function calculateAcc(income: number) {
+  return income * 0.0133
+}
+
+function calculateTakehome(income: number, outputData: OutputData) {
+  return (
+    income -
+    (outputData.paye +
+      outputData.acc +
+      outputData.kiwiSaver +
+      outputData.studentLoan -
+      outputData.ietc)
+  )
 }

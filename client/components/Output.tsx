@@ -1,5 +1,4 @@
-import { Fragment } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Icon, List } from 'semantic-ui-react'
 import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
 
@@ -8,7 +7,7 @@ interface Props {
 }
 
 function Output({ incomeData }: Props) {
-  // Placeholder outputData object
+  // Placeholder outputData object to be reassigned with result of calculate
   let outputData = {
     paye: null,
     takehome: null,
@@ -26,8 +25,35 @@ function Output({ incomeData }: Props) {
     <>
       {outputData.paye ? (
         <>
-          <p>PAYE: {outputData.paye}</p>
-          <p>Take home pay: {outputData.takehome}</p>
+          <List>
+            <List.Item>
+              <Icon name="minus" />
+              <List.Content>
+                <List.Header>PAYE</List.Header>
+                <List.Description className="opportunity">
+                  <strong>${outputData.paye}</strong>
+                </List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <Icon name="minus" />
+              <List.Content>
+                <List.Header>ACC levy</List.Header>
+                <List.Description className="loss">
+                  ${outputData.acc}
+                </List.Description>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <Icon name="triangle right" />
+              <List.Content>
+                <List.Header>Take Home Pay</List.Header>
+                <List.Description className="gain">
+                  ${outputData.takehome}
+                </List.Description>
+              </List.Content>
+            </List.Item>
+          </List>
         </>
       ) : (
         <p>No income data</p>
