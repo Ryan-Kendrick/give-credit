@@ -7,6 +7,7 @@ import {
   Icon,
   Popup,
   FormCheckboxProps,
+  Menu,
 } from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
@@ -60,11 +61,13 @@ function Input(props: Props) {
             />
             {/* <Form.Checkbox label="ACC" defaultChecked /> */}
             {/* <Icon name="info circle" size="large" /> */}
-            <Form.Checkbox
-              label="KiwiSaver"
-              onChange={(e, data) => checkboxHandler(e, data)}
-              name="kiwiSaver"
-            />
+            <Menu vertical>
+              <Form.Checkbox
+                label="KiwiSaver"
+                onChange={(e, data) => checkboxHandler(e, data)}
+                name="kiwiSaver"
+              />
+            </Menu>
             <Form.Checkbox
               label="Student Loan"
               onChange={(e, data) => checkboxHandler(e, data)}
