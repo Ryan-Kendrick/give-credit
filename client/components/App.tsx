@@ -36,5 +36,4 @@ function App() {
 
 export default App
 
-// Why is the income input not affected by justify-content
-// Why does 40vh + 10vh + 50vh not cover the page
+// Bug with ietc always attempting to be applied when ietc ticked

@@ -54,11 +54,16 @@ body {
   height: 40vh;
 }
 
+/* Kiwisaver container */
+#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont {
+  position: relative;
+  width: initial;
+}
 /* Kiwisaver menu */
-#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.vertical.kiwisaver-menu.menu {
+#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont > div.ui.vertical.kiwisaver-menu.menu {
   position: absolute;
   display: block;
-  bottom: -25.1vh;
+  bottom: -15.45rem;
 }
 
 @media only screen and (max-width: 767px) {

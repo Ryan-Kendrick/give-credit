@@ -68,66 +68,72 @@ function Input(props: Props) {
               content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
               trigger={<Icon name="info circle" size="large" />}
             />
-            <Form.Checkbox
-              label="KiwiSaver"
-              onChange={(e, data) => checkboxHandler(e, data)}
-              name="kiwiSaver"
-            />
-            <Menu vertical className="kiwisaver-menu">
-              <Menu.Item header>Kiwisaver Rate</Menu.Item>
-              <Menu.Menu>
-                <Menu.Item>
-                  <Checkbox
-                    radio
-                    value="3"
-                    label="3%"
-                    checked={formData.kiwiSaverRate === '3'}
-                    onChange={(e, data) => radioHandler(e, data)}
-                    name="kiwiSaverRate"
-                  ></Checkbox>
-                </Menu.Item>
-                <Menu.Item>
-                  <Checkbox
-                    radio
-                    value="4"
-                    label="4%"
-                    checked={formData.kiwiSaverRate === '4'}
-                    onChange={(e, data) => radioHandler(e, data)}
-                    name="kiwiSaverRate"
-                  ></Checkbox>
-                </Menu.Item>
-                <Menu.Item>
-                  <Checkbox
-                    radio
-                    value="6"
-                    label="6%"
-                    checked={formData.kiwiSaverRate === '6'}
-                    onChange={(e, data) => radioHandler(e, data)}
-                    name="kiwiSaverRate"
-                  ></Checkbox>
-                </Menu.Item>
-                <Menu.Item>
-                  <Checkbox
-                    radio
-                    value="8"
-                    label="8%"
-                    checked={formData.kiwiSaverRate === '8'}
-                    onChange={(e, data) => radioHandler(e, data)}
-                    name="kiwiSaverRate"
-                  ></Checkbox>
-                </Menu.Item>
-                <Menu.Item>
-                  <Checkbox
-                    radio
-                    value="10"
-                    label="10%"
-                    checked={formData.kiwiSaverRate === '10'}
-                    onChange={(e, data) => radioHandler(e, data)}
-                    name="kiwiSaverRate"
-                  ></Checkbox>
-                </Menu.Item>
-              </Menu.Menu>
-            </Menu>
+            <Container fluid className="kiwisaver-cont">
+              <Form.Checkbox
+                label="KiwiSaver"
+                onChange={(e, data) => checkboxHandler(e, data)}
+                name="kiwiSaver"
+              />
+              {formData.kiwiSaver ? (
+                <Menu vertical className="kiwisaver-menu">
+                  <Menu.Item header>Kiwisaver Rate</Menu.Item>
+                  <Menu.Menu>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="3"
+                        label="3%"
+                        checked={formData.kiwiSaverRate === '3'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="kiwiSaverRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="4"
+                        label="4%"
+                        checked={formData.kiwiSaverRate === '4'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="kiwiSaverRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="6"
+                        label="6%"
+                        checked={formData.kiwiSaverRate === '6'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="kiwiSaverRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="8"
+                        label="8%"
+                        checked={formData.kiwiSaverRate === '8'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="kiwiSaverRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="10"
+                        label="10%"
+                        checked={formData.kiwiSaverRate === '10'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="kiwiSaverRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                  </Menu.Menu>
+                </Menu>
+              ) : (
+                ''
+              )}
+            </Container>
             <Form.Checkbox
               label="Student Loan"
               onChange={(e, data) => checkboxHandler(e, data)}
