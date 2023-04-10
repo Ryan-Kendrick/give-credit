@@ -24,7 +24,7 @@ export function calculate(incomeData: IncomeData): OutputData {
   outputData.acc = calculateAcc(income)
 
   if (incomeData.ietc) {
-    outputData.ietc = calculateIetc(income, Number(outputData.paye))
+    outputData.ietc = calculateIetc(income)
   }
   if (incomeData.kiwiSaver) {
     calculateKiwiSaver(income)
@@ -66,14 +66,14 @@ function calculateAcc(income: number) {
   return acc.toFixed(2)
 }
 
-function calculateIetc(income: number, paye: number) {
+function calculateIetc(income: number) {
   console.log('ietc calc')
   if (income > 23999 && income < 44001) {
-    return 520
+    return '520'
   } else if (income > 44000 && income < 48000) {
-    return 520 - (income - 44000) * 0.13
+    return (520 - (income - 44000) * 0.13).toFixed(2)
   }
-  return 0
+  return '0'
 }
 
 // B: income is 46000
