@@ -19,9 +19,27 @@ export function calculate(incomeData: IncomeData): OutputData {
     kiwiSaver: '',
     studentLoan: '',
   } as OutputData
+
   outputData.paye = calculatePaye(income)
   outputData.acc = calculateAcc(income)
+
+  if (incomeData.ietc) {
+    outputData.ietc = calculateIetc(income, Number(outputData.paye))
+  }
+  if (incomeData.kiwiSaver) {
+    calculateKiwiSaver(income)
+  }
+  if (incomeData.studentLoan) {
+    calculateStudentLoan(income)
+  }
   outputData.takehome = calculateTakehome(income, outputData)
+  console.log(outputData)
+  // If IETC has been applied, reduce PAYE for display purposes
+  if (incomeData.ietc) {
+    outputData.paye = (
+      Number(outputData.paye) - Number(outputData.ietc)
+    ).toFixed(2)
+  }
   return outputData
 }
 
@@ -48,13 +66,32 @@ function calculateAcc(income: number) {
   return acc.toFixed(2)
 }
 
+function calculateIetc(income: number, paye: number) {
+  console.log('ietc calc')
+  if (income > 23999 && income < 44001) {
+    return 520
+  } else if (income > 44000 && income < 48000) {
+    return 520 - (income - 44000) * 0.13
+  }
+  return 0
+}
+
+// B: income is 46000
+// C: amount less 44k is 2000
+// D: C * 0.13 is 260
+// E: 520 - 260 is 260
+
+function calculateKiwiSaver(income) {}
+
+function calculateStudentLoan(income) {}
+
 function calculateTakehome(income: number, outputData: OutputData) {
   return (
-    income -
+    income +
+    Number(outputData.ietc) -
     (Number(outputData.paye) +
       Number(outputData.acc) +
       Number(outputData.kiwiSaver) +
-      Number(outputData.studentLoan) -
-      Number(outputData.ietc))
+      Number(outputData.studentLoan))
   ).toFixed(2)
 }

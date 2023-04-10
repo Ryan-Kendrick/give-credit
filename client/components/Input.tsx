@@ -6,6 +6,7 @@ import {
   Container,
   Icon,
   Popup,
+  FormCheckboxProps,
 } from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
@@ -17,7 +18,7 @@ function Input(props: Props) {
   // Local version of the incomeData object in App
   const [formData, setFormData] = useState({
     income: 0,
-    ietc: null,
+    ietc: true,
     kiwiSaver: null,
     studentLoan: null,
   } as IncomeData)
@@ -27,6 +28,13 @@ function Input(props: Props) {
       ...formData,
       [e.target.name]: e.target.value,
     })
+  }
+
+  function checkboxHandler(
+    e: FormEvent<HTMLInputElement>,
+    data: FormCheckboxProps
+  ) {
+    setFormData({ ...formData, [`${data.name}`]: data.checked })
   }
 
   //  Update the incomeData state in App, rendering the Output component
@@ -40,17 +48,28 @@ function Input(props: Props) {
       <Form onSubmit={submitHandler}>
         <Container fluid className="input-cont">
           <Container fluid className="checkbox-cont">
-            <Form.Checkbox label="IETC" defaultChecked />
+            <Form.Checkbox
+              label="IETC"
+              defaultChecked
+              onChange={(e, data) => checkboxHandler(e, data)}
+              name="ietc"
+            />
             <Popup
               content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
               trigger={<Icon name="info circle" size="large" />}
             />
             {/* <Form.Checkbox label="ACC" defaultChecked /> */}
             {/* <Icon name="info circle" size="large" /> */}
-            <Form.Checkbox label="KiwiSaver" />
-            <Icon name="info circle" size="large" />
-            <Form.Checkbox label="Student Loan" />
-            <Icon name="info circle" size="large" />
+            <Form.Checkbox
+              label="KiwiSaver"
+              onChange={(e, data) => checkboxHandler(e, data)}
+              name="kiwiSaver"
+            />
+            <Form.Checkbox
+              label="Student Loan"
+              onChange={(e, data) => checkboxHandler(e, data)}
+              name="studentLoan"
+            />
           </Container>
           <Form.Input
             label="Income: "

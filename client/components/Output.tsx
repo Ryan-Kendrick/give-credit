@@ -1,4 +1,4 @@
-import { Icon, List } from 'semantic-ui-react'
+import { Icon, List, Popup } from 'semantic-ui-react'
 import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
 
@@ -9,12 +9,12 @@ interface Props {
 function Output({ incomeData }: Props) {
   // Placeholder outputData object to be reassigned with result of calculate
   let outputData = {
-    paye: 0,
-    takehome: 0,
-    acc: 0,
-    ietc: 0,
-    kiwiSaver: 0,
-    studentLoan: 0,
+    paye: '',
+    takehome: '',
+    acc: '',
+    ietc: '',
+    kiwiSaver: '',
+    studentLoan: '',
   } as OutputData
 
   // Update outputData when income is received from state in App
@@ -33,6 +33,22 @@ function Output({ incomeData }: Props) {
                 <List.Description className="opportunity">
                   <strong>${outputData.paye}</strong>
                 </List.Description>
+                {outputData.ietc ? (
+                  <List.Item>
+                    <List.Content>
+                      <List.Description>
+                        Tax credit of{' '}
+                        <span className="gain">${outputData.ietc}</span> applied{' '}
+                        <Popup
+                          content="Independent earner tax credit"
+                          trigger={<Icon name="info circle" size="large" />}
+                        />
+                      </List.Description>
+                    </List.Content>
+                  </List.Item>
+                ) : (
+                  ''
+                )}
               </List.Content>
             </List.Item>
             <List.Item>

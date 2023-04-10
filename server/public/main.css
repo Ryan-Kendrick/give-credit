@@ -29,7 +29,7 @@ body {
 /* App level container around input */
 #app .ui.segment{
   margin: 0;
-  height: 10vh;
+  min-height: 10vh;
 }
 
 .checkbox-cont {
@@ -83,14 +83,14 @@ body {
 /*  */
 
 /* Output colours */
+.opportunity {
+  color: #FEE767 !important;
+}
+
 .loss {
   color: #BA0000 !important;
 }
 
 .gain {
-  color: #019f01 !important;
-}
-
-.opportunity {
-  color: #FEE767 !important;
+  color: #20FE20 !important;
 }
