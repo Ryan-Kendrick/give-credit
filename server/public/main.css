@@ -39,19 +39,26 @@ body {
   top: 0.6vh !important;
 }
 
+/* Output container */
+.output-cont{
+  height: 50vh;
+  background-color: #778899;
+}
+
 /* Output list */
 #app > div.ui.list {
   margin-top: 0;
 }
-
+/* Header container */
 .header-cont {
   height: 40vh;
 }
 
-.output-cont{
-  height: 50vh;
-  background-color: #778899;
-  /* margin: 0 !important; */
+/* Kiwisaver menu */
+#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.vertical.kiwisaver-menu.menu {
+  position: absolute;
+  display: block;
+  bottom: -25.1vh;
 }
 
 @media only screen and (max-width: 767px) {

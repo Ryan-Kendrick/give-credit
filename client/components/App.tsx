@@ -8,7 +8,7 @@ import { Container, Segment, Transition } from 'semantic-ui-react'
 function App() {
   const initialData = {
     income: 0,
-    ietc: null,
+    ietc: undefined,
     kiwiSaver: null,
     studentLoan: null,
   }
