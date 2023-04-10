@@ -7,6 +7,7 @@ import {
   FormCheckboxProps,
   Menu,
   Checkbox,
+  Input as Inpt,
 } from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
@@ -22,12 +23,22 @@ function Input(props: Props) {
     kiwiSaver: null,
     kiwiSaverRate: '0.03',
     studentLoan: null,
+    studentLoanRate: '0.12',
   } as IncomeData)
 
   function changeHandler(e: ChangeEvent<HTMLInputElement>) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    })
+  }
+
+  function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
+    const rate = (Number(e.target.value) * 0.01).toString()
+    console.log(rate)
+    setFormData({
+      ...formData,
+      [e.target.name]: rate,
     })
   }
 
@@ -132,11 +143,54 @@ function Input(props: Props) {
                 ''
               )}
             </Container>
-            <Form.Checkbox
-              label="Student Loan"
-              onChange={(e, data) => checkboxHandler(e, data)}
-              name="studentLoan"
-            />
+            <Container fluid className="studentloan-cont">
+              <Form.Checkbox
+                label="Student Loan"
+                onChange={(e, data) => checkboxHandler(e, data)}
+                name="studentLoan"
+              />
+
+              {formData.studentLoan ? (
+                <Menu vertical className="studentloan-menu">
+                  <Menu.Item header>Student Loan Rate</Menu.Item>
+                  <Menu.Menu>
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="0.12"
+                        label="12%"
+                        checked={formData.studentLoanRate === '0.12'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="studentLoanRate"
+                      ></Checkbox>
+                    </Menu.Item>
+
+                    <Menu.Item>
+                      <Checkbox
+                        radio
+                        value="custom"
+                        label="Custom"
+                        checked={formData.studentLoanRate !== '0.12'}
+                        onChange={(e, data) => radioHandler(e, data)}
+                        name="studentLoanRate"
+                      ></Checkbox>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Inpt
+                        label={{ basic: true, content: '%' }}
+                        placeholder="Rate"
+                        disabled={formData.studentLoanRate === '0.12'}
+                        required={true}
+                        name="studentLoanRate"
+                        onChange={customRateHandler}
+                      />
+                    </Menu.Item>
+                  </Menu.Menu>
+                </Menu>
+              ) : (
+                ''
+              )}
+            </Container>
           </Container>
           <Form.Input
             label="Income: "

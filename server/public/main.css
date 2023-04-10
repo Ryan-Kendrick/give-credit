@@ -54,8 +54,8 @@ body {
   height: 40vh;
 }
 
-/* Kiwisaver container */
-#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont {
+/* Kiwisaver container, student loan container */
+#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont, #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.studentloan-cont {
   position: relative;
   width: initial;
 }
