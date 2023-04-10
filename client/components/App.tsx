@@ -36,4 +36,4 @@ function App() {
 
 export default App
 
-// Bug with ietc always attempting to be applied when ietc ticked
+// useEffect for styling multiple dropdown menus?

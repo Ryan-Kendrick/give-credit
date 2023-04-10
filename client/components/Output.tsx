@@ -26,6 +26,7 @@ function Output({ incomeData }: Props) {
       {outputData.paye ? (
         <>
           <List>
+            {/* PAYE */}
             <List.Item>
               <Icon name="minus" />
               <List.Content>
@@ -33,12 +34,16 @@ function Output({ incomeData }: Props) {
                 <List.Description className="opportunity">
                   <strong>${outputData.paye}</strong>
                 </List.Description>
-                {outputData.ietc ? (
+                {/* If IETC was checked and resulted in a credit display the amount credited */}
+                {outputData.ietc && outputData.ietc !== '0' ? (
                   <List.Item>
                     <List.Content>
                       <List.Description>
+                        <Icon name="plus" size="small" />
                         Tax credit of{' '}
-                        <span className="gain">${outputData.ietc}</span> applied{' '}
+                        <span className="gain">
+                          ${outputData.ietc}
+                        </span> applied{' '}
                         <Popup
                           content="Independent earner tax credit"
                           trigger={<Icon name="info circle" size="large" />}
@@ -51,6 +56,7 @@ function Output({ incomeData }: Props) {
                 )}
               </List.Content>
             </List.Item>
+            {/* ACC */}
             <List.Item>
               <Icon name="minus" />
               <List.Content>
@@ -60,6 +66,21 @@ function Output({ incomeData }: Props) {
                 </List.Description>
               </List.Content>
             </List.Item>
+            {outputData.kiwiSaver ? (
+              <List.Item>
+                <Icon name="minus" />
+                <List.Content>
+                  <List.Header>KiwiSaver</List.Header>
+                  <List.Description className="loss">
+                    ${outputData.kiwiSaver}
+                  </List.Description>
+                </List.Content>
+              </List.Item>
+            ) : (
+              ''
+            )}
+
+            {/* Take Home Pay */}
             <List.Item>
               <Icon name="triangle right" />
               <List.Content>

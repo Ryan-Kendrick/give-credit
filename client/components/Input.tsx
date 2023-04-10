@@ -1,7 +1,5 @@
 import { ChangeEvent, useState, FormEvent } from 'react'
 import {
-  Input as Inpt,
-  Label,
   Form,
   Container,
   Icon,
@@ -22,7 +20,7 @@ function Input(props: Props) {
     income: 0,
     ietc: true,
     kiwiSaver: null,
-    kiwiSaverRate: undefined,
+    kiwiSaverRate: '0.03',
     studentLoan: null,
   } as IncomeData)
 
@@ -81,9 +79,9 @@ function Input(props: Props) {
                     <Menu.Item>
                       <Checkbox
                         radio
-                        value="3"
+                        value="0.03"
                         label="3%"
-                        checked={formData.kiwiSaverRate === '3'}
+                        checked={formData.kiwiSaverRate === '0.03'}
                         onChange={(e, data) => radioHandler(e, data)}
                         name="kiwiSaverRate"
                       ></Checkbox>
@@ -91,9 +89,9 @@ function Input(props: Props) {
                     <Menu.Item>
                       <Checkbox
                         radio
-                        value="4"
+                        value="0.04"
                         label="4%"
-                        checked={formData.kiwiSaverRate === '4'}
+                        checked={formData.kiwiSaverRate === '0.04'}
                         onChange={(e, data) => radioHandler(e, data)}
                         name="kiwiSaverRate"
                       ></Checkbox>
@@ -101,9 +99,9 @@ function Input(props: Props) {
                     <Menu.Item>
                       <Checkbox
                         radio
-                        value="6"
+                        value="0.06"
                         label="6%"
-                        checked={formData.kiwiSaverRate === '6'}
+                        checked={formData.kiwiSaverRate === '0.06'}
                         onChange={(e, data) => radioHandler(e, data)}
                         name="kiwiSaverRate"
                       ></Checkbox>
@@ -111,9 +109,9 @@ function Input(props: Props) {
                     <Menu.Item>
                       <Checkbox
                         radio
-                        value="8"
+                        value="0.08"
                         label="8%"
-                        checked={formData.kiwiSaverRate === '8'}
+                        checked={formData.kiwiSaverRate === '0.08'}
                         onChange={(e, data) => radioHandler(e, data)}
                         name="kiwiSaverRate"
                       ></Checkbox>
@@ -121,9 +119,9 @@ function Input(props: Props) {
                     <Menu.Item>
                       <Checkbox
                         radio
-                        value="10"
+                        value="0.10"
                         label="10%"
-                        checked={formData.kiwiSaverRate === '10'}
+                        checked={formData.kiwiSaverRate === '0.10'}
                         onChange={(e, data) => radioHandler(e, data)}
                         name="kiwiSaverRate"
                       ></Checkbox>

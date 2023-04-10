@@ -27,10 +27,10 @@ export function calculate(incomeData: IncomeData): OutputData {
     outputData.ietc = calculateIetc(income)
   }
   if (incomeData.kiwiSaver) {
-    calculateKiwiSaver(income)
+    outputData.kiwiSaver = multiplyByRate(income, incomeData.kiwiSaverRate)
   }
   if (incomeData.studentLoan) {
-    calculateStudentLoan(income)
+    outputData.studentLoan = multiplyByRate(income, incomeData.studentLoanRate)
   }
   outputData.takehome = calculateTakehome(income, outputData)
   console.log(outputData)
@@ -67,23 +67,19 @@ function calculateAcc(income: number) {
 }
 
 function calculateIetc(income: number) {
-  console.log('ietc calc')
+  // If income is within the range to receive the full credit, add the full $520
   if (income > 23999 && income < 44001) {
     return '520'
+    // Else reduce 520 by 13 cents for every dollar above 44000 until it reaches 0
   } else if (income > 44000 && income < 48000) {
     return (520 - (income - 44000) * 0.13).toFixed(2)
   }
   return '0'
 }
 
-// B: income is 46000
-// C: amount less 44k is 2000
-// D: C * 0.13 is 260
-// E: 520 - 260 is 260
-
-function calculateKiwiSaver(income) {}
-
-function calculateStudentLoan(income) {}
+function multiplyByRate(income: number, rate: string) {
+  return (income * Number(rate)).toFixed(2)
+}
 
 function calculateTakehome(income: number, outputData: OutputData) {
   return (

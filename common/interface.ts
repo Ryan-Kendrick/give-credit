@@ -2,7 +2,7 @@ export interface IncomeData {
   income: number
   ietc: boolean | undefined
   kiwiSaver: boolean | null
-  kiwiSaverRate: undefined | string
+  kiwiSaverRate: string
   studentLoan: boolean | null
 }
 
