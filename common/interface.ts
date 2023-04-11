@@ -4,6 +4,7 @@ export interface IncomeData {
   kiwiSaver: boolean | null
   kiwiSaverRate: string
   studentLoan: boolean | null
+  studentLoanRate: string
 }
 
 export interface OutputData {
