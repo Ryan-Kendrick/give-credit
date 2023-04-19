@@ -79,7 +79,19 @@ function Output({ incomeData }: Props) {
             ) : (
               ''
             )}
-
+            {outputData.studentLoan ? (
+              <List.Item>
+                <Icon name="minus" />
+                <List.Content>
+                  <List.Header>Student Loan</List.Header>
+                  <List.Description className="loss">
+                    ${outputData.studentLoan}
+                  </List.Description>
+                </List.Content>
+              </List.Item>
+            ) : (
+              ''
+            )}
             {/* Take Home Pay */}
             <List.Item>
               <Icon name="triangle right" />

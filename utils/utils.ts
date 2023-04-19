@@ -9,7 +9,7 @@ const taxBrackets = [
   [180000, Infinity, 0.39],
 ]
 // Valid until 1 April 2024
-const accRate = 0.153
+const accRate = 0.0153
 const studentLoanThreshold = 22828
 
 //-- Primary function, it routes to other functions based on options selected
@@ -92,7 +92,9 @@ function calculateKiwiSaver(income: number, rate: string) {
 
 function calculateStudentLoan(income: number, rate: string) {
   if (income > studentLoanThreshold && rate !== 'reduced') {
-    return (income * Number(rate) - studentLoanThreshold).toFixed(2)
+    const cost = income * Number(rate) - studentLoanThreshold
+    const positiveCost = +cost
+    return positiveCost.toFixed(2)
   }
 }
 
