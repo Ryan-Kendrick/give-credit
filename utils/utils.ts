@@ -45,7 +45,8 @@ export function calculate(incomeData: IncomeData): OutputData {
 
 // Income variable from props
 export function calculatePaye(income: number) {
-  let totalTax = 0 // Initialise variable for total tax paid - will need to divide this number to figure out PAYE, student loan etc.
+  let totalTax = 0 // Initialise variable for total tax paid
+
   // bracket[0] is threhold for this tax bracket, bracket[1] is upper limit, bracket[2] is the marginal tax rate
   for (const bracket of taxBrackets) {
     // If total income is within this threshhold, then add to total taxes remaining income taxed at this treshhold
