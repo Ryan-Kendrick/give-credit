@@ -1,5 +1,6 @@
 import { IncomeData, OutputData } from '../common/interface'
 
+//-- Data
 const taxBrackets = [
   [0, 14000, 0.105],
   [14000, 48000, 0.175], // Lower threshhold must be 1 less than actual to account for decimal numbers
@@ -7,8 +8,11 @@ const taxBrackets = [
   [70000, 180000, 0.33],
   [180000, Infinity, 0.39],
 ]
+// Valid until 1 April 2024
+const accRate = 0.153
+const studentLoanThreshold = 22828
 
-// Primary function, it routes to other functions as necessary based on options selected
+//-- Primary function, it routes to other functions based on options selected
 export function calculate(incomeData: IncomeData): OutputData {
   const income = incomeData.income
   const outputData = {
@@ -27,13 +31,18 @@ export function calculate(incomeData: IncomeData): OutputData {
     outputData.ietc = calculateIetc(income)
   }
   if (incomeData.kiwiSaver) {
-    outputData.kiwiSaver = multiplyByRate(income, incomeData.kiwiSaverRate)
+    outputData.kiwiSaver = calculateKiwiSaver(income, incomeData.kiwiSaverRate)
   }
   if (incomeData.studentLoan) {
-    outputData.studentLoan = multiplyByRate(income, incomeData.studentLoanRate)
+    outputData.studentLoan = calculateStudentLoan(
+      income,
+      incomeData.studentLoanRate
+    )
   }
   outputData.takehome = calculateTakehome(income, outputData)
   console.log(outputData)
+
+  //-- Secondary functions
   // If IETC has been applied, reduce PAYE for display purposes
   if (incomeData.ietc) {
     outputData.paye = (
@@ -61,9 +70,8 @@ export function calculatePaye(income: number) {
   return totalTax.toFixed(2) // Imprecise rounding to 2 decimal places but seems fit for purpose
 }
 
-// Valid until 1 April 2024
 function calculateAcc(income: number) {
-  const acc = income * 0.0153
+  const acc = income * accRate
   return acc.toFixed(2)
 }
 
@@ -78,8 +86,14 @@ function calculateIetc(income: number) {
   return '0'
 }
 
-function multiplyByRate(income: number, rate: string) {
+function calculateKiwiSaver(income: number, rate: string) {
   return (income * Number(rate)).toFixed(2)
+}
+
+function calculateStudentLoan(income: number, rate: string) {
+  if (income > studentLoanThreshold && rate !== 'reduced') {
+    return (income * Number(rate) - studentLoanThreshold).toFixed(2)
+  }
 }
 
 function calculateTakehome(income: number, outputData: OutputData) {
