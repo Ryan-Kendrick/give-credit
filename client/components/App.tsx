@@ -8,7 +8,7 @@ import { Container, Segment, Transition } from 'semantic-ui-react'
 function App() {
   const initialData = {
     income: 0,
-    ietc: null,
+    ietc: undefined,
     kiwiSaver: null,
     studentLoan: null,
   }
@@ -36,5 +36,4 @@ function App() {
 
 export default App
 
-// Why is the income input not affected by justify-content
-// Why does 40vh + 10vh + 50vh not cover the page
+// useEffect for styling multiple dropdown menus?
