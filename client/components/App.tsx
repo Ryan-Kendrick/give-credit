@@ -16,7 +16,6 @@ function App() {
 
   const setIncome = (data: IncomeData) => {
     setIncomeData({ ...incomeData, ...data })
-    console.log(incomeData)
   }
 
   return (

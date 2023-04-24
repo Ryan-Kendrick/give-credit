@@ -36,7 +36,6 @@ function Input(props: Props) {
   function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
     // reduce student loan % to decimal
     const rate = (Number(e.target.value) * 0.01).toString()
-    console.log(rate)
     setFormData({
       ...formData,
       [e.target.name]: rate,
@@ -61,6 +60,7 @@ function Input(props: Props) {
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
+    console.log(formData)
   }
 
   return (

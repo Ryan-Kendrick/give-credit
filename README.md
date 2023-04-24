@@ -16,14 +16,15 @@ A work in progress that aims to:
 - [x] Make a form with Semantic UI React components
 - [x] Can apply marginal tax rates to calculate PAYE for a given salary income
 - [x] Have a function call other functions and return a results object based on options
-- [ ] Implement submit bar - nested flexbox?
-- [ ] Placeholder page layout
-- [ ] Account for student loans, ACC, Kiwisaver, IETC
+- [x] Implement submit bar - nested flexbox?
+- [x] Placeholder page layout
+- [x] Account for student loans, ACC, Kiwisaver, IETC
 - [ ] Support income by hour/week/fortnight/month/year
 - [ ] Options for Kiwisaver, student loan repayment rate
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
 - [ ] Add a slider to target refunding a % of PAYE
+- [ ] CSS pass
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
 - [ ] Add relevant links to other resources and guide towards the IRD refund process
