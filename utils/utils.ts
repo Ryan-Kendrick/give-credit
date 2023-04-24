@@ -70,7 +70,6 @@ export function calculatePaye(income: number) {
   return totalTax.toFixed(2) // Imprecise rounding to 2 decimal places but seems fit for purpose
 }
 
-// ACC levy of 1.33%
 function calculateAcc(income: number) {
   const acc = income * accRate
   return acc.toFixed(2)
@@ -93,9 +92,9 @@ function calculateKiwiSaver(income: number, rate: string) {
 
 function calculateStudentLoan(income: number, rate: string) {
   if (income > studentLoanThreshold && rate !== 'reduced') {
-    const cost = income * Number(rate) - studentLoanThreshold
-    const positiveCost = +cost
-    return positiveCost.toFixed(2)
+    console.log(income, rate)
+    const cost = (income - studentLoanThreshold) * Number(rate)
+    return cost.toFixed(2)
   }
 }
 
