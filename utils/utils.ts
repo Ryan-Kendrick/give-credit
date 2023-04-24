@@ -42,6 +42,7 @@ export function calculatePaye(income: number) {
   return Number(totalTax.toFixed(2)) // Imprecise rounding to 2 decimal places but seems fit for purpose
 }
 
+// ACC levy of 1.33%
 function calculateAcc(income: number) {
   return income * 0.0133
 }
