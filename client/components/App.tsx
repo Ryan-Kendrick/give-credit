@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Header from './Header'
+import Heading from './Header'
 import Input from './Input'
 import Output from './Output'
 import { IncomeData } from '../../common/interface'
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Heading />
       <Segment>
         {/*Take the input data from the input bar and hold it within state*/}
         <Input setIncome={setIncome} />

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, FormEvent } from 'react'
+import { ChangeEvent, useState, FormEvent, SyntheticEvent } from 'react'
 import {
   Form,
   Container,
@@ -8,6 +8,9 @@ import {
   Menu,
   Checkbox,
   Input as Inpt,
+  Select,
+  Button,
+  DropdownProps,
 } from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
 
@@ -19,6 +22,7 @@ function Input(props: Props) {
   // Local version of the incomeData object in App
   const [formData, setFormData] = useState({
     income: 0,
+    incomePeriod: 'year',
     ietc: true,
     kiwiSaver: null,
     kiwiSaverRate: '0.03',
@@ -26,11 +30,22 @@ function Input(props: Props) {
     studentLoanRate: '0.12',
   } as IncomeData)
 
-  function changeHandler(e: ChangeEvent<HTMLInputElement>) {
+  function incomeHandler(e: ChangeEvent<HTMLInputElement>) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
+  }
+
+  function periodHandler(
+    e: SyntheticEvent<HTMLElement, Event>,
+    data: DropdownProps
+  ) {
+    typeof data.value === 'string' &&
+      setFormData({
+        ...formData,
+        ['incomePeriod']: data.value,
+      })
   }
 
   function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -63,6 +78,14 @@ function Input(props: Props) {
     console.log(formData)
   }
 
+  const incomeByPeriod = [
+    { key: 'hour', text: 'Hour', value: 'hour' },
+    { key: 'week', text: 'Week', value: 'week' },
+    { key: 'fortnight', text: 'Fortnight', value: 'fortnight' },
+    { key: 'month', text: 'Month', value: 'month' },
+    { key: 'year', text: 'Year', value: 'year' },
+  ]
+
   return (
     <>
       <Form onSubmit={submitHandler}>
@@ -84,7 +107,8 @@ function Input(props: Props) {
                 onChange={(e, data) => checkboxHandler(e, data)}
                 name="kiwiSaver"
               />
-              {formData.kiwiSaver ? (
+
+              {formData.kiwiSaver && (
                 <Menu vertical className="kiwisaver-menu">
                   <Menu.Item header>Kiwisaver Rate</Menu.Item>
                   <Menu.Menu>
@@ -140,18 +164,16 @@ function Input(props: Props) {
                     </Menu.Item>
                   </Menu.Menu>
                 </Menu>
-              ) : (
-                ''
               )}
             </Container>
+
             <Container fluid className="studentloan-cont">
               <Form.Checkbox
                 label="Student Loan"
                 onChange={(e, data) => checkboxHandler(e, data)}
                 name="studentLoan"
               />
-
-              {formData.studentLoan ? (
+              {formData.studentLoan && (
                 <Menu vertical className="studentloan-menu">
                   <Menu.Item header>Student Loan Rate</Menu.Item>
                   <Menu.Menu>
@@ -188,20 +210,29 @@ function Input(props: Props) {
                     </Menu.Item>
                   </Menu.Menu>
                 </Menu>
-              ) : (
-                ''
               )}
             </Container>
           </Container>
+
           <Form.Input
             label="Income: "
-            action="Submit"
-            placeholder="50000"
             type="number"
+            placeholder="50000"
             id="input-income"
             name="income"
-            onChange={changeHandler}
-          />
+            onChange={incomeHandler}
+            action
+          >
+            <input />
+            <Select
+              className="period-select"
+              onChange={periodHandler}
+              compact
+              options={incomeByPeriod}
+              value={formData.incomePeriod}
+            />
+            <Button action="Submit">Submit</Button>
+          </Form.Input>
         </Container>
       </Form>
     </>

@@ -1,5 +1,6 @@
 export interface IncomeData {
   income: number
+  incomePeriod: string
   ietc: boolean | undefined
   kiwiSaver: boolean | null
   kiwiSaverRate: string

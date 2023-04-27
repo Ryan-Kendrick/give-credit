@@ -1,15 +1,18 @@
-import { Header as Headr } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
-function Header() {
+function Heading() {
   return (
     <>
       <div className="header-cont">
-        <Headr size="huge" textAlign="center">
-          Tax Credit Project
-        </Headr>
+        <Header size="huge" textAlign="center">
+          Give Credit
+        </Header>
+        <Header size="small" textAlign="center">
+          A Tool for Charitable Tax Credits
+        </Header>
       </div>
     </>
   )
 }
 
-export default Header
+export default Heading
