@@ -22,10 +22,8 @@ function App() {
     <>
       <Heading />
       <Segment>
-        {/*Take the input data from the input bar and hold it within state*/}
         <Input setIncome={setIncome} />
       </Segment>
-      {/*Feed the input data into the Output component for processing and display*/}
       <Container fluid className="output-cont">
         <Output incomeData={incomeData} />
       </Container>
