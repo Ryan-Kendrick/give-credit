@@ -15,6 +15,7 @@ function Output({ incomeData }: Props) {
     ietc: '',
     kiwiSaver: '',
     studentLoan: '',
+    errors: [],
   } as OutputData
 
   // Update outputData when income is received from state in App

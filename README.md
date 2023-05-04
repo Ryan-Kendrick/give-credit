@@ -19,8 +19,9 @@ A work in progress that aims to:
 - [x] Implement submit bar - nested flexbox?
 - [x] Placeholder page layout
 - [x] Account for student loans, ACC, Kiwisaver, IETC
-- [ ] Support income by hour/week/fortnight/month/year
-- [ ] Options for Kiwisaver, student loan repayment rate
+- [x] Support income by hour/week/fortnight/month/year
+- [x] Options for Kiwisaver, student loan repayment rate
+- [x] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
 - [ ] Add a slider to target refunding a % of PAYE

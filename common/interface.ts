@@ -15,4 +15,5 @@ export interface OutputData {
   ietc?: string
   kiwiSaver?: string
   studentLoan?: string
+  errors: string[]
 }

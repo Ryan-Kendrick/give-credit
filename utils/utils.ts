@@ -14,7 +14,6 @@ const studentLoanThreshold = 22828
 
 //-- Primary function, it routes to other functions based on options selected
 export function calculate(incomeData: IncomeData): OutputData {
-  const income = incomeData.income
   const outputData = {
     paye: '',
     takehome: '',
@@ -22,7 +21,33 @@ export function calculate(incomeData: IncomeData): OutputData {
     ietc: '',
     kiwiSaver: '',
     studentLoan: '',
+    errors: [],
   } as OutputData
+
+  let income = incomeData.income
+
+  try {
+    switch (incomeData.incomePeriod) {
+      case 'hour':
+        console.log(income)
+        income = income * 37.5 * 52
+        console.log(income)
+        break
+      case 'week':
+        income *= 52
+        break
+      case 'fortnight':
+        income *= 26
+        break
+      case 'month':
+        income *= 12
+        break
+      default:
+        throw new Error('Unexpected income period')
+    }
+  } catch (err: unknown) {
+    err instanceof Error && outputData.errors.push(err.message)
+  }
 
   outputData.paye = calculatePaye(income)
   outputData.acc = calculateAcc(income)
