@@ -4,6 +4,7 @@ import Input from './Input'
 import Output from './Output'
 import { IncomeData } from '../../common/interface'
 import { Container, Segment, Transition } from 'semantic-ui-react'
+import '../../server/public/main.css'
 
 function App() {
   const initialData = {
