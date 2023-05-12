@@ -11,6 +11,11 @@ A work in progress that aims to:
 * Provide accurate information, both in terms of the calculator and in terms of summarising the process
 * Provide references to official information
 
+## Build Instructions
+
+1. `npm i`
+2. `npm run dev`
+
 ## Progress
 
 - [x] Make a form with Semantic UI React components
@@ -21,11 +26,11 @@ A work in progress that aims to:
 - [x] Account for student loans, ACC, Kiwisaver, IETC
 - [x] Support income by hour/week/fortnight/month/year
 - [x] Options for Kiwisaver, student loan repayment rate
-- [x] Error display
+- [ ] Tailwind remake
+- [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
 - [ ] Add a slider to target refunding a % of PAYE
-- [ ] CSS pass
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
 - [ ] Add relevant links to other resources and guide towards the IRD refund process
