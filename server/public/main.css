@@ -3,6 +3,57 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: "fort-bold";
+  src: url("/server/public/resources/fonts/Fort-Bold.eot");
+  src: url("/server/public/resources/fonts/Fort-Bold.woff") format("woff"),
+  url("/server/public/resources/fonts/Fort-Bold.otf") format("opentype"),
+  url("/server/public/resources/fonts/Fort-Bold.svg#filename") format("svg");
+  }
+  
+  @font-face {
+    font-family: "fort-book";
+    src: url("/server/public/resources/fonts/Fort-Book.eot");
+    src: url("/server/public/resources/fonts/Fort-Book.woff") format("woff"),
+    url("/server/public/resources/fonts/Fort-Book.svg#filename") format("svg");
+    }
+    
+
+    @font-face {
+      font-family: 'mark-black';
+      src: url('/server/public/resources/fonts/fontfont_ff.mark.pro.black-webfont.woff2') format('woff2'),
+           url('/server/public/resources/fonts/fontfont_ff.mark.pro.black-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  
+  }
+  
+  
+  @font-face {
+      font-family: 'mark-bold';
+      src: url('/server/public/resources/fonts/fontfont_ff.mark.pro.bold-webfont.woff2') format('woff2'),
+           url('/server/public/resources/fonts/fontfont_ff.mark.pro.bold-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  
+  }
+  
+  @font-face {
+      font-family: 'mark-medium';
+      src: url('/server/public/resources/fonts/fontfont_ff.mark.pro.medium-webfont.woff2') format('woff2'),
+           url('/server/public/resources/fonts/fontfont_ff.mark.pro.medium-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  
+  }
+    
+
+@layer base {
+  html {
+    font-family: mark-medium, fort-book, fort-bold, mark-bold, mark-black, system-ui, sans-serif;
+  }
+}
+
 /* Remove input arrows */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -17,105 +68,5 @@ input[type=number] {
   margin: 0 !important;
 }
 
-body {
-  background-color: #faf8f1;
-  color: #0a1520;
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
-}
 
 
-
-/* App level "Segment" container around input */
-#app .ui.segment{
-  margin: 0;
-  min-height: 10vh;
-}
-
-.input-cont {  
-  display: inline-flex !important;
-  align-items: center !important;
-  width: 80vw !important;
-}
-
-.checkbox-cont {
-  width: initial !important;
-  display: flex !important;
-  position: relative !important;
-  top: 0.6vh !important;
-}
-
-/* Kiwisaver container & student loan elements container */
-#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont, #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.studentloan-cont {
-  position: relative;
-  width: initial;
-}
-/* Kiwisaver dropdown menu */
-#app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.kiwisaver-cont > div.ui.vertical.kiwisaver-menu.menu, #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont > div.ui.fluid.container.studentloan-cont > div.ui.vertical.studentloan-menu.menu {
-  position: absolute;
-  display: block;
-  bottom: -15.45rem;
-  right: -4.5rem;
-}
-/* Output container */
-.output-cont{
-  height: 50vh;
-  background-color: #778899;
-}
-
-/* Output list */
-#app > div.ui.list {
-  margin-top: 0;
-}
-/* Header container */
-.header-cont {
-  height: 40vh;
-}
-
-.period-select {
-  min-width: 8rem !important;
-}
-#app > div.ui.segment > form > div > div.field > div > div > i {
-margin: -0.78571429em !important;
-}
-
-@media only screen and (max-width: 767px) {
-  #app > div.ui.fluid.container.output-cont {
-    margin: 0 !important;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
-  margin-left: auto !important;
-  margin-right: 2.5vw !important;
-}
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
-  margin-left: auto !important;
-  margin-right: 3vw !important;
-}
-}
-
-@media only screen and (min-width: 1200px) {
-  #app > div.ui.segment > form > div > div.ui.fluid.container.checkbox-cont {
-  margin-left: auto !important;
-  margin-right: 10vw !important;
-}
-}
-/*  */
-
-/* Output colours */
-.opportunity {
-  color: #FEE767 !important;
-}
-
-.loss {
-  color: #BA0000 !important;
-}
-
-.gain {
-  color: #20FE20 !important;
-}
