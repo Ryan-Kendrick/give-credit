@@ -5,6 +5,7 @@ import Output from './Output'
 import { IncomeData } from '../../common/interface'
 import { Container, Segment } from 'semantic-ui-react'
 import '../../server/public/main.css'
+import 'flowbite'
 
 function App() {
   const initialData = {
