@@ -1,4 +1,10 @@
-import { ChangeEvent, useState, FormEvent, SyntheticEvent } from 'react'
+import {
+  ChangeEvent,
+  useState,
+  FormEvent,
+  SyntheticEvent,
+  ChangeEventHandler,
+} from 'react'
 import { IncomeData } from '../../common/interface'
 import {
   Badge,
@@ -6,6 +12,7 @@ import {
   Dropdown,
   Label,
   Radio,
+  TextInput,
   Tooltip,
 } from 'flowbite-react'
 import Infocircle from './Infocircle'
@@ -33,15 +40,11 @@ function Input(props: Props) {
     })
   }
 
-  function periodHandler(
-    e: SyntheticEvent<HTMLElement, Event>,
-    data: DropdownProps
-  ) {
-    typeof data.value === 'string' &&
-      setFormData({
-        ...formData,
-        ['incomePeriod']: data.value,
-      })
+  function periodHandler(e: ChangeEvent<HTMLSelectElement>) {
+    setFormData({
+      ...formData,
+      ['incomePeriod']: e.target.value,
+    })
   }
 
   function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -75,14 +78,6 @@ function Input(props: Props) {
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
     console.log(formData)
   }
-
-  const incomeByPeriod = [
-    { key: 'hour', text: 'Hour', value: 'hour' },
-    { key: 'week', text: 'Week', value: 'week' },
-    { key: 'fortnight', text: 'Fortnight', value: 'fortnight' },
-    { key: 'month', text: 'Month', value: 'month' },
-    { key: 'year', text: 'Year', value: 'year' },
-  ]
 
   return (
     <>
@@ -119,7 +114,7 @@ function Input(props: Props) {
               />
 
               {formData.kiwiSaver && (
-                <div className="absolute top-[3.2rem] border-2">
+                <div className="absolute top-[3.2rem] right-[0.3rem] border-2">
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Kiwisaver Rate
                   </Dropdown.Item>
@@ -195,72 +190,82 @@ function Input(props: Props) {
               )}
             </div>
 
-            {/* <div className="flex studentloan-cont">
-              <form.Checkbox
-                label="Student Loan"
-                onChange={(e, data) => checkboxHandler(e, data)}
+            <div className="flex relative items-center">
+              <Label htmlFor="studentLoan">Student Loan</Label>
+              <Checkbox
+                className="mx-1"
+                onChange={(e) => checkboxHandler(e)}
                 name="studentLoan"
               />
               {formData.studentLoan && (
-                <Menu vertical className="studentloan-menu">
-                  <Menu.Item header>Student Loan Rate</Menu.Item>
-                  <Menu.Menu>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.12"
-                        label="12%"
-                        checked={formData.studentLoanRate === '0.12'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="studentLoanRate"
-                      ></Checkbox>
-                    </Menu.Item>
+                <div className="absolute top-[3.2rem] border-2">
+                  <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
+                    Student Loan Rate
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.12"
+                      checked={formData.studentLoanRate === '0.12'}
+                      onChange={(e) => radioHandler(e)}
+                      name="studentLoanRate"
+                    ></Radio>
+                    <Label className="cursor-pointer" htmlFor="studentLoanRate">
+                      12%
+                    </Label>
+                  </Dropdown.Item>
 
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="custom"
-                        label="Custom"
-                        checked={formData.studentLoanRate !== '0.12'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="studentLoanRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Inpt
-                        label={{ basic: true, content: '%' }}
-                        placeholder="Rate"
-                        disabled={formData.studentLoanRate === '0.12'}
-                        required={true}
-                        name="studentLoanRate"
-                        onChange={customRateHandler}
-                      />
-                    </Menu.Item>
-                  </Menu.Menu>
-                </Menu>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="custom"
+                      checked={formData.studentLoanRate !== '0.12'}
+                      onChange={(e) => radioHandler(e)}
+                      name="studentLoanRate"
+                    ></Radio>
+                    <Label className="cursor-pointer" htmlFor="studentLoanRate">
+                      Custom
+                    </Label>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <TextInput
+                      addon="%"
+                      placeholder="Rate"
+                      disabled={formData.studentLoanRate === '0.12'}
+                      required={true}
+                      name="studentLoanRate"
+                      onChange={customRateHandler}
+                    />
+                  </Dropdown.Item>
+                </div>
               )}
             </div>
           </div>
-
-          <form.Input
-            label="Income: "
-            type="number"
-            placeholder="50000"
-            id="input-income"
-            name="income"
-            onChange={incomeHandler}
-            action
-          >
-            <input />
-            <Select
-              className="period-select"
-              onChange={periodHandler}
-              compact
-              options={incomeByPeriod}
-              value={formData.incomePeriod}
-            />
-            <Button action="Submit">Submit</Button>
-          </form.Input> */}
+          <div className="flex">
+            <select
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              onChange={(e) => periodHandler(e)}
+            >
+              <option selected value="year">
+                Income by year
+              </option>
+              <option value="month">Month</option>
+              <option value="fortnight">Fortnight</option>
+              <option value="week">Week</option>
+              <option value="hour">Hour</option>
+            </select>
+            {/* <input
+              type="number"
+              placeholder="income"
+              id="input-income"
+              name="income"
+              onChange={incomeHandler}
+              action
+            ></input> */}
           </div>
         </div>
       </form>
