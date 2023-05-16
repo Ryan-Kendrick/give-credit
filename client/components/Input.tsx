@@ -1,18 +1,14 @@
 import { ChangeEvent, useState, FormEvent, SyntheticEvent } from 'react'
-import {
-  Form,
-  Container,
-  Icon,
-  Popup,
-  FormCheckboxProps,
-  Menu,
-  Checkbox,
-  Input as Inpt,
-  Select,
-  Button,
-  DropdownProps,
-} from 'semantic-ui-react'
 import { IncomeData } from '../../common/interface'
+import {
+  Badge,
+  Checkbox,
+  Dropdown,
+  Label,
+  Radio,
+  Tooltip,
+} from 'flowbite-react'
+import Infocircle from './Infocircle'
 
 interface Props {
   setIncome: (data: IncomeData) => void
@@ -57,18 +53,20 @@ function Input(props: Props) {
     })
   }
 
-  function checkboxHandler(
-    e: FormEvent<HTMLInputElement>,
-    data: FormCheckboxProps
-  ) {
-    setFormData({ ...formData, [`${data.name}`]: data.checked })
+  function checkboxHandler(e: ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, [`${e.target.name}`]: e.target.checked })
   }
 
-  function radioHandler(
-    e: FormEvent<HTMLInputElement>,
-    data: FormCheckboxProps
-  ) {
-    setFormData({ ...formData, [`${data.name}`]: data.value })
+  function radioHandler(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.value) {
+      setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
+    } else if (e.target.textContent) {
+      const kiwiSaverRate = e.target.textContent
+      const rateData = kiwiSaverRate?.split('%')[0]
+      rateData.length < 2
+        ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
+        : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
+    }
   }
 
   //  Update the incomeData state in App, rendering the Output component
@@ -88,87 +86,99 @@ function Input(props: Props) {
 
   return (
     <>
-      <Form onSubmit={submitHandler}>
-        <Container fluid className="input-cont">
-          <Container fluid className="checkbox-cont">
-            <Form.Checkbox
-              label="IETC"
-              defaultChecked
-              onChange={(e, data) => checkboxHandler(e, data)}
-              name="ietc"
-            />
-            <Popup
-              content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
-              trigger={<Icon name="info circle" size="large" />}
-            />
-            <Container fluid className="kiwisaver-cont">
-              <Form.Checkbox
-                label="KiwiSaver"
-                onChange={(e, data) => checkboxHandler(e, data)}
-                name="kiwiSaver"
+      <form className="flex min-h-[10vh] border-y-2" onSubmit={submitHandler}>
+        <div className="flex place-content-center w-[80vw] mx-auto">
+          <div className="flex relative items-center gap-2">
+            <div className="inline-flex items-center">
+              <Label htmlFor="ietc">IETC</Label>
+              <Tooltip
+                content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
+                style="dark"
+              >
+                <Badge color="gray" size="sm" icon={Infocircle} />
+              </Tooltip>
+              <Checkbox
+                defaultChecked
+                onChange={(e) => checkboxHandler(e)}
+                name="ietc"
               />
+            </div>
+
+            <div className="flex relative">
+              <Label htmlFor="kiwiSaver">KiwiSaver</Label>
+              <Checkbox onChange={(e) => checkboxHandler(e)} name="kiwiSaver" />
 
               {formData.kiwiSaver && (
-                <Menu vertical className="kiwisaver-menu">
-                  <Menu.Item header>Kiwisaver Rate</Menu.Item>
-                  <Menu.Menu>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.03"
-                        label="3%"
-                        checked={formData.kiwiSaverRate === '0.03'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="kiwiSaverRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.04"
-                        label="4%"
-                        checked={formData.kiwiSaverRate === '0.04'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="kiwiSaverRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.06"
-                        label="6%"
-                        checked={formData.kiwiSaverRate === '0.06'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="kiwiSaverRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.08"
-                        label="8%"
-                        checked={formData.kiwiSaverRate === '0.08'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="kiwiSaverRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Checkbox
-                        radio
-                        value="0.10"
-                        label="10%"
-                        checked={formData.kiwiSaverRate === '0.10'}
-                        onChange={(e, data) => radioHandler(e, data)}
-                        name="kiwiSaverRate"
-                      ></Checkbox>
-                    </Menu.Item>
-                  </Menu.Menu>
-                </Menu>
+                <div className="absolute">
+                  <Dropdown.Item className="gap-4">
+                    Kiwisaver Rate
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.03"
+                      checked={formData.kiwiSaverRate === '0.03'}
+                      onChange={(e) => radioHandler(e)}
+                      name="kiwiSaverRate"
+                    ></Radio>
+                    <Label htmlFor="kiwiSaverRate">3%</Label>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.04"
+                      checked={formData.kiwiSaverRate === '0.04'}
+                      onChange={(e) => radioHandler(e)}
+                      name="kiwiSaverRate"
+                    ></Radio>
+                    <Label htmlFor="kiwiSaverRate">4%</Label>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.06"
+                      checked={formData.kiwiSaverRate === '0.06'}
+                      onChange={(e) => radioHandler(e)}
+                      name="kiwiSaverRate"
+                    ></Radio>
+                    <Label htmlFor="kiwiSaverRate">6%</Label>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.08"
+                      checked={formData.kiwiSaverRate === '0.08'}
+                      onChange={(e) => radioHandler(e)}
+                      name="kiwiSaverRate"
+                    ></Radio>
+                    <Label htmlFor="kiwiSaverRate">8%</Label>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={(e) => radioHandler(e)}
+                    className="gap-4"
+                  >
+                    <Radio
+                      value="0.10"
+                      checked={formData.kiwiSaverRate === '0.10'}
+                      onChange={(e) => radioHandler(e)}
+                      name="kiwiSaverRate"
+                    ></Radio>
+                    <Label htmlFor="kiwiSaverRate">10%</Label>
+                  </Dropdown.Item>
+                </div>
               )}
-            </Container>
+            </div>
 
-            <Container fluid className="studentloan-cont">
-              <Form.Checkbox
+            {/* <div className="flex studentloan-cont">
+              <form.Checkbox
                 label="Student Loan"
                 onChange={(e, data) => checkboxHandler(e, data)}
                 name="studentLoan"
@@ -211,10 +221,10 @@ function Input(props: Props) {
                   </Menu.Menu>
                 </Menu>
               )}
-            </Container>
-          </Container>
+            </div>
+          </div>
 
-          <Form.Input
+          <form.Input
             label="Income: "
             type="number"
             placeholder="50000"
@@ -232,9 +242,10 @@ function Input(props: Props) {
               value={formData.incomePeriod}
             />
             <Button action="Submit">Submit</Button>
-          </Form.Input>
-        </Container>
-      </Form>
+          </form.Input> */}
+          </div>
+        </div>
+      </form>
     </>
   )
 }

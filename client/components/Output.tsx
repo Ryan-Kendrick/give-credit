@@ -1,6 +1,8 @@
 import { Icon, List, Popup } from 'semantic-ui-react'
 import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
+import { Badge, Tooltip } from 'flowbite-react'
+import Infocircle from './Infocircle'
 
 interface Props {
   incomeData: IncomeData
@@ -45,10 +47,12 @@ function Output({ incomeData }: Props) {
                       <span className="gain">
                         ${outputData.ietc}
                       </span> applied{' '}
-                      <Popup
+                      <Tooltip
                         content="Independent earner tax credit"
-                        trigger={<Icon name="info circle" size="large" />}
-                      />
+                        style="dark"
+                      >
+                        <Badge color="gray" size="sm" icon={Infocircle} />
+                      </Tooltip>
                     </List.Description>
                   </List.Content>
                 </List.Item>
