@@ -16,6 +16,9 @@ module.exports = {
         bold: 'mark-bold',
         xbold: 'mark-black',
       },
+      spacing: {
+        128: '32rem',
+      },
     },
   },
   corePlugins: {},

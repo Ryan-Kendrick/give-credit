@@ -86,7 +86,7 @@ function Input(props: Props) {
 
   return (
     <>
-      <form className="flex min-h-[10vh] border-y-2" onSubmit={submitHandler}>
+      <form className="flex h-20 border-y-2" onSubmit={submitHandler}>
         <div className="flex place-content-center w-[80vw] mx-auto">
           <div className="flex relative items-center gap-2">
             <div className="inline-flex items-center">
@@ -95,22 +95,32 @@ function Input(props: Props) {
                 content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
                 style="dark"
               >
-                <Badge color="gray" size="sm" icon={Infocircle} />
+                <Badge
+                  className="px-0"
+                  color="gray"
+                  size="sm"
+                  icon={Infocircle}
+                />
               </Tooltip>
               <Checkbox
                 defaultChecked
                 onChange={(e) => checkboxHandler(e)}
                 name="ietc"
+                className="mx-1"
               />
             </div>
 
-            <div className="flex relative">
+            <div className="flex relative items-center">
               <Label htmlFor="kiwiSaver">KiwiSaver</Label>
-              <Checkbox onChange={(e) => checkboxHandler(e)} name="kiwiSaver" />
+              <Checkbox
+                className="mx-1"
+                onChange={(e) => checkboxHandler(e)}
+                name="kiwiSaver"
+              />
 
               {formData.kiwiSaver && (
-                <div className="absolute">
-                  <Dropdown.Item className="gap-4">
+                <div className="absolute top-[3.2rem] border-2">
+                  <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Kiwisaver Rate
                   </Dropdown.Item>
                   <Dropdown.Item
@@ -135,7 +145,9 @@ function Input(props: Props) {
                       onChange={(e) => radioHandler(e)}
                       name="kiwiSaverRate"
                     ></Radio>
-                    <Label htmlFor="kiwiSaverRate">4%</Label>
+                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+                      4%
+                    </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
@@ -147,7 +159,9 @@ function Input(props: Props) {
                       onChange={(e) => radioHandler(e)}
                       name="kiwiSaverRate"
                     ></Radio>
-                    <Label htmlFor="kiwiSaverRate">6%</Label>
+                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+                      6%
+                    </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
@@ -159,7 +173,9 @@ function Input(props: Props) {
                       onChange={(e) => radioHandler(e)}
                       name="kiwiSaverRate"
                     ></Radio>
-                    <Label htmlFor="kiwiSaverRate">8%</Label>
+                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+                      8%
+                    </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
@@ -171,7 +187,9 @@ function Input(props: Props) {
                       onChange={(e) => radioHandler(e)}
                       name="kiwiSaverRate"
                     ></Radio>
-                    <Label htmlFor="kiwiSaverRate">10%</Label>
+                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+                      10%
+                    </Label>
                   </Dropdown.Item>
                 </div>
               )}
