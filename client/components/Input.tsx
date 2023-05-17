@@ -82,7 +82,7 @@ function Input(props: Props) {
   return (
     <>
       <form className="flex h-20 border-y-2" onSubmit={submitHandler}>
-        <div className="flex place-content-center w-[80vw] mx-auto">
+        <div className="flex flex-col md:flex-row place-content-center gap-8 w-[80vw] mx-auto">
           <div className="flex relative items-center gap-2">
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
@@ -92,7 +92,7 @@ function Input(props: Props) {
               >
                 <Badge
                   className="px-0"
-                  color="gray"
+                  color="initial"
                   size="sm"
                   icon={Infocircle}
                 />
@@ -198,7 +198,7 @@ function Input(props: Props) {
                 name="studentLoan"
               />
               {formData.studentLoan && (
-                <div className="absolute top-[3.2rem] border-2">
+                <div className="absolute top-[3.2rem] border-2 w-[11rem]">
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Student Loan Rate
                   </Dropdown.Item>
@@ -233,6 +233,7 @@ function Input(props: Props) {
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <TextInput
+                      type="number"
                       addon="%"
                       placeholder="Rate"
                       disabled={formData.studentLoanRate === '0.12'}
@@ -245,27 +246,39 @@ function Input(props: Props) {
               )}
             </div>
           </div>
-          <div className="flex">
-            <select
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-              onChange={(e) => periodHandler(e)}
-            >
-              <option selected value="year">
-                Income by year
-              </option>
-              <option value="month">Month</option>
-              <option value="fortnight">Fortnight</option>
-              <option value="week">Week</option>
-              <option value="hour">Hour</option>
-            </select>
-            {/* <input
-              type="number"
-              placeholder="income"
-              id="input-income"
-              name="income"
-              onChange={incomeHandler}
-              action
-            ></input> */}
+          <div className="flex h-full items-center">
+            <div className="flex h-1/2 items-center">
+              <select
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                onChange={(e) => periodHandler(e)}
+              >
+                <option defaultValue="year">Income by year</option>
+                <option value="month">Month</option>
+                <option value="fortnight">Fortnight</option>
+                <option value="week">Week</option>
+                <option value="hour">Hour</option>
+              </select>
+              <div className="relative w-full">
+                <div className="flex relative">
+                  <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-50 border border-r-0 border-gray-300">
+                    $
+                  </span>
+                  <input
+                    type="number"
+                    className="block p-2.5 pl-0 w-full rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="0"
+                    name="income"
+                    onChange={incomeHandler}
+                  ></input>
+                  <button
+                    type="submit"
+                    className="absolute top-[0.05rem] right-[0.05rem] z-20 p-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg px-4 py-2"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </form>

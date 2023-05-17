@@ -42,17 +42,16 @@ function Output({ incomeData }: Props) {
                 <List.Item>
                   <List.Content>
                     <List.Description>
-                      <Icon name="plus" size="small" />
-                      Tax credit of{' '}
-                      <span className="gain">
-                        ${outputData.ietc}
-                      </span> applied{' '}
-                      <Tooltip
-                        content="Independent earner tax credit"
-                        style="dark"
-                      >
-                        <Badge color="gray" size="sm" icon={Infocircle} />
-                      </Tooltip>
+                      <div className="inline-flex items-center">
+                        <Icon name="plus" size="small" />
+                        Tax credit of <span>${outputData.ietc}</span> applied
+                        <Tooltip
+                          content="Independent earner tax credit"
+                          style="dark"
+                        >
+                          <Badge color="" size="sm" icon={Infocircle} />
+                        </Tooltip>
+                      </div>
                     </List.Description>
                   </List.Content>
                 </List.Item>
