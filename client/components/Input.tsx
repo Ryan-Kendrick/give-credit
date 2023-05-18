@@ -81,8 +81,11 @@ function Input(props: Props) {
 
   return (
     <>
-      <form className="flex h-20 border-y-2" onSubmit={submitHandler}>
-        <div className="flex flex-col md:flex-row place-content-center gap-8 w-[80vw] mx-auto">
+      <form
+        className="flex min-h-[5rem] py-4 border-y-2"
+        onSubmit={submitHandler}
+      >
+        <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] min-w-[420px] mx-auto">
           <div className="flex relative items-center gap-2">
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
@@ -91,7 +94,7 @@ function Input(props: Props) {
                 style="dark"
               >
                 <Badge
-                  className="px-0"
+                  className="pr-0 pl-[2px]"
                   color="initial"
                   size="sm"
                   icon={Infocircle}
@@ -191,7 +194,9 @@ function Input(props: Props) {
             </div>
 
             <div className="flex relative items-center">
-              <Label htmlFor="studentLoan">Student Loan</Label>
+              <Label className="min-w-[93.5px]" htmlFor="studentLoan">
+                Student Loan
+              </Label>
               <Checkbox
                 className="mx-1"
                 onChange={(e) => checkboxHandler(e)}
@@ -252,20 +257,20 @@ function Input(props: Props) {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 onChange={(e) => periodHandler(e)}
               >
-                <option defaultValue="year">Income by year</option>
-                <option value="month">Month</option>
-                <option value="fortnight">Fortnight</option>
-                <option value="week">Week</option>
-                <option value="hour">Hour</option>
+                <option defaultValue="year">Yearly</option>
+                <option value="month">Monthly</option>
+                <option value="fortnight">Fortnightly</option>
+                <option value="week">Weekly</option>
+                <option value="hour">Hourly</option>
               </select>
-              <div className="relative w-full">
+              <div className="relative w-full min-w-[15rem]">
                 <div className="flex relative">
-                  <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-50 border border-r-0 border-gray-300">
+                  <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300">
                     $
                   </span>
                   <input
                     type="number"
-                    className="block p-2.5 pl-0 w-full rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="block p-2.5 pl-[2px] rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="0"
                     name="income"
                     onChange={incomeHandler}
