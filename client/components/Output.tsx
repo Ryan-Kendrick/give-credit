@@ -85,6 +85,14 @@ function Output({ incomeData }: Props) {
   // Display outputData when paye is calculated for the given income
   return (
     <>
+      <ul className="w-48 mt-4 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
+        <li className="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg ">
+          Profile
+        </li>
+        <li className="w-full px-4 py-2 border-b border-gray-200">Settings</li>
+        <li className="w-full px-4 py-2 border-b border-gray-200">Messages</li>
+        <li className="w-full px-4 py-2 rounded-b-lg">Download</li>
+      </ul>
       {outputData.paye ? (
         <ListGroup>
           {/* PAYE */}
