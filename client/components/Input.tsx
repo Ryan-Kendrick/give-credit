@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  useState,
-  FormEvent,
-  SyntheticEvent,
-  ChangeEventHandler,
-} from 'react'
+import { ChangeEvent, useState, FormEvent } from 'react'
 import { IncomeData } from '../../common/interface'
 import {
   Badge,
@@ -115,7 +109,6 @@ function Input(props: Props) {
                 onChange={(e) => checkboxHandler(e)}
                 name="kiwiSaver"
               />
-
               {formData.kiwiSaver && (
                 <div className="absolute top-[3.2rem] right-[0.3rem] border-2">
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
