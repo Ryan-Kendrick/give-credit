@@ -26,18 +26,15 @@ A work in progress that aims to:
 - [x] Account for student loans, ACC, Kiwisaver, IETC
 - [x] Support income by hour/week/fortnight/month/year
 - [x] Options for Kiwisaver, student loan repayment rate
-- [ ] Tailwind remake
+- [ ] Remake all components in Tailwind
+- [ ] Rate Column
+- [ ] Animations
+- [ ] Graph
+- [ ] Add relevant links to other resources and guide towards the IRD refund process
+- [ ] Give an example use case
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
 - [ ] Add a slider to target refunding a % of PAYE
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
-- [ ] Add relevant links to other resources and guide towards the IRD refund process
-- [ ] Give an example use case
-- [ ] Tooltips for checkbox options
-
-### Stretch
-
-- PurgeCSS
-- Data visualisation

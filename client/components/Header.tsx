@@ -4,7 +4,7 @@ function Heading() {
   return (
     <>
       <div className="">
-        <h1 className="text-center font-heading text-4xl lg:text-5xl py-1">
+        <h1 className="text-center font-heading text-4xl lg:text-5xl py-4">
           Give Credit
         </h1>
         <h2 className="text-center font-subheading text-xl lg:text-2xl py-1">

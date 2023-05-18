@@ -131,6 +131,57 @@ function Output({ incomeData }: Props) {
       </li>
     )
   }
+  const displayAcc = () => {
+    return (
+      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+        <svg
+          className="inline w-3 h-3 mr-1 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M0 10h24v4h-24z" />
+        </svg>
+        ACC
+        <p className="absolute font-bold text-red-600 right-4 top-[0.45rem]">
+          ${outputData.acc}
+        </p>
+      </li>
+    )
+  }
+  const displayKiwiSaver = () => {
+    return (
+      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+        <svg
+          className="inline w-3 h-3 mr-1 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M0 10h24v4h-24z" />
+        </svg>
+        KiwiSaver
+        <p className="absolute font-bold text-red-600 right-4 top-[0.45rem]">
+          ${outputData.kiwiSaver}
+        </p>
+      </li>
+    )
+  }
+  const displayStudentLoan = () => {
+    return (
+      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+        <svg
+          className="inline w-3 h-3 mr-1 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M0 10h24v4h-24z" />
+        </svg>
+        KiwiSaver
+        <p className="absolute font-bold text-red-600 right-4 top-[0.45rem]">
+          ${outputData.kiwiSaver}
+        </p>
+      </li>
+    )
+  }
 
   // Update outputData when income is received from state in App
   incomeData.income && (outputData = calculate(incomeData))
@@ -139,56 +190,47 @@ function Output({ incomeData }: Props) {
   return (
     <div className="flex flex-col md:flex-row">
       <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
-        {outputData.paye
-          ? displayPaye()
-          : //   {/* ACC */}
-            //   <ListGroup.Item>
-            //     <Icon name="minus" />
-            //     <ListGroup.Content>
-            //       <ListGroup.Header>ACC levy</ListGroup.Header>
-            //       <ListGroup.Description className="loss">
-            //         ${outputData.acc}
-            //       </ListGroup.Description>
-            //     </ListGroup.Content>
-            //   </ListGroup.Item>
-            //   {outputData.kiwiSaver ? (
-            //     <ListGroup.Item>
-            //       <Icon name="minus" />
-            //       <ListGroup.Content>
-            //         <ListGroup.Header>KiwiSaver</ListGroup.Header>
-            //         <ListGroup.Description className="loss">
-            //           ${outputData.kiwiSaver}
-            //         </ListGroup.Description>
-            //       </ListGroup.Content>
-            //     </ListGroup.Item>
-            //   ) : (
-            //     ''
-            //   )}
-            //   {outputData.studentLoan ? (
-            //     <ListGroup.Item>
-            //       <Icon name="minus" />
-            //       <ListGroup.Content>
-            //         <ListGroup.Header>Student Loan</ListGroup.Header>
-            //         <ListGroup.Description className="loss">
-            //           ${outputData.studentLoan}
-            //         </ListGroup.Description>
-            //       </ListGroup.Content>
-            //     </ListGroup.Item>
-            //   ) : (
-            //     ''
-            //   )}
-            //   {/* Take Home Pay */}
-            //   <ListGroup.Item>
-            //     <Icon name="triangle right" />
-            //     <ListGroup.Content>
-            //       <ListGroup.Header>Take Home Pay</ListGroup.Header>
-            //       <ListGroup.Description className="gain">
-            //         ${outputData.takehome}
-            //       </ListGroup.Description>
-            //     </ListGroup.Content>
-            //   </ListGroup.Item>
-            // </ListGroup>
-            ''}
+        {
+          outputData.paye && displayPaye()
+          //   {outputData.kiwiSaver ? (
+          //     <ListGroup.Item>
+          //       <Icon name="minus" />
+          //       <ListGroup.Content>
+          //         <ListGroup.Header>KiwiSaver</ListGroup.Header>
+          //         <ListGroup.Description className="loss">
+          //           ${outputData.kiwiSaver}
+          //         </ListGroup.Description>
+          //       </ListGroup.Content>
+          //     </ListGroup.Item>
+          //   ) : (
+          //     ''
+          //   )}
+          //   {outputData.studentLoan ? (
+          //     <ListGroup.Item>
+          //       <Icon name="minus" />
+          //       <ListGroup.Content>
+          //         <ListGroup.Header>Student Loan</ListGroup.Header>
+          //         <ListGroup.Description className="loss">
+          //           ${outputData.studentLoan}
+          //         </ListGroup.Description>
+          //       </ListGroup.Content>
+          //     </ListGroup.Item>
+          //   ) : (
+          //     ''
+          //   )}
+          //   {/* Take Home Pay */}
+          //   <ListGroup.Item>
+          //     <Icon name="triangle right" />
+          //     <ListGroup.Content>
+          //       <ListGroup.Header>Take Home Pay</ListGroup.Header>
+          //       <ListGroup.Description className="gain">
+          //         ${outputData.takehome}
+          //       </ListGroup.Description>
+          //     </ListGroup.Content>
+          //   </ListGroup.Item>
+          // </ListGroup>
+        }
+        {outputData.acc && displayAcc()}
       </ul>
     </div>
   )
