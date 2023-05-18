@@ -23,12 +23,8 @@ function App() {
   return (
     <>
       <Heading />
-      <Segment>
-        <Input setIncome={setIncome} />
-      </Segment>
-      <Container fluid className="output-cont">
-        <Output incomeData={incomeData} />
-      </Container>
+      <Input setIncome={setIncome} />
+      <Output incomeData={incomeData} />
     </>
   )
 }

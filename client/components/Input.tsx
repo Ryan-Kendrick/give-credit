@@ -84,7 +84,7 @@ function Input(props: Props) {
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
               <Tooltip
-                content="Independent earner tax credit - can apply to incomes between $24,000 and $48,000"
+                content="Independent Earner Tax Credit - Applies to incomes between $24,000 and $48,000"
                 style="dark"
               >
                 <Badge
