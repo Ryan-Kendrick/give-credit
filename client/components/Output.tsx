@@ -20,65 +20,6 @@ function Output({ incomeData }: Props) {
     errors: [],
   } as OutputData
 
-  const plus = () => {
-    return (
-      <svg
-        className="text-green-500"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        ></path>
-      </svg>
-    )
-  }
-
-  const minus = () => {
-    return (
-      <svg
-        className="text-red-500"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        ></path>
-      </svg>
-    )
-  }
-
-  const userPlus = () => {
-    return (
-      <svg
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
-        ></path>
-      </svg>
-    )
-  }
-
   const displayPaye = () => {
     return (
       <li className="relative w-full px-4 py-2 border-y border-gray-200">
@@ -133,7 +74,7 @@ function Output({ incomeData }: Props) {
   }
   const displayAcc = () => {
     return (
-      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+      <li className="relative w-full px-4 py-2 border-b border-gray-200">
         <svg
           className="inline w-3 h-3 mr-1 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +91,7 @@ function Output({ incomeData }: Props) {
   }
   const displayKiwiSaver = () => {
     return (
-      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+      <li className="relative w-full px-4 py-2 border-b border-gray-200">
         <svg
           className="inline w-3 h-3 mr-1 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +108,7 @@ function Output({ incomeData }: Props) {
   }
   const displayStudentLoan = () => {
     return (
-      <li className="relative w-full px-4 py-2 border-y border-gray-200">
+      <li className="relative w-full px-4 py-2 border-b border-gray-200">
         <svg
           className="inline w-3 h-3 mr-1 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -175,9 +116,34 @@ function Output({ incomeData }: Props) {
         >
           <path d="M0 10h24v4h-24z" />
         </svg>
-        KiwiSaver
+        Student Loan
         <p className="absolute font-bold text-red-600 right-4 top-[0.45rem]">
-          ${outputData.kiwiSaver}
+          ${outputData.studentLoan}
+        </p>
+      </li>
+    )
+  }
+  const displayTakeHomePay = () => {
+    return (
+      <li className="relative w-full pl-[0.76rem] pr-4 py-2 border-b border-gray-200">
+        <svg
+          className="inline text-black w-5 h-5 fill-current"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          ></path>
+        </svg>
+        Take Home Pay
+        <p className="absolute font-bold text-green-600 right-4 top-[0.45rem]">
+          ${outputData.takehome}
         </p>
       </li>
     )
@@ -189,48 +155,12 @@ function Output({ incomeData }: Props) {
   // Display outputData when paye is calculated for the given income
   return (
     <div className="flex flex-col md:flex-row">
-      <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
-        {
-          outputData.paye && displayPaye()
-          //   {outputData.kiwiSaver ? (
-          //     <ListGroup.Item>
-          //       <Icon name="minus" />
-          //       <ListGroup.Content>
-          //         <ListGroup.Header>KiwiSaver</ListGroup.Header>
-          //         <ListGroup.Description className="loss">
-          //           ${outputData.kiwiSaver}
-          //         </ListGroup.Description>
-          //       </ListGroup.Content>
-          //     </ListGroup.Item>
-          //   ) : (
-          //     ''
-          //   )}
-          //   {outputData.studentLoan ? (
-          //     <ListGroup.Item>
-          //       <Icon name="minus" />
-          //       <ListGroup.Content>
-          //         <ListGroup.Header>Student Loan</ListGroup.Header>
-          //         <ListGroup.Description className="loss">
-          //           ${outputData.studentLoan}
-          //         </ListGroup.Description>
-          //       </ListGroup.Content>
-          //     </ListGroup.Item>
-          //   ) : (
-          //     ''
-          //   )}
-          //   {/* Take Home Pay */}
-          //   <ListGroup.Item>
-          //     <Icon name="triangle right" />
-          //     <ListGroup.Content>
-          //       <ListGroup.Header>Take Home Pay</ListGroup.Header>
-          //       <ListGroup.Description className="gain">
-          //         ${outputData.takehome}
-          //       </ListGroup.Description>
-          //     </ListGroup.Content>
-          //   </ListGroup.Item>
-          // </ListGroup>
-        }
+      <ul className="basis-1/2 font-subheading border-t w-48 mt-4 bg-white border-gray-200">
+        {outputData.paye && displayPaye()}
         {outputData.acc && displayAcc()}
+        {outputData.kiwiSaver && displayKiwiSaver()}
+        {outputData.studentLoan && displayStudentLoan()}
+        {outputData.takehome && displayTakeHomePay()}
       </ul>
     </div>
   )
