@@ -20,12 +20,12 @@ function Heading() {
         <h2 className="text-center font-subheading text-xl lg:text-2xl py-1">
           A Guide to Charitable Tax Credits in New Zealand
         </h2>
-        <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 py-2 min-h-[30vh] px-3">
-          <div className="basis-1/3 m-1 pr-2 md:py-0 pr-4 text-center md:text-left bg-gray-500 border border-gray-200 rounded-lg shadow">
-            <p className="text-xl lg:text-2xl font-bold bg-white">
+        <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 py-2 min-h-[30vh] px-3 gap-4">
+          <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-gray-400 border border-gray-200 rounded-inner shadow m-8 md:m-0 ">
+            <p className="text-2xl lg:text-3xl font-bold bg-white rounded-t-lg p-4 shadow">
               You can get back 33% of what you donate
             </p>
-            <p className="pt-4">
+            <p className="text-lg pt-4 pl-2 pb-6">
               Generously given $200 to charity?{' '}
               <span className="italic">
                 That $200 could be <span className="font-bold">$266.66</span> if

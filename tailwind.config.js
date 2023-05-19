@@ -19,6 +19,9 @@ module.exports = {
       spacing: {
         128: '32rem',
       },
+      borderRadius: {
+        inner: '.58rem',
+      },
     },
   },
   corePlugins: {},
