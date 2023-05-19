@@ -26,7 +26,7 @@ A work in progress that aims to:
 - [x] Account for student loans, ACC, Kiwisaver, IETC
 - [x] Support income by hour/week/fortnight/month/year
 - [x] Options for Kiwisaver, student loan repayment rate
-- [ ] Remake all components in Tailwind
+- [x] Remake all components in Tailwind
 - [ ] Rate column or row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
 - [ ] Animations
 - [ ] Graph
