@@ -3,8 +3,8 @@ import Heading from './Header'
 import Input from './Input'
 import Output from './Output'
 import { IncomeData } from '../../common/interface'
-import { Container, Segment, Transition } from 'semantic-ui-react'
 import '../../server/public/main.css'
+import 'flowbite'
 
 function App() {
   const initialData = {
@@ -22,12 +22,8 @@ function App() {
   return (
     <>
       <Heading />
-      <Segment>
-        <Input setIncome={setIncome} />
-      </Segment>
-      <Container fluid className="output-cont">
-        <Output incomeData={incomeData} />
-      </Container>
+      <Input setIncome={setIncome} />
+      <Output incomeData={incomeData} />
     </>
   )
 }
