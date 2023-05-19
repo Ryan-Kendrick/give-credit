@@ -76,11 +76,11 @@ function Input(props: Props) {
   return (
     <>
       <form
-        className="flex min-h-[5rem] py-4 border-y-2"
+        className="flex min-h-[5rem] py-4 border-y bg-stone-200 shadow-md"
         onSubmit={submitHandler}
       >
         <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] min-w-[420px] mx-auto">
-          <div className="flex relative items-center gap-2">
+          <div className="flex relative items-center gap-2 ">
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
               <Tooltip

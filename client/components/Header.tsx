@@ -1,27 +1,39 @@
-
 function Heading() {
   return (
     <>
       <div className="">
-        <h1 className="text-center font-heading text-4xl lg:text-5xl py-4">
+        <h1 className="text-center font-heading text-4xl lg:text-5xl pt-4">
           Give Credit
         </h1>
+        <svg
+          className="fill-gray-500 h-4 mx-auto"
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 14.707 14.707"
+          xmlSpace="preserve"
+        >
+          <g>
+            <rect x="6.275" y="0" width="2.158" height="14.707" />
+          </g>
+        </svg>
         <h2 className="text-center font-subheading text-xl lg:text-2xl py-1">
           A Guide to Charitable Tax Credits in New Zealand
         </h2>
-        <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] px-3">
-          <div className="basis 1/2 py-2 md:py-0 pr-4 text-center md:text-left">
-            <p className="text-xl lg:text-2xl font-bold">
+        <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 py-2 min-h-[30vh] px-3">
+          <div className="basis-1/3 m-1 pr-2 md:py-0 pr-4 text-center md:text-left bg-gray-500 border border-gray-200 rounded-lg shadow">
+            <p className="text-xl lg:text-2xl font-bold bg-white">
               You can get back 33% of what you donate
             </p>
-            <p>
+            <p className="pt-4">
               Generously given $200 to charity?{' '}
               <span className="italic">
-                That $200 could be $266.66 if you claim it.
+                That $200 could be <span className="font-bold">$266.66</span> if
+                you claim it.
               </span>
             </p>
           </div>
-          <div className="basis 1/2 text-center md:text-left">
+          <div className="basis-2/3 py-2 text-center md:text-left">
             <p>
               When you donate to charity, 33% of what you donate is given back
               to you but only if you claim it as a tax credit with IRD.
@@ -35,7 +47,9 @@ function Heading() {
                 the IRD webpage
               </a>
             </p>
-            <p>Enter your Income below to see how much you could claim</p>
+            <p className="pt-4">
+              Enter your Income below to see how much you could claim
+            </p>
           </div>
         </div>
       </div>
