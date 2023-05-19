@@ -1,4 +1,3 @@
-import { Header } from 'semantic-ui-react'
 
 function Heading() {
   return (

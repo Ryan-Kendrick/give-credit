@@ -87,7 +87,6 @@
     "flowbite-react": "^0.4.4",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",
-    "semantic-ui-react": "^2.1.4",
     "style-loader": "^3.3.2"
   },
   "prettier": {

@@ -1,7 +1,6 @@
-import { Icon, List, Popup } from 'semantic-ui-react'
 import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
-import { Badge, ListGroup, Tooltip } from 'flowbite-react'
+import { Badge, Tooltip } from 'flowbite-react'
 import Infocircle from './Infocircle'
 
 interface Props {
