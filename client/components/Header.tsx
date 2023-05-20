@@ -25,8 +25,8 @@ function Heading() {
           style={{ backgroundImage: 'url("images/test.jpg")' }}
         >
           <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] pl-0 gap-4 bg-white/30 backdrop-blur-md">
-            <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-gray-400 border border-gray-200 rounded-inner shadow m-8 md:m-0 z-20">
-              <p className="text-2xl lg:text-3xl font-bold bg-white rounded-t-lg p-4 shadow">
+            <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-gradient-to-r from-slate-600 from-20% via-slate-500 via-50% to-slate-400 to-90% shadow md:shadow-r m-8 md:m-0 z-20">
+              <p className="text-2xl lg:text-3xl font-bold bg-white p-4 shadow md:shadow-r">
                 You can get back 33% of what you donate
               </p>
               <p className="text-lg pt-4 px-2 pb-6 h-48">
