@@ -21,8 +21,8 @@ function Heading() {
           A Guide to Charitable Tax Credits in New Zealand
         </h2>
         <div
-          className="bg-no-repeat bg-cover bg-center md:bg-bottom"
-          style={{ backgroundImage: 'url("images/city-sm.webp")' }}
+          className="bg-no-repeat bg-cover bg-center md:bg-bottom-right"
+          style={{ backgroundImage: 'url("images/city-sm-wide.webp")' }}
         >
           <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] pl-0 gap-4 bg-white/30 backdrop-blur-md">
             <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-slate-400 shadow md:shadow-r m-8 md:m-0 z-20">
