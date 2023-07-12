@@ -24,7 +24,7 @@ function Heading() {
           className="bg-no-repeat bg-cover bg-center md:bg-bottom-right"
           style={{ backgroundImage: 'url("images/city-sm-wide.webp")' }}
         >
-          <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] pl-0 gap-4 bg-white/30 backdrop-blur-md">
+          <div className="flex items-center justify-around md:justify-between md:py-12 md:pl-6 lg:pl-9 xl:pl-12 space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] gap-4 bg-white/30 backdrop-blur-md">
             <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-slate-400 shadow md:shadow-r m-8 md:m-0 z-20">
               <p className="text-2xl lg:text-3xl font-bold bg-white p-4 shadow md:shadow-r">
                 You can get back 33% of what you donate
@@ -48,11 +48,11 @@ function Heading() {
                   className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
                   href="https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/tax-credits-for-donations"
                 >
-                  the IRD webpage
+                  the IRD webpage.
                 </a>
               </p>
               <p className="pt-4">
-                Enter your Income below to see how much you could claim
+                Enter your Income below to see how much you could claim.
               </p>
             </div>
           </div>
