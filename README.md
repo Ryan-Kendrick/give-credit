@@ -40,9 +40,3 @@ A work in progress that aims to:
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
 
-
-## Notes
-
-Play around with opacity to make the card look less like a card
-Add a lot of x-axis padding
-Return to the placeholder bg image
