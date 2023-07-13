@@ -40,3 +40,6 @@ A work in progress that aims to:
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
 
+## Notes
+
+Write an abbreviated About section describing the inspiration for the project & example use case in the Output component 

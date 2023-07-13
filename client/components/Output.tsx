@@ -148,20 +148,31 @@ function Output({ incomeData }: Props) {
     )
   }
 
+  const displayPlaceholder = () => {
+    return (
+      <div>
+        <p>Placeholder</p>
+      </div>
+    )
+  }
+
   // Update outputData when income is received from state in App
   incomeData.income && (outputData = calculate(incomeData))
 
   // Display outputData when paye is calculated for the given income
   return (
-    <div className="flex flex-col md:flex-row mb-12">
-      <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
-        {outputData.paye && displayPaye()}
-        {outputData.acc && displayAcc()}
-        {outputData.kiwiSaver && displayKiwiSaver()}
-        {outputData.studentLoan && displayStudentLoan()}
-        {outputData.takehome && displayTakeHomePay()}
-      </ul>
-    </div>
+    <>
+      {!outputData.paye && displayPlaceholder()}
+      <div className="flex flex-col md:flex-row mb-12">
+        <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
+          {outputData.paye && displayPaye()}
+          {outputData.acc && displayAcc()}
+          {outputData.kiwiSaver && displayKiwiSaver()}
+          {outputData.studentLoan && displayStudentLoan()}
+          {outputData.takehome && displayTakeHomePay()}
+        </ul>
+      </div>
+    </>
   )
 }
 
