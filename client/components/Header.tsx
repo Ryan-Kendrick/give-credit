@@ -20,36 +20,41 @@ function Heading() {
         <h2 className="text-center font-subheading text-xl lg:text-2xl py-1">
           A Guide to Charitable Tax Credits in New Zealand
         </h2>
-        <div className="flex items-center justify-around md:justify-between space-x-4 flex-col md:flex-row md:pr-4 py-2 min-h-[30vh] px-3 gap-4">
-          <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-gray-400 border border-gray-200 rounded-inner shadow m-8 md:m-0 ">
-            <p className="text-2xl lg:text-3xl font-bold bg-white rounded-t-lg p-4 shadow">
-              You can get back 33% of what you donate
-            </p>
-            <p className="text-lg pt-4 pl-2 pb-6">
-              Generously given $200 to charity?{' '}
-              <span className="italic">
-                That $200 could be <span className="font-bold">$266.66</span> if
-                you claim it.
-              </span>
-            </p>
-          </div>
-          <div className="basis-2/3 py-2 text-center md:text-left">
-            <p>
-              When you donate to charity, 33% of what you donate is given back
-              to you but only if you claim it as a tax credit with IRD.
-            </p>
-            <p>
-              More info available on{' '}
-              <a
-                className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
-                href="https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/tax-credits-for-donations"
-              >
-                the IRD webpage
-              </a>
-            </p>
-            <p className="pt-4">
-              Enter your Income below to see how much you could claim
-            </p>
+        <div
+          className="bg-no-repeat bg-cover bg-center md:bg-bottom-right"
+          style={{ backgroundImage: 'url("images/city-sm-wide.webp")' }}
+        >
+          <div className="md:px-6 lg:px-9 xl:px-12 bg-white/30 backdrop-blur-md">
+            <div className="flex items-center justify-around md:justify-between md:py-12 md:pl-6 lg:pl-9 xl:pr-12 space-x-4 flex-col md:flex-row md:pr-4  min-h-[30vh] gap-4">
+              <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-white shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-50 rounded">
+                <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r rounded">
+                  You can get back 33% of what you donate
+                </p>
+                <p className="text-lg pt-4 px-2 pb-6 h-48">
+                  Generously given $200 to charity?{' '}
+                  <span className="italic">
+                    That $200 could be{' '}
+                    <span className="font-bold">$266.66</span> if you claim it.
+                  </span>
+                </p>
+              </div>
+              <div className="basis-2/3 py-2 text-center md:text-left">
+                <p>
+                  When you donate to charity, 33% of what you donate is given
+                  back to you but only if you claim it as a tax credit with IRD.
+                  More info available on{' '}
+                  <a
+                    className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
+                    href="https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/tax-credits-for-donations"
+                  >
+                    the IRD webpage.
+                  </a>
+                </p>
+                <p className="pt-4">
+                  Enter your Income below to see how much you could claim.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
