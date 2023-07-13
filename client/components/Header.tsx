@@ -40,10 +40,8 @@ function Heading() {
             <div className="basis-2/3 py-2 text-center md:text-left">
               <p>
                 When you donate to charity, 33% of what you donate is given back
-                to you but only if you claim it as a tax credit with IRD.
-              </p>
-              <p>
-                More info available on{' '}
+                to you but only if you claim it as a tax credit with IRD. More
+                info available on{' '}
                 <a
                   className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
                   href="https://www.ird.govt.nz/income-tax/income-tax-for-individuals/individual-tax-credits/tax-credits-for-donations"
