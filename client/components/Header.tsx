@@ -25,8 +25,8 @@ function Heading() {
           style={{ backgroundImage: 'url("images/city-sm-wide.webp")' }}
         >
           <div className="flex items-center justify-around md:justify-between md:py-12 md:pl-6 lg:pl-9 xl:pl-12 space-x-4 flex-col md:flex-row md:pr-4 min-h-[30vh] gap-4 bg-white/30 backdrop-blur-md">
-            <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-slate-400 shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-60">
-              <p className="text-2xl lg:text-3xl font-bold bg-white p-4 shadow md:shadow-r">
+            <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-slate-400 shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-60 rounded">
+              <p className="text-2xl lg:text-3xl font-bold bg-white p-4 shadow md:shadow-r rounded">
                 You can get back 33% of what you donate
               </p>
               <p className="text-lg pt-4 px-2 pb-6 h-48">

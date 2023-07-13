@@ -153,7 +153,7 @@ function Output({ incomeData }: Props) {
 
   // Display outputData when paye is calculated for the given income
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row mb-12">
       <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
         {outputData.paye && displayPaye()}
         {outputData.acc && displayAcc()}
