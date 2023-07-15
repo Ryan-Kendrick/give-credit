@@ -42,4 +42,10 @@ A work in progress that aims to:
 
 ## Notes
 
-Write an abbreviated About section describing the inspiration for the project & example use case in the Output component 
+### Options for output component placeholder
+- Write an abbreviated About section describing the inspiration for the project & example use case in the Output component
+    - Too broad?
+- Annotated demo output? Annotated real output? Info icons for annotation?
+    - Too technical?
+- Dedicate most of the Output to describing refund process?
+    - Might be most in line with project goals but could become disconnected from the functions of the calculator
