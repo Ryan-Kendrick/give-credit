@@ -49,3 +49,4 @@ A work in progress that aims to:
     - Too technical?
 - Dedicate most of the Output to describing refund process?
     - Might be most in line with project goals but could become disconnected from the functions of the calculator
+    - Perhaps a brief about -> describe refund process i.e. opening refund account -> tie into calculator features
