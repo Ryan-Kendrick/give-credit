@@ -150,9 +150,26 @@ function Output({ incomeData }: Props) {
 
   const displayPlaceholder = () => {
     return (
-      <div>
-        <p>Placeholder</p>
-      </div>
+      <>
+        <div className="basis-1/2 font-bold mt-2 bg-white">
+          <p className="font-subheading">About</p>
+        </div>
+        <div className="basis-1/2 mt-2 font-bold">
+          <p className="font-subheading">More info</p>
+        </div>
+      </>
+    )
+  }
+
+  const constructTable = () => {
+    return (
+      <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
+        {displayPaye()}
+        {outputData.acc && displayAcc()}
+        {outputData.kiwiSaver && displayKiwiSaver()}
+        {outputData.studentLoan && displayStudentLoan()}
+        {outputData.takehome && displayTakeHomePay()}
+      </ul>
     )
   }
 
@@ -162,15 +179,8 @@ function Output({ incomeData }: Props) {
   // Display outputData when paye is calculated for the given income
   return (
     <>
-      {!outputData.paye && displayPlaceholder()}
       <div className="flex flex-col md:flex-row mb-12">
-        <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
-          {outputData.paye && displayPaye()}
-          {outputData.acc && displayAcc()}
-          {outputData.kiwiSaver && displayKiwiSaver()}
-          {outputData.studentLoan && displayStudentLoan()}
-          {outputData.takehome && displayTakeHomePay()}
-        </ul>
+        {outputData.paye ? constructTable() : displayPlaceholder()}
       </div>
     </>
   )
