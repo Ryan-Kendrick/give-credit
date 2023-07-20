@@ -151,11 +151,15 @@ function Output({ incomeData }: Props) {
   const displayPlaceholder = () => {
     return (
       <>
-        <div className="basis-1/2 font-bold mt-2 bg-white">
-          <p className="font-subheading">About</p>
+        <div className="basis-1/2 font-subheading mt-2 bg-white">
+          <h2 className="font-bold">About</h2>
+          <p>General purpose of calculator</p>
+          <p>Enter your income and click Submit to get started!</p>
         </div>
-        <div className="basis-1/2 mt-2 font-bold">
-          <p className="font-subheading">More info</p>
+        <div className="basis-1/2 mt-2 font-subheading">
+          <h2 className="font-bold">More info</h2>
+          <p>Description of refund process</p>
+          <p>Description of how PAYE relates to refunds</p>
         </div>
       </>
     )
