@@ -151,14 +151,14 @@ function Output({ incomeData }: Props) {
   const displayPlaceholder = () => {
     return (
       <>
-        <div className="basis-1/2 font-subheading mt-2 bg-white">
-          <h2 className="font-bold">About</h2>
+        <div className="basis-1/2 font-subheading mt-2 bg-white leading-5">
+          <h2 className="font-bold p-2">About</h2>
           <p>General purpose of calculator</p>
           <p>Enter your income and click Submit to get started!</p>
         </div>
-        <div className="basis-1/2 mt-2 font-subheading">
-          <h2 className="font-bold">More info</h2>
-          <p>
+        <div className="basis-1/2 mt-2 font-subheading leading-5">
+          <h2 className="font-bold p-2">More info</h2>
+          <p className="">
             You can be refunded 33.33 cents for every dollar donated to{' '}
             <a
               className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
