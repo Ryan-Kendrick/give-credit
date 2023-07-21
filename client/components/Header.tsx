@@ -30,12 +30,15 @@ function Heading() {
                 <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r bg-opacity-70 rounded">
                   You can get back 33% of what you donate
                 </p>
-                <p className="text-lg pt-4 px-2 pb-6 h-48">
+                <p className="text-lg pt-4 px-2 pb-8">
                   Generously given $200 to charity?{' '}
                   <span className="italic">
                     That $200 could be{' '}
                     <span className="font-bold">$266.66</span> if you claim it.
                   </span>
+                </p>
+                <p className="text-lg px-2 pb-4">
+                  Enter your income and click Submit to get started!
                 </p>
               </div>
               <div className="basis-2/3 py-2 text-center md:text-left">
