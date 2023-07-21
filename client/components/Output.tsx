@@ -152,10 +152,10 @@ function Output({ incomeData }: Props) {
     return (
       <>
         <div className="basis-1/2 font-subheading mt-2 ml-3 mr-4 bg-white leading-5">
-          <h2 className="font-bold p-1">
+          <h2 className="font-bold">
             Getting a refund is easier than you might think
           </h2>
-          <p className="mb-2">
+          <p className="mb-2 py-1">
             All you have to do is click a button to open a donation tax credit
             account, upload receipts and you&apos;re done.
           </p>
@@ -181,8 +181,14 @@ function Output({ incomeData }: Props) {
                   Tax credit account
                 </h3>
                 <p className="text-base font-normal text-gray-600">
-                  Open a donation tax credit account by clicking ‘I want to...’,
-                  then ‘Register for donation tax credit’.
+                  <a
+                    className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
+                    href="https://myir.ird.govt.nz/_/"
+                  >
+                    Login to myIR
+                  </a>{' '}
+                  and open a donation tax credit account by clicking ‘I want
+                  to...’, then ‘Register for donation tax credit’
                 </p>
               </div>
             </li>
@@ -206,7 +212,7 @@ function Output({ incomeData }: Props) {
                   Upload Receipts
                 </h3>
                 <p className="text-base font-normal text-gray-600">
-                  Upload donation receipts from your myIRD account
+                  Upload donation receipts from your myIR account
                 </p>
               </div>
             </li>
@@ -237,8 +243,8 @@ function Output({ incomeData }: Props) {
           </ol>
         </div>
         <div className="basis-1/2 mt-2 ml-3 mr-4 font-subheading leading-5">
-          <h2 className="font-bold p-2">More info</h2>
-          <p className="">
+          <h2 className="font-bold">More info</h2>
+          <p className="py-1">
             You can be refunded 33.33 cents for every dollar donated to{' '}
             <a
               className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"

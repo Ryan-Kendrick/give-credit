@@ -27,12 +27,12 @@ A work in progress that aims to:
 - [x] Support income by hour/week/fortnight/month/year
 - [x] Options for Kiwisaver, student loan repayment rate
 - [x] Remake all components in Tailwind
+- [x] Add relevant links to other resources and guide towards the IRD refund process
+- [ ] Add toggle to display info in Output component
 - [ ] Rate column or row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
 - [ ] Animations
 - [ ] Graph
-- [ ] Add relevant links to other resources and guide towards the IRD refund process
-- [ ] Give an example use case
-- [ ] Solution for hiding dropdown menus on submit
+- [ ] Fix to hide dropdown menus on submit
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
