@@ -157,12 +157,12 @@ function Output({ incomeData }: Props) {
           </h2>
           <p className="mb-2">
             All you have to do is click a button to open a donation tax credit
-            account, upload receipts and you&apos;re done:
+            account, upload receipts and you&apos;re done.
           </p>
 
-          <ol className="items-center sm:flex">
-            <li className="relative mb-6 sm:mb-0">
-              <div className="flex items-center my-2">
+          <ol className="items-start sm:flex py-2">
+            <li className="relative sm:basis-1/3 mb-6 sm:mb-0">
+              <div className="flex items-center">
                 <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                   <svg
                     className="w-2.5 h-2.5 text-blue-800"
@@ -178,15 +178,15 @@ function Output({ incomeData }: Props) {
               </div>
               <div className="mt-3 sm:pr-8">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Flowbite Library v1.0.0
+                  Tax credit account
                 </h3>
-                <p className="text-base font-normal text-gray-500">
-                  Get started with dozens of web components and interactive
-                  elements.
+                <p className="text-base font-normal text-gray-600">
+                  Open a donation tax credit account by clicking ‘I want to...’,
+                  then ‘Register for donation tax credit’.
                 </p>
               </div>
             </li>
-            <li className="relative mb-6 sm:mb-0">
+            <li className="relative sm:basis-1/3 mb-6 sm:mb-0">
               <div className="flex items-center">
                 <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                   <svg
@@ -203,15 +203,14 @@ function Output({ incomeData }: Props) {
               </div>
               <div className="mt-3 sm:pr-8">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Flowbite Library v1.2.0
+                  Upload Receipts
                 </h3>
-                <p className="text-base font-normal text-gray-500">
-                  Get started with dozens of web components and interactive
-                  elements.
+                <p className="text-base font-normal text-gray-600">
+                  Upload donation receipts from your myIRD account
                 </p>
               </div>
             </li>
-            <li className="relative mb-6 sm:mb-0">
+            <li className="relative sm:basis-1/3 mb-6 sm:mb-0">
               <div className="flex items-center">
                 <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                   <svg
@@ -228,11 +227,10 @@ function Output({ incomeData }: Props) {
               </div>
               <div className="mt-3 sm:pr-8">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Flowbite Library v1.3.0
+                  Receive Refund
                 </h3>
-                <p className="text-base font-normal text-gray-500">
-                  Get started with dozens of web components and interactive
-                  elements.
+                <p className="text-base font-normal text-gray-600">
+                  At the end of the year receive an extra large tax refund
                 </p>
               </div>
             </li>
