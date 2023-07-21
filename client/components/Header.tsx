@@ -26,8 +26,8 @@ function Heading() {
         >
           <div className="md:px-6 lg:px-9 xl:px-12 bg-white/30 backdrop-blur-md">
             <div className="flex items-center justify-around md:justify-between md:py-12 md:pl-6 lg:pl-9 xl:pr-12 space-x-4 flex-col md:flex-row md:pr-4  min-h-[30vh] gap-4">
-              <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-white shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-50 rounded">
-                <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r rounded">
+              <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-white shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-30 rounded">
+                <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r bg-opacity-70 rounded">
                   You can get back 33% of what you donate
                 </p>
                 <p className="text-lg pt-4 px-2 pb-6 h-48">

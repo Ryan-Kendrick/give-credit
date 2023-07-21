@@ -154,7 +154,6 @@ function Output({ incomeData }: Props) {
         <div className="basis-1/2 font-subheading mt-2 bg-white leading-5">
           <h2 className="font-bold p-2">About</h2>
           <p>General purpose of calculator</p>
-          <p>Enter your income and click Submit to get started!</p>
         </div>
         <div className="basis-1/2 mt-2 font-subheading leading-5">
           <h2 className="font-bold p-2">More info</h2>
