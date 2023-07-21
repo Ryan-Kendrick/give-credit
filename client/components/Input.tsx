@@ -250,7 +250,7 @@ function Input(props: Props) {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 onChange={(e) => periodHandler(e)}
               >
-                <option defaultValue="year">Yearly</option>
+                <option defaultValue="year">Annual</option>
                 <option value="month">Monthly</option>
                 <option value="fortnight">Fortnightly</option>
                 <option value="week">Weekly</option>
