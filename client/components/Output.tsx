@@ -158,8 +158,34 @@ function Output({ incomeData }: Props) {
         </div>
         <div className="basis-1/2 mt-2 font-subheading">
           <h2 className="font-bold">More info</h2>
-          <p>Description of refund process</p>
-          <p>Description of how PAYE relates to refunds</p>
+          <p>
+            You can be refunded 33.33 cents for every dollar donated to{' '}
+            <a
+              className="underline decoration-sky-600 hover:decoration-blue-400 hover:decoration-2"
+              href="https://myir.ird.govt.nz/tools/_/"
+            >
+              approved organisations.
+            </a>{' '}
+            The amount can be up to your taxable income and you will still
+            receive the full 33.33% of what you donated.
+          </p>
+          <p className="inline-flex items-center">
+            Taxable income is generally paid by your employer in the form of
+            PAYE{' '}
+            <Tooltip content='"Pay As You Earn"' style="dark">
+              <Badge
+                className="pr-0 pl-[2px]"
+                color="initial"
+                size="sm"
+                icon={Infocircle}
+              />
+            </Tooltip>
+            .
+          </p>
+          <p>
+            Sending your donation receipts to IRD will reduce the amount of tax
+            owed, resulting in a tax refund.
+          </p>
         </div>
       </>
     )
