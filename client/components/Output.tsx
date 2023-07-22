@@ -10,7 +10,7 @@ interface Props {
   setNewSubmission: (bool: boolean) => void
 }
 
-function Output({ incomeData, newSubmission }: Props) {
+function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
   // Placeholder outputData object to be reassigned with result of calculate
   let outputData = {
     paye: '',
@@ -49,7 +49,7 @@ function Output({ incomeData, newSubmission }: Props) {
                 <path d="M26,30H42a2,2,0,0,0,2-2V20a2,2,0,0,0-2-2H26a2,2,0,0,0-2,2v2H16V14h6a2,2,0,0,0,2-2V4a2,2,0,0,0-2-2H6A2,2,0,0,0,4,4v8a2,2,0,0,0,2,2h6V40a2,2,0,0,0,2,2H24v2a2,2,0,0,0,2,2H42a2,2,0,0,0,2-2V36a2,2,0,0,0-2-2H26a2,2,0,0,0-2,2v2H16V26h8v2A2,2,0,0,0,26,30Z" />
               </svg>
             </span>
-            <p className="ml-[1.85rem] text-gray-900">
+            <div className="ml-[1.85rem] text-gray-900">
               Tax credit of{' '}
               <span className="text-green-600">${outputData.ietc}</span> applied
               <div className="inline-flex">
@@ -66,7 +66,7 @@ function Output({ incomeData, newSubmission }: Props) {
                   />
                 </Tooltip>
               </div>
-            </p>
+            </div>
           </>
         ) : (
           ''
@@ -157,7 +157,7 @@ function Output({ incomeData, newSubmission }: Props) {
         <label className="absolute right-0 inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
-            value=""
+            onChange={() => setNewSubmission(!newSubmission)}
             checked={!newSubmission}
             className="sr-only peer"
           />
@@ -280,7 +280,7 @@ function Output({ incomeData, newSubmission }: Props) {
             The amount can be up to your taxable income and you will still
             receive the full 33.33% of what you donated.
           </p>
-          <p className="inline-flex items-center">
+          <div className="inline-flex items-center">
             Taxable income is generally paid by your employer in the form of
             PAYE{' '}
             <Tooltip content='"Pay As You Earn"' style="dark">
@@ -292,7 +292,7 @@ function Output({ incomeData, newSubmission }: Props) {
               />
             </Tooltip>
             .
-          </p>
+          </div>
           <p>
             Sending your donation receipts to IRD will reduce the amount of tax
             owed, resulting in a tax refund.
@@ -305,7 +305,6 @@ function Output({ incomeData, newSubmission }: Props) {
   const constructTable = () => {
     return (
       <>
-        {displayInfoToggle()}
         <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
           {displayPaye()}
           {outputData.acc && displayAcc()}
@@ -324,7 +323,10 @@ function Output({ incomeData, newSubmission }: Props) {
   return (
     <>
       <div className="relative flex flex-col md:flex-row mb-12">
-        {outputData.paye ? constructTable() : displayPlaceholder()}
+        {outputData.paye && displayInfoToggle()}
+        {outputData.paye && newSubmission
+          ? constructTable()
+          : displayPlaceholder()}
       </div>
     </>
   )
