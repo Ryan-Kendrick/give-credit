@@ -2,7 +2,6 @@ import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
 import { Badge, Tooltip } from 'flowbite-react'
 import Infocircle from './Infocircle'
-import { ProgressPlugin } from 'webpack'
 
 interface Props {
   incomeData: IncomeData
@@ -154,7 +153,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
   const displayInfoToggle = () => {
     return (
       <>
-        <label className="absolute right-0 inline-flex items-center cursor-pointer">
+        <label className="absolute right-1 top-1 inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
             onChange={() => setNewSubmission(!newSubmission)}
