@@ -13,6 +13,7 @@ import Infocircle from './Infocircle'
 
 interface Props {
   setIncome: (data: IncomeData) => void
+  setNewSubmission: (bool: boolean) => void
 }
 
 function Input(props: Props) {
@@ -70,6 +71,7 @@ function Input(props: Props) {
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
+    props.setNewSubmission(true)
     console.log(formData)
   }
 

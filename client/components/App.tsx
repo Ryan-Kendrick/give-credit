@@ -14,16 +14,24 @@ function App() {
     studentLoan: null,
   }
   const [incomeData, setIncomeData] = useState(initialData as IncomeData)
+  const [newSubmission, setNewSubmission] = useState(false)
 
   const setIncome = (data: IncomeData) => {
     setIncomeData({ ...incomeData, ...data })
+  }
+  const setSubmission = (bool: boolean) => {
+    setNewSubmission(bool)
   }
 
   return (
     <>
       <Heading />
-      <Input setIncome={setIncome} />
-      <Output incomeData={incomeData} />
+      <Input setIncome={setIncome} setNewSubmission={setSubmission} />
+      <Output
+        incomeData={incomeData}
+        newSubmission={newSubmission}
+        setNewSubmission={setSubmission}
+      />
     </>
   )
 }
