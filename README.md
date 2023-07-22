@@ -29,11 +29,11 @@ A work in progress that aims to:
 - [x] Remake all components in Tailwind
 - [x] Add informative content for before income has been submitted
 - [x] Add relevant links to other resources and guide towards the IRD refund process
-- [ ] Add toggle to display info in Output component
-- [ ] Rate column or row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
-- [ ] Animations
-- [ ] Graph
+- [x] Add toggle to display info in Output component
+- [ ] Rate column row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
 - [ ] Fix to hide dropdown menus on submit
+- [ ] Graph
+- [ ] Animations
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
