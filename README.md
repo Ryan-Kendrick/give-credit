@@ -27,12 +27,13 @@ A work in progress that aims to:
 - [x] Support income by hour/week/fortnight/month/year
 - [x] Options for Kiwisaver, student loan repayment rate
 - [x] Remake all components in Tailwind
+- [x] Add informative content for before income has been submitted
+- [x] Add relevant links to other resources and guide towards the IRD refund process
+- [ ] Add toggle to display info in Output component
 - [ ] Rate column or row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
 - [ ] Animations
 - [ ] Graph
-- [ ] Add relevant links to other resources and guide towards the IRD refund process
-- [ ] Give an example use case
-- [ ] Solution for hiding dropdown menus on submit
+- [ ] Fix to hide dropdown menus on submit
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
@@ -40,3 +41,14 @@ A work in progress that aims to:
 - [ ] Add support for refunding RWT
 - [ ] Add support for secondary income
 
+## Notes
+
+### Options for output component placeholder
+- Write an abbreviated About section describing the inspiration for the project & example use case in the Output component
+    - Too broad?
+- Annotated demo output? Annotated real output? Info icons for annotation?
+    - Too technical?
+- Dedicate most of the Output to describing refund process?
+    - Might be most in line with project goals but could become disconnected from the functions of the calculator
+    - Perhaps a brief about -> describe refund process i.e. opening refund account -> tie into calculator features
+Write out refund process for reference

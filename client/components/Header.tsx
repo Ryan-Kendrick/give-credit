@@ -25,20 +25,23 @@ function Heading() {
           style={{ backgroundImage: 'url("images/city-sm-wide.webp")' }}
         >
           <div className="md:px-6 lg:px-9 xl:px-12 bg-white/30 backdrop-blur-md">
-            <div className="flex items-center justify-around md:justify-between md:py-12 md:pl-6 lg:pl-9 xl:pr-12 space-x-4 flex-col md:flex-row md:pr-4  min-h-[30vh] gap-4">
-              <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-white shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 z-20 bg-opacity-50 rounded">
-                <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r rounded">
+            <div className="flex items-center justify-around md:justify-between xl:justify-evenly md:py-12 md:pl-6 lg:pl-9 xl:pr-12 space-x-4 xl:space-x-0 flex-col md:flex-row md:pr-4 min-h-[30vh] gap-4">
+              <div className="basis-1/3 md:w-full w-96 text-center md:text-left bg-white shadow md:shadow-r m-8 md:m-3 lg:m-5 xl:ml-8 max-w-md xl:bg-clip-content z-20 bg-opacity-30  rounded">
+                <p className="text-2xl lg:text-3xl font-bold bg-sky-500 p-4 shadow md:shadow-r bg-opacity-70 rounded">
                   You can get back 33% of what you donate
                 </p>
-                <p className="text-lg pt-4 px-2 pb-6 h-48">
+                <p className="text-lg pt-4 px-2 pb-8">
                   Generously given $200 to charity?{' '}
                   <span className="italic">
                     That $200 could be{' '}
                     <span className="font-bold">$266.66</span> if you claim it.
                   </span>
                 </p>
+                <p className="text-lg px-2 pb-4">
+                  Enter your income and click Submit to get started!
+                </p>
               </div>
-              <div className="basis-2/3 py-2 text-center md:text-left">
+              <div className="basis-2/3 xl:basis-1/3 py-2 text-center md:text-left">
                 <p>
                   When you donate to charity, 33% of what you donate is given
                   back to you but only if you claim it as a tax credit with IRD.
