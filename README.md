@@ -45,5 +45,4 @@ A work in progress that aims to:
 
 ### Bugs
 
-KS/SL dropdown menus on flexrow
 KS rate deselected when area surrounding SL selections clicked

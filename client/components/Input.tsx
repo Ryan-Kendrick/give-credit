@@ -58,12 +58,21 @@ function Input(props: Props) {
   function radioHandler(e: ChangeEvent<HTMLInputElement>) {
     if (e.target.value) {
       setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
-    } else if (e.target.textContent) {
-      const kiwiSaverRate = e.target.textContent
-      const rateData = kiwiSaverRate?.split('%')[0]
-      rateData.length < 2
+    } else if (
+      e.target.htmlFor === 'kiwiSaverRate' ||
+      e.target.parentElement?.id === 'ks-rate'
+    ) {
+      const rateData = e.target.textContent?.split('%')[0]
+      rateData && rateData.length < 2
         ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
         : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
+    } else if (
+      e.target.htmlFor === 'studentLoanRate' ||
+      e.target.parentElement?.id === 'sl-rate'
+    ) {
+      console.log(e)
+      const rateData = e.target.textContent.split('%')[0]
+      setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
     }
   }
 
@@ -112,7 +121,10 @@ function Input(props: Props) {
                 name="kiwiSaver"
               />
               {formData.kiwiSaver && (
-                <div className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50">
+                <div
+                  id="ks-rate"
+                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
+                >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Kiwisaver Rate
                   </Dropdown.Item>
@@ -198,7 +210,10 @@ function Input(props: Props) {
                 name="studentLoan"
               />
               {formData.studentLoan && (
-                <div className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50">
+                <div
+                  id="sl-rate"
+                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50"
+                >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Student Loan Rate
                   </Dropdown.Item>
