@@ -112,7 +112,7 @@ function Input(props: Props) {
                 name="kiwiSaver"
               />
               {formData.kiwiSaver && (
-                <div className="absolute top-[3.2rem] right-[0.3rem] border-2 bg-white z-50">
+                <div className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50">
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Kiwisaver Rate
                   </Dropdown.Item>
@@ -198,7 +198,7 @@ function Input(props: Props) {
                 name="studentLoan"
               />
               {formData.studentLoan && (
-                <div className="absolute top-[3.2rem] right-[-3.3rem] border-2 w-[11rem] bg-white z-50">
+                <div className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50">
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Student Loan Rate
                   </Dropdown.Item>
