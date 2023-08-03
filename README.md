@@ -46,4 +46,4 @@ A work in progress that aims to:
 ### Bugs
 
 No way to reopen dropdown menus after submit without toggling checkbox
-  implement toggledropdown function
+  implement toggledropdown function > display on submit, conditional on relevant checkbox being cbecked
