@@ -46,4 +46,3 @@ A work in progress that aims to:
 ### Bugs
 
 Cannot resubmit with updated SL rate
-Submit on enter does not work
