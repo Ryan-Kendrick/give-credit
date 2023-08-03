@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from 'flowbite-react'
 import Infocircle from './Infocircle'
+import { getBlobFromDataTransferItem } from '@testing-library/user-event/dist/types/utils'
 
 interface Props {
   setIncome: (data: IncomeData) => void
@@ -26,6 +27,10 @@ function Input(props: Props) {
     kiwiSaverRate: '0.03',
     studentLoan: null,
     studentLoanRate: '0.12',
+    studentLoanCustom: {
+      Enable: null,
+      Rate: null,
+    },
   } as IncomeData)
 
   function incomeHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -43,11 +48,15 @@ function Input(props: Props) {
   }
 
   function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
-    // reduce student loan % to decimal
+    // If a custom rate was previously used, use it
     const rate = (Number(e.target.value) * 0.01).toString()
     setFormData({
       ...formData,
       [e.target.name]: rate,
+      studentLoanCustom: {
+        Enable: true,
+        Rate: rate,
+      },
     })
   }
 
@@ -56,13 +65,15 @@ function Input(props: Props) {
   }
 
   function radioHandler(e: ChangeEvent<HTMLInputElement>) {
+    const rateData = e.target.textContent?.split('%')[0]
     if (e.target.value) {
       setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
+
+      // Clicking around radio buttons handling
     } else if (
       e.target.htmlFor === 'kiwiSaverRate' ||
       e.target.parentElement?.id === 'ks-rate'
     ) {
-      const rateData = e.target.textContent?.split('%')[0]
       rateData && rateData.length < 2
         ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
         : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
@@ -70,9 +81,28 @@ function Input(props: Props) {
       e.target.htmlFor === 'studentLoanRate' ||
       e.target.parentElement?.id === 'sl-rate'
     ) {
-      console.log(e)
-      const rateData = e.target.textContent.split('%')[0]
-      setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
+      if (!isNaN(Number(rateData))) {
+        setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
+      } else if (formData.studentLoanCustom.Rate) {
+        const rate = formData.studentLoanCustom.Rate
+        setFormData({
+          ...formData,
+          studentLoanRate: rate,
+          studentLoanCustom: {
+            Enable: true,
+            Rate: rate,
+          },
+        })
+      } else {
+        setFormData({
+          ...formData,
+          studentLoanRate: 'awaiting custom rate',
+          studentLoanCustom: {
+            Enable: true,
+            Rate: null,
+          },
+        })
+      }
     }
   }
 
@@ -81,7 +111,6 @@ function Input(props: Props) {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
     props.setNewSubmission(true)
-    console.log(formData)
   }
 
   return (

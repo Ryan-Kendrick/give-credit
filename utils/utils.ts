@@ -29,9 +29,7 @@ export function calculate(incomeData: IncomeData): OutputData {
   try {
     switch (incomeData.incomePeriod) {
       case 'hour':
-        console.log(income)
         income = income * 37.5 * 52
-        console.log(income)
         break
       case 'week':
         income *= 52
@@ -41,6 +39,8 @@ export function calculate(incomeData: IncomeData): OutputData {
         break
       case 'month':
         income *= 12
+        break
+      case 'year':
         break
       default:
         throw new Error('Unexpected income period')

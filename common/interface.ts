@@ -6,6 +6,7 @@ export interface IncomeData {
   kiwiSaverRate: string
   studentLoan: boolean | null
   studentLoanRate: string
+  studentLoanCustom: CustomStudentLoan
 }
 
 export interface OutputData {
@@ -16,4 +17,9 @@ export interface OutputData {
   kiwiSaver?: string
   studentLoan?: string
   errors: string[]
+}
+
+export interface CustomStudentLoan {
+  Enable: boolean | null
+  Rate: string | null
 }

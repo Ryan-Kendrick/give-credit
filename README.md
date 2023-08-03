@@ -46,3 +46,4 @@ A work in progress that aims to:
 ### Bugs
 
 SL rate custom unreliable - need to store custom rate
+Cannot resubmit with updated SL rate
