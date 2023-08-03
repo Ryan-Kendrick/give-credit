@@ -45,4 +45,4 @@ A work in progress that aims to:
 
 ### Bugs
 
-KS rate deselected when area surrounding SL selections clicked
+SL rate custom unreliable - need to store custom rate
