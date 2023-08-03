@@ -22,13 +22,17 @@ function Input(props: Props) {
     income: 0,
     incomePeriod: 'year',
     ietc: true,
-    kiwiSaver: null,
+    useKiwiSaver: null,
     kiwiSaverRate: '0.03',
-    studentLoan: null,
+    useStudentLoan: null,
     studentLoanRate: '0.12',
     studentLoanCustom: {
       Enable: null,
       Rate: null,
+    },
+    display: {
+      KiwiSaver: false,
+      StudentLoan: false,
     },
   } as IncomeData)
 
@@ -60,7 +64,12 @@ function Input(props: Props) {
   }
 
   function checkboxHandler(e: ChangeEvent<HTMLInputElement>) {
-    setFormData({ ...formData, [`${e.target.name}`]: e.target.checked })
+    const box = e.target.name.replace('use', '')
+    setFormData({
+      ...formData,
+      [`${e.target.name}`]: e.target.checked,
+      display: { ...formData.display, [box]: e.target.checked },
+    })
   }
 
   function radioHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -123,6 +132,13 @@ function Input(props: Props) {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
     props.setNewSubmission(true)
+    setFormData({
+      ...formData,
+      display: {
+        KiwiSaver: false,
+        StudentLoan: false,
+      },
+    })
   }
 
   return (
@@ -155,19 +171,19 @@ function Input(props: Props) {
             </div>
 
             <div className="flex relative items-center">
-              <Label htmlFor="kiwiSaver">KiwiSaver</Label>
+              <Label htmlFor="useKiwiSaver">KiwiSaver</Label>
               <Checkbox
                 className="mx-1"
                 onChange={(e) => checkboxHandler(e)}
-                name="kiwiSaver"
+                name="useKiwiSaver"
               />
-              {formData.kiwiSaver && (
+              {formData.display.KiwiSaver && (
                 <div
                   id="ks-rate"
                   className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
                 >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
-                    Kiwisaver Rate
+                    KiwiSaver Rate
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
@@ -242,15 +258,15 @@ function Input(props: Props) {
             </div>
 
             <div className="flex relative items-center">
-              <Label className="min-w-[93.5px]" htmlFor="studentLoan">
+              <Label className="min-w-[93.5px]" htmlFor="useStudentLoan">
                 Student Loan
               </Label>
               <Checkbox
                 className="mx-1"
                 onChange={(e) => checkboxHandler(e)}
-                name="studentLoan"
+                name="useStudentLoan"
               />
-              {formData.studentLoan && (
+              {formData.display.StudentLoan && (
                 <div
                   id="sl-rate"
                   className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50"
