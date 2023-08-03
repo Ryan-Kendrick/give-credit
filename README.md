@@ -45,5 +45,4 @@ A work in progress that aims to:
 
 ### Bugs
 
-Dropdown menus do not hide on submit
-  - add states for them
+No way to reopen dropdown menus after submit without toggling checkbox
