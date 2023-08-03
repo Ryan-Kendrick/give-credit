@@ -44,3 +44,6 @@ A work in progress that aims to:
 ## Notes
 
 ### Bugs
+
+Dropdown menus do not hide on submit
+  - add states for them
