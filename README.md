@@ -44,5 +44,3 @@ A work in progress that aims to:
 ## Notes
 
 ### Bugs
-
-Cannot resubmit with updated SL rate
