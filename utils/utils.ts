@@ -116,10 +116,13 @@ function calculateKiwiSaver(income: number, rate: string) {
 }
 
 function calculateStudentLoan(income: number, rate: string) {
-  if (income > studentLoanThreshold && rate !== 'reduced') {
+  if (income > studentLoanThreshold) {
     console.log(income, rate)
     const cost = (income - studentLoanThreshold) * Number(rate)
+    console.log(cost.toFixed(2))
     return cost.toFixed(2)
+  } else {
+    return '0'
   }
 }
 

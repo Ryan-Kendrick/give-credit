@@ -10,7 +10,6 @@ import {
   Tooltip,
 } from 'flowbite-react'
 import Infocircle from './Infocircle'
-import { getBlobFromDataTransferItem } from '@testing-library/user-event/dist/types/utils'
 
 interface Props {
   setIncome: (data: IncomeData) => void
@@ -67,8 +66,21 @@ function Input(props: Props) {
   function radioHandler(e: ChangeEvent<HTMLInputElement>) {
     const rateData = e.target.textContent?.split('%')[0]
     if (e.target.value) {
-      setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
-
+      const rate = formData.studentLoanCustom.Rate
+      if (e.target.value === 'custom') {
+        console.log('here')
+        setFormData({
+          ...formData,
+          studentLoanRate: rate || 'awaiting custom rate',
+          studentLoanCustom: {
+            Enable: true,
+            Rate: rate || null,
+          },
+        })
+      } else {
+        setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
+        console.log('here2')
+      }
       // Clicking around radio buttons handling
     } else if (
       e.target.htmlFor === 'kiwiSaverRate' ||

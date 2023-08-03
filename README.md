@@ -45,7 +45,5 @@ A work in progress that aims to:
 
 ### Bugs
 
-SL rate custom unreliable - need to store custom rate
 Cannot resubmit with updated SL rate
 Submit on enter does not work
-NaN thrown when SL enabled and income < SL threshold
