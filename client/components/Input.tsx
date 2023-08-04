@@ -147,23 +147,41 @@ function Input(props: Props) {
         <button
           id="kiwisaver-dropdown-toggle"
           type="button"
-          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          className="inline-flex w-full justify-center text-sm font-semibold text-gray-900"
           aria-expanded="true"
           aria-haspopup="true"
           onClick={() => toggleDropdown('KiwiSaver')}
         >
           <svg
-            className="-mr-1 h-5 w-5 text-gray-400"
-            viewBox="0 0 20 20"
+            className="w-5 h-5 text-gray-400"
             fill="currentColor"
-            aria-hidden="true"
+            height="64px"
+            width="64px"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 330 330"
+            xmlSpace="preserve"
           >
             <path
-              fillRule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-              clipRule="evenodd"
+              id="XMLID_222_"
+              d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
+	c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213
+	C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
+	C255,161.018,253.42,157.202,250.606,154.389z"
             />
           </svg>
+          {/* <svg
+            className="w-5 h-5 text-gray-400"
+            width="64px"
+            height="64px"
+            fill="currentColor"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" />
+          </svg> */}
         </button>
       </div>
     )
