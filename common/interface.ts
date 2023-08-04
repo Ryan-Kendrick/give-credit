@@ -7,6 +7,7 @@ export interface IncomeData {
   useStudentLoan: boolean | null
   studentLoanRate: string
   studentLoanCustom: CustomStudentLoan
+  submitted: boolean
   display: Display
 }
 
@@ -26,6 +27,6 @@ export interface CustomStudentLoan {
 }
 
 export interface Display {
-  KiwiSaver: boolean
-  StudentLoan: boolean
+  KiwiSaver: boolean | null
+  StudentLoan: boolean | null
 }

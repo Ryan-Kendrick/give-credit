@@ -30,9 +30,10 @@ function Input(props: Props) {
       Enable: null,
       Rate: null,
     },
+    submitted: false,
     display: {
-      KiwiSaver: false,
-      StudentLoan: false,
+      KiwiSaver: null,
+      StudentLoan: null,
     },
   } as IncomeData)
 
@@ -127,18 +128,61 @@ function Input(props: Props) {
     }
   }
 
+  const toggleDropdown = (menu: string) => {
+    const toggle = Boolean(
+      !formData.display[menu as keyof typeof formData.display]
+    )
+    setFormData({
+      ...formData,
+      display: {
+        ...formData.display,
+        [menu]: toggle,
+      },
+    })
+  }
+
+  const displayToggleKS = () => {
+    return (
+      <div className="absolute md:right-0 md:top-4">
+        <button
+          id="kiwisaver-dropdown-toggle"
+          type="button"
+          className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          aria-expanded="true"
+          aria-haspopup="true"
+          onClick={() => toggleDropdown('KiwiSaver')}
+        >
+          <svg
+            className="-mr-1 h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
   //  Update the incomeData state in App, rendering the Output component
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
     props.setNewSubmission(true)
-    setFormData({
-      ...formData,
-      display: {
-        KiwiSaver: false,
-        StudentLoan: false,
-      },
-    })
+    formData.income &&
+      setFormData({
+        ...formData,
+        display: {
+          KiwiSaver: false,
+          StudentLoan: false,
+        },
+        submitted: true,
+      })
   }
 
   return (
@@ -177,29 +221,9 @@ function Input(props: Props) {
                 onChange={(e) => checkboxHandler(e)}
                 name="useKiwiSaver"
               />
-              <div className="absolute md:right-0 md:top-4">
-                <button
-                  type="button"
-                  className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  id="menu-button"
-                  aria-expanded="true"
-                  aria-haspopup="true"
-                  onClick={(e) => toggleDropdown}
-                >
-                  <svg
-                    className="-mr-1 h-5 w-5 text-gray-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
+              {formData.useKiwiSaver === true &&
+                formData.submitted &&
+                displayToggleKS()}
               {formData.display.KiwiSaver && (
                 <div
                   id="ks-rate"
