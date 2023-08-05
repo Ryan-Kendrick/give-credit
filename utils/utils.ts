@@ -55,10 +55,10 @@ export function calculate(incomeData: IncomeData): OutputData {
   if (incomeData.ietc) {
     outputData.ietc = calculateIetc(income)
   }
-  if (incomeData.kiwiSaver) {
+  if (incomeData.useKiwiSaver) {
     outputData.kiwiSaver = calculateKiwiSaver(income, incomeData.kiwiSaverRate)
   }
-  if (incomeData.studentLoan) {
+  if (incomeData.useStudentLoan) {
     outputData.studentLoan = calculateStudentLoan(
       income,
       incomeData.studentLoanRate

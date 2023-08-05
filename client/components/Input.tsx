@@ -128,22 +128,22 @@ function Input(props: Props) {
     }
   }
 
-  const toggleDropdown = (menu: string) => {
+  const toggleDropdown = (selection: string) => {
     const toggle = Boolean(
-      !formData.display[menu as keyof typeof formData.display]
+      !formData.display[selection as keyof typeof formData.display]
     )
     setFormData({
       ...formData,
       display: {
         ...formData.display,
-        [menu]: toggle,
+        [selection]: toggle,
       },
     })
   }
 
   const displayToggleKS = () => {
     return (
-      <div className="absolute md:right-0 md:top-4">
+      <div className="absolute md:right-[0.3rem] md:top-[1.9rem]">
         <button
           id="kiwisaver-dropdown-toggle"
           type="button"
@@ -154,35 +154,72 @@ function Input(props: Props) {
         >
           {formData.display.KiwiSaver ? (
             <svg
-              className="w-5 h-5 text-gray-400"
-              width="64px"
-              height="64px"
-              fill="currentColor"
-              viewBox="0 0 1024 1024"
-              version="1.1"
+              className="text-gray-400 w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
             >
-              <path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" />
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />{' '}
             </svg>
           ) : (
             <svg
-              className="w-5 h-5 text-gray-400"
-              fill="currentColor"
-              height="64px"
-              width="64px"
-              version="1.1"
-              id="Layer_1"
+              className="text-gray-400 w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 330 330"
-              xmlSpace="preserve"
+              fill="currentColor"
+              viewBox="0 0 16 16"
             >
+              {' '}
               <path
-                id="XMLID_222_"
-                d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
-	c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213
-	C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606
-	C255,161.018,253.42,157.202,250.606,154.389z"
-              />
+                fillRule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          )}
+        </button>
+      </div>
+    )
+  }
+
+  const displayToggleSL = () => {
+    return (
+      <div className="absolute md:right-[-3.3rem] md:top-[1.9rem]">
+        <button
+          id="studentloan-dropdown-toggle"
+          type="button"
+          className="inline-flex w-full justify-center text-sm font-semibold text-gray-900"
+          aria-expanded="true"
+          aria-haspopup="true"
+          onClick={() => toggleDropdown('StudentLoan')}
+        >
+          {formData.display.StudentLoan ? (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          ) : (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />{' '}
             </svg>
           )}
         </button>
@@ -242,9 +279,7 @@ function Input(props: Props) {
                 onChange={(e) => checkboxHandler(e)}
                 name="useKiwiSaver"
               />
-              {formData.useKiwiSaver === true &&
-                formData.submitted &&
-                displayToggleKS()}
+              {formData.useKiwiSaver === true && displayToggleKS()}
               {formData.display.KiwiSaver && (
                 <div
                   id="ks-rate"
@@ -334,6 +369,7 @@ function Input(props: Props) {
                 onChange={(e) => checkboxHandler(e)}
                 name="useStudentLoan"
               />
+              {formData.useStudentLoan === true && displayToggleSL()}
               {formData.display.StudentLoan && (
                 <div
                   id="sl-rate"
