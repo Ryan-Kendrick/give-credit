@@ -43,6 +43,8 @@ A work in progress that aims to:
 
 ## Notes
 
-### Bugs
+Mobile optimisations needed i.e. button size, spacing
+Center ceveron under SL
 
-KS/SL dropdown toggle at mobile width
+
+### Bugs
