@@ -59,7 +59,7 @@ export function calculate(incomeData: IncomeData): OutputData {
     outputData.kiwiSaver = calculateKiwiSaver(income, incomeData.kiwiSaverRate)
   }
   if (incomeData.useStudentLoan) {
-    outputData.studentLoan = calculateStudentLoan(
+    ;[outputData.studentLoan, outputData.errors] = calculateStudentLoan(
       income,
       incomeData.studentLoanRate
     )
@@ -116,13 +116,21 @@ function calculateKiwiSaver(income: number, rate: string) {
 }
 
 function calculateStudentLoan(income: number, rate: string) {
-  if (income > studentLoanThreshold) {
-    console.log(income, rate)
-    const cost = (income - studentLoanThreshold) * Number(rate)
-    console.log(cost.toFixed(2))
-    return cost.toFixed(2)
-  } else {
-    return '0'
+  try {
+    if (income > studentLoanThreshold) {
+      console.log(income, rate)
+      const cost = (income - studentLoanThreshold) * Number(rate)
+      console.log(cost.toFixed(2))
+      return [cost.toFixed(2), '']
+    } else {
+      throw new Error(
+        `Student Loan below income threshold of ${studentLoanThreshold}`
+      )
+    }
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return ['0', err.message]
+    }
   }
 }
 
