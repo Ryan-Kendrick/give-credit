@@ -44,3 +44,5 @@ A work in progress that aims to:
 ## Notes
 
 ### Bugs
+
+KS/SL dropdown toggle at mobile width

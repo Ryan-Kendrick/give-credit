@@ -143,7 +143,7 @@ function Input(props: Props) {
 
   const displayToggleKS = () => {
     return (
-      <div className="absolute md:right-[0.3rem] md:top-[1.9rem]">
+      <div className="absolute top-[6rem] right-[2rem] md:right-[2.7rem] md:top-[1.9rem]">
         <button
           id="kiwisaver-dropdown-toggle"
           type="button"
@@ -186,7 +186,7 @@ function Input(props: Props) {
 
   const displayToggleSL = () => {
     return (
-      <div className="absolute md:right-[-3.3rem] md:top-[1.9rem]">
+      <div className="absolute top-[6rem] right-6rem md:right-[1.35rem] md:top-[1.9rem]">
         <button
           id="studentloan-dropdown-toggle"
           type="button"

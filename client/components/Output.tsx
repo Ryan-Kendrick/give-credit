@@ -304,7 +304,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
   const constructTable = () => {
     return (
       <>
-        <ul className="basis-1/2 font-subheading w-48 mt-4 bg-white border-gray-200">
+        <ul className="basis-1/2 font-subheading md:w-48 mt-8 md:mt-4 bg-white border-gray-200">
           {displayPaye()}
           {outputData.acc && displayAcc()}
           {outputData.kiwiSaver && displayKiwiSaver()}
