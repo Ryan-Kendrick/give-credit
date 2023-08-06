@@ -22,10 +22,19 @@ function Input(props: Props) {
     income: 0,
     incomePeriod: 'year',
     ietc: true,
-    kiwiSaver: null,
+    useKiwiSaver: null,
     kiwiSaverRate: '0.03',
-    studentLoan: null,
+    useStudentLoan: null,
     studentLoanRate: '0.12',
+    studentLoanCustom: {
+      Enable: null,
+      Rate: null,
+    },
+    submitted: false,
+    display: {
+      KiwiSaver: null,
+      StudentLoan: null,
+    },
   } as IncomeData)
 
   function incomeHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -43,28 +52,179 @@ function Input(props: Props) {
   }
 
   function customRateHandler(e: ChangeEvent<HTMLInputElement>) {
-    // reduce student loan % to decimal
+    // If a custom rate was previously used, use it
     const rate = (Number(e.target.value) * 0.01).toString()
     setFormData({
       ...formData,
       [e.target.name]: rate,
+      studentLoanCustom: {
+        Enable: true,
+        Rate: rate,
+      },
     })
   }
 
   function checkboxHandler(e: ChangeEvent<HTMLInputElement>) {
-    setFormData({ ...formData, [`${e.target.name}`]: e.target.checked })
+    const box = e.target.name.replace('use', '')
+    setFormData({
+      ...formData,
+      [`${e.target.name}`]: e.target.checked,
+      display: { ...formData.display, [box]: e.target.checked },
+    })
   }
 
   function radioHandler(e: ChangeEvent<HTMLInputElement>) {
+    const rateData = e.target.textContent?.split('%')[0]
     if (e.target.value) {
-      setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
-    } else if (e.target.textContent) {
-      const kiwiSaverRate = e.target.textContent
-      const rateData = kiwiSaverRate?.split('%')[0]
-      rateData.length < 2
+      const rate = formData.studentLoanCustom.Rate
+      if (e.target.value === 'custom') {
+        console.log('here')
+        setFormData({
+          ...formData,
+          studentLoanRate: rate || 'awaiting custom rate',
+          studentLoanCustom: {
+            Enable: true,
+            Rate: rate || null,
+          },
+        })
+      } else {
+        setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
+        console.log('here2')
+      }
+      // Clicking around radio buttons handling
+    } else if (
+      e.target.htmlFor === 'kiwiSaverRate' ||
+      e.target.parentElement?.id === 'ks-rate'
+    ) {
+      rateData && rateData.length < 2
         ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
         : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
+    } else if (
+      e.target.htmlFor === 'studentLoanRate' ||
+      e.target.parentElement?.id === 'sl-rate'
+    ) {
+      if (!isNaN(Number(rateData))) {
+        setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
+      } else if (formData.studentLoanCustom.Rate) {
+        const rate = formData.studentLoanCustom.Rate
+        setFormData({
+          ...formData,
+          studentLoanRate: rate,
+          studentLoanCustom: {
+            Enable: true,
+            Rate: rate,
+          },
+        })
+      } else {
+        setFormData({
+          ...formData,
+          studentLoanRate: 'awaiting custom rate',
+          studentLoanCustom: {
+            Enable: true,
+            Rate: null,
+          },
+        })
+      }
     }
+  }
+
+  const toggleDropdown = (selection: string) => {
+    const toggle = Boolean(
+      !formData.display[selection as keyof typeof formData.display]
+    )
+    setFormData({
+      ...formData,
+      display: {
+        ...formData.display,
+        [selection]: toggle,
+      },
+    })
+  }
+
+  const displayToggleKS = () => {
+    return (
+      <div className="absolute md:right-[0.3rem] md:top-[1.9rem]">
+        <button
+          id="kiwisaver-dropdown-toggle"
+          type="button"
+          className="inline-flex w-full justify-center text-sm font-semibold text-gray-900"
+          aria-expanded="true"
+          aria-haspopup="true"
+          onClick={() => toggleDropdown('KiwiSaver')}
+        >
+          {formData.display.KiwiSaver ? (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          ) : (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          )}
+        </button>
+      </div>
+    )
+  }
+
+  const displayToggleSL = () => {
+    return (
+      <div className="absolute md:right-[-3.3rem] md:top-[1.9rem]">
+        <button
+          id="studentloan-dropdown-toggle"
+          type="button"
+          className="inline-flex w-full justify-center text-sm font-semibold text-gray-900"
+          aria-expanded="true"
+          aria-haspopup="true"
+          onClick={() => toggleDropdown('StudentLoan')}
+        >
+          {formData.display.StudentLoan ? (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          ) : (
+            <svg
+              className="text-gray-400 w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              {' '}
+              <path
+                fillRule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />{' '}
+            </svg>
+          )}
+        </button>
+      </div>
+    )
   }
 
   //  Update the incomeData state in App, rendering the Output component
@@ -72,7 +232,15 @@ function Input(props: Props) {
     e.preventDefault()
     props.setIncome({ ...formData, ['income']: Number(formData.income) })
     props.setNewSubmission(true)
-    console.log(formData)
+    formData.income &&
+      setFormData({
+        ...formData,
+        display: {
+          KiwiSaver: false,
+          StudentLoan: false,
+        },
+        submitted: true,
+      })
   }
 
   return (
@@ -105,16 +273,20 @@ function Input(props: Props) {
             </div>
 
             <div className="flex relative items-center">
-              <Label htmlFor="kiwiSaver">KiwiSaver</Label>
+              <Label htmlFor="useKiwiSaver">KiwiSaver</Label>
               <Checkbox
                 className="mx-1"
                 onChange={(e) => checkboxHandler(e)}
-                name="kiwiSaver"
+                name="useKiwiSaver"
               />
-              {formData.kiwiSaver && (
-                <div className="absolute top-[3.2rem] right-[0.3rem] border-2 bg-white z-50">
+              {formData.useKiwiSaver === true && displayToggleKS()}
+              {formData.display.KiwiSaver && (
+                <div
+                  id="ks-rate"
+                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
+                >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
-                    Kiwisaver Rate
+                    KiwiSaver Rate
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
@@ -189,16 +361,20 @@ function Input(props: Props) {
             </div>
 
             <div className="flex relative items-center">
-              <Label className="min-w-[93.5px]" htmlFor="studentLoan">
+              <Label className="min-w-[93.5px]" htmlFor="useStudentLoan">
                 Student Loan
               </Label>
               <Checkbox
                 className="mx-1"
                 onChange={(e) => checkboxHandler(e)}
-                name="studentLoan"
+                name="useStudentLoan"
               />
-              {formData.studentLoan && (
-                <div className="absolute top-[3.2rem] right-[-3.3rem] border-2 w-[11rem] bg-white z-50">
+              {formData.useStudentLoan === true && displayToggleSL()}
+              {formData.display.StudentLoan && (
+                <div
+                  id="sl-rate"
+                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50"
+                >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Student Loan Rate
                   </Dropdown.Item>
@@ -263,13 +439,14 @@ function Input(props: Props) {
                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300">
                     $
                   </span>
+
                   <input
                     type="number"
                     className="block p-2.5 pl-[2px] rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="0"
                     name="income"
                     onChange={incomeHandler}
-                  ></input>
+                  />
                   <button
                     type="submit"
                     className="absolute top-[0.05rem] right-[0.05rem] z-20 p-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg px-4 py-2"

@@ -2,10 +2,13 @@ export interface IncomeData {
   income: number
   incomePeriod: string
   ietc: boolean | undefined
-  kiwiSaver: boolean | null
+  useKiwiSaver: boolean | null
   kiwiSaverRate: string
-  studentLoan: boolean | null
+  useStudentLoan: boolean | null
   studentLoanRate: string
+  studentLoanCustom: CustomStudentLoan
+  submitted: boolean
+  display: Display
 }
 
 export interface OutputData {
@@ -16,4 +19,14 @@ export interface OutputData {
   kiwiSaver?: string
   studentLoan?: string
   errors: string[]
+}
+
+export interface CustomStudentLoan {
+  Enable: boolean | null
+  Rate: string | null
+}
+
+export interface Display {
+  KiwiSaver: boolean | null
+  StudentLoan: boolean | null
 }

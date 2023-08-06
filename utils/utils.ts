@@ -29,9 +29,7 @@ export function calculate(incomeData: IncomeData): OutputData {
   try {
     switch (incomeData.incomePeriod) {
       case 'hour':
-        console.log(income)
         income = income * 37.5 * 52
-        console.log(income)
         break
       case 'week':
         income *= 52
@@ -41,6 +39,8 @@ export function calculate(incomeData: IncomeData): OutputData {
         break
       case 'month':
         income *= 12
+        break
+      case 'year':
         break
       default:
         throw new Error('Unexpected income period')
@@ -55,14 +55,16 @@ export function calculate(incomeData: IncomeData): OutputData {
   if (incomeData.ietc) {
     outputData.ietc = calculateIetc(income)
   }
-  if (incomeData.kiwiSaver) {
+  if (incomeData.useKiwiSaver) {
     outputData.kiwiSaver = calculateKiwiSaver(income, incomeData.kiwiSaverRate)
   }
-  if (incomeData.studentLoan) {
-    outputData.studentLoan = calculateStudentLoan(
+  if (incomeData.useStudentLoan) {
+    const [loanCost, error] = calculateStudentLoan(
       income,
       incomeData.studentLoanRate
     )
+    outputData.studentLoan = loanCost
+    outputData.errors.push(error)
   }
   outputData.takehome = calculateTakehome(income, outputData)
   console.log(outputData)
@@ -116,11 +118,27 @@ function calculateKiwiSaver(income: number, rate: string) {
 }
 
 function calculateStudentLoan(income: number, rate: string) {
-  if (income > studentLoanThreshold && rate !== 'reduced') {
-    console.log(income, rate)
-    const cost = (income - studentLoanThreshold) * Number(rate)
-    return cost.toFixed(2)
+  let result = '0'
+  let error = ''
+
+  try {
+    if (income > studentLoanThreshold) {
+      console.log(income, rate)
+      const cost = (income - studentLoanThreshold) * Number(rate)
+      result = cost.toFixed(2)
+      return [cost.toFixed(2), '']
+    } else {
+      throw new Error(
+        `Student Loan below income threshold of ${studentLoanThreshold}`
+      )
+    }
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      error = err.message
+    }
   }
+
+  return [result, error]
 }
 
 function calculateTakehome(income: number, outputData: OutputData) {
