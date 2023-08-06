@@ -59,10 +59,12 @@ export function calculate(incomeData: IncomeData): OutputData {
     outputData.kiwiSaver = calculateKiwiSaver(income, incomeData.kiwiSaverRate)
   }
   if (incomeData.useStudentLoan) {
-    ;[outputData.studentLoan, outputData.errors] = calculateStudentLoan(
+    const [loanCost, error] = calculateStudentLoan(
       income,
       incomeData.studentLoanRate
     )
+    outputData.studentLoan = loanCost
+    outputData.errors.push(error)
   }
   outputData.takehome = calculateTakehome(income, outputData)
   console.log(outputData)
@@ -116,11 +118,14 @@ function calculateKiwiSaver(income: number, rate: string) {
 }
 
 function calculateStudentLoan(income: number, rate: string) {
+  let result = '0'
+  let error = ''
+
   try {
     if (income > studentLoanThreshold) {
       console.log(income, rate)
       const cost = (income - studentLoanThreshold) * Number(rate)
-      console.log(cost.toFixed(2))
+      result = cost.toFixed(2)
       return [cost.toFixed(2), '']
     } else {
       throw new Error(
@@ -129,9 +134,11 @@ function calculateStudentLoan(income: number, rate: string) {
     }
   } catch (err: unknown) {
     if (err instanceof Error) {
-      return ['0', err.message]
+      error = err.message
     }
   }
+
+  return [result, error]
 }
 
 function calculateTakehome(income: number, outputData: OutputData) {
