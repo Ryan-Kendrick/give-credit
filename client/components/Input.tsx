@@ -186,7 +186,7 @@ function Input(props: Props) {
 
   const displayToggleSL = () => {
     return (
-      <div className="absolute top-[6rem] right-6rem md:right-[1.35rem] md:top-[1.9rem]">
+      <div className="absolute top-[6rem] right-6rem md:right-9 md:top-[1.9rem]">
         <button
           id="studentloan-dropdown-toggle"
           type="button"
@@ -250,7 +250,7 @@ function Input(props: Props) {
         onSubmit={submitHandler}
       >
         <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] min-w-[420px] mx-auto">
-          <div className="flex relative items-center gap-2 ">
+          <div className="flex relative items-center gap-8">
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
               <Tooltip
@@ -373,7 +373,7 @@ function Input(props: Props) {
               {formData.display.StudentLoan && (
                 <div
                   id="sl-rate"
-                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.6rem] md:right-[-3.3rem] border-2 w-[11rem] bg-white z-50"
+                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
                 >
                   <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
                     Student Loan Rate
