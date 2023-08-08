@@ -73,12 +73,14 @@ function Input(props: Props) {
     })
   }
 
-  function radioHandler(e: ChangeEvent<HTMLInputElement>) {
+  function radioHandler(
+    e: ChangeEvent<HTMLInputElement> | FormEvent<HTMLLIElement>
+  ) {
     const rateData = e.target.textContent?.split('%')[0]
+    console.log(e.nativeEvent)
     if (e.target.value) {
       const rate = formData.studentLoanCustom.Rate
       if (e.target.value === 'custom') {
-        console.log('here')
         setFormData({
           ...formData,
           studentLoanRate: rate || 'awaiting custom rate',
@@ -88,14 +90,15 @@ function Input(props: Props) {
           },
         })
       } else {
+        console.log(e)
         setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
-        console.log('here2')
       }
       // Clicking around radio buttons handling
     } else if (
-      e.target.htmlFor === 'kiwiSaverRate' ||
+      (e.target && e.target.htmlFor === 'kiwiSaverRate') ||
       e.target.parentElement?.id === 'ks-rate'
     ) {
+      console.log(typeof e)
       rateData && rateData.length < 2
         ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
         : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
@@ -103,6 +106,7 @@ function Input(props: Props) {
       e.target.htmlFor === 'studentLoanRate' ||
       e.target.parentElement?.id === 'sl-rate'
     ) {
+      console.log(typeof e)
       if (!isNaN(Number(rateData))) {
         setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
       } else if (formData.studentLoanCustom.Rate) {
@@ -392,7 +396,6 @@ function Input(props: Props) {
                       12%
                     </Label>
                   </Dropdown.Item>
-
                   <Dropdown.Item
                     onClick={(e) => radioHandler(e)}
                     className="gap-4"

@@ -44,6 +44,7 @@ A work in progress that aims to:
 ## Notes
 
 Mobile optimisations needed i.e. button size, spacing
+Separate radio handler into FormEvent & ChangeEvent
 
 
 ### Bugs
