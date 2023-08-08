@@ -279,19 +279,11 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
             The amount can be up to your taxable income and you will still
             receive the full 33.33% of what you donated.
           </p>
-          <div className="inline-flex items-center">
-            Taxable income is generally paid by your employer in the form of
-            PAYE{' '}
-            <Tooltip content='"Pay As You Earn"' style="dark">
-              <Badge
-                className="pr-0 pl-[2px]"
-                color="initial"
-                size="sm"
-                icon={Infocircle}
-              />
-            </Tooltip>
-            .
-          </div>
+          Taxable income is generally paid by your employer in the form of PAYE{' '}
+          <Tooltip className="inline" content='"Pay As You Earn"' style="dark">
+            <span className="inline-block">{Infocircle()}</span>
+          </Tooltip>
+          .
           <p>
             Sending your donation receipts to IRD will reduce the amount of tax
             owed, resulting in a tax refund.

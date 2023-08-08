@@ -64,7 +64,13 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+#app > div.relative.flex.flex-col.md\:flex-row.mb-12 > div:nth-child(2) > div > div.w-fit > span {
+  padding: 0;
+}
 
+#app > div.relative.flex.flex-col.md\:flex-row.mb-12 > div:nth-child(2) > div.w-fit {
+  display: inline;
+}
 
 
 

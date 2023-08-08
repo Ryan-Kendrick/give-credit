@@ -30,10 +30,10 @@ A work in progress that aims to:
 - [x] Add informative content for before income has been submitted
 - [x] Add relevant links to other resources and guide towards the IRD refund process
 - [x] Add toggle to display info in Output component
-- [ ] Rate column row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
-- [ ] Fix to hide dropdown menus on submit
+- [x] Fix to hide dropdown menus on submit
 - [ ] Graph
 - [ ] Animations
+- [ ] Rate column row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
@@ -44,7 +44,6 @@ A work in progress that aims to:
 ## Notes
 
 Mobile optimisations needed i.e. button size, spacing
-Center ceveron under SL
 
 
 ### Bugs
