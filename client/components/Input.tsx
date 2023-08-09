@@ -73,40 +73,14 @@ function Input(props: Props) {
     })
   }
 
-  function radioHandler(
-    e: ChangeEvent<HTMLInputElement> | FormEvent<HTMLLIElement>
-  ) {
-    const rateData = e.target.textContent?.split('%')[0]
-    console.log(e.nativeEvent)
-    if (e.target.value) {
-      const rate = formData.studentLoanCustom.Rate
-      if (e.target.value === 'custom') {
-        setFormData({
-          ...formData,
-          studentLoanRate: rate || 'awaiting custom rate',
-          studentLoanCustom: {
-            Enable: true,
-            Rate: rate || null,
-          },
-        })
-      } else {
-        console.log(e)
-        setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
-      }
-      // Clicking around radio buttons handling
-    } else if (
-      (e.target && e.target.htmlFor === 'kiwiSaverRate') ||
-      e.target.parentElement?.id === 'ks-rate'
+  function nearRadioHandler(e: FormEvent<HTMLLIElement | HTMLLabelElement>) {
+    const labelEl = e.target as HTMLLabelElement
+    const listEl = e.target as HTMLLIElement
+    const rateData = listEl.textContent?.split('%')[0]
+    if (
+      labelEl.htmlFor === 'studentLoanRate' ||
+      listEl.parentElement?.id === 'sl-rate'
     ) {
-      console.log(typeof e)
-      rateData && rateData.length < 2
-        ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
-        : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
-    } else if (
-      e.target.htmlFor === 'studentLoanRate' ||
-      e.target.parentElement?.id === 'sl-rate'
-    ) {
-      console.log(typeof e)
       if (!isNaN(Number(rateData))) {
         setFormData({ ...formData, ['studentLoanRate']: '0.' + rateData })
       } else if (formData.studentLoanCustom.Rate) {
@@ -129,6 +103,31 @@ function Input(props: Props) {
           },
         })
       }
+    } else if (
+      labelEl.htmlFor === 'kiwiSaverRate' ||
+      listEl.parentElement?.id === 'ks-rate'
+    ) {
+      rateData && rateData.length < 2
+        ? setFormData({ ...formData, ['kiwiSaverRate']: '0.0' + rateData })
+        : setFormData({ ...formData, ['kiwiSaverRate']: '0.' + rateData })
+    }
+  }
+
+  function radioHandler(e: ChangeEvent<HTMLInputElement>) {
+    console.log(e.nativeEvent)
+    const rate = formData.studentLoanCustom.Rate
+    if (e.target.value === 'custom') {
+      setFormData({
+        ...formData,
+        studentLoanRate: rate || 'awaiting custom rate',
+        studentLoanCustom: {
+          Enable: true,
+          Rate: rate || null,
+        },
+      })
+    } else {
+      console.log(e)
+      setFormData({ ...formData, [`${e.target.name}`]: e.target.value })
     }
   }
 
@@ -293,7 +292,7 @@ function Input(props: Props) {
                     KiwiSaver Rate
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -305,7 +304,7 @@ function Input(props: Props) {
                     <Label htmlFor="kiwiSaverRate">3%</Label>
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -319,7 +318,7 @@ function Input(props: Props) {
                     </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -333,7 +332,7 @@ function Input(props: Props) {
                     </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -347,7 +346,7 @@ function Input(props: Props) {
                     </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -383,7 +382,7 @@ function Input(props: Props) {
                     Student Loan Rate
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
@@ -397,7 +396,7 @@ function Input(props: Props) {
                     </Label>
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={(e) => radioHandler(e)}
+                    onClick={(e) => nearRadioHandler(e)}
                     className="gap-4"
                   >
                     <Radio
