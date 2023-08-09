@@ -230,6 +230,118 @@ function Input(props: Props) {
     )
   }
 
+  const displayKiwiSaver = () => {
+    return (
+      <div
+        id="ks-rate"
+        className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
+      >
+        <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
+          KiwiSaver Rate
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.03"
+            checked={formData.kiwiSaverRate === '0.03'}
+            onChange={(e) => radioHandler(e)}
+            name="kiwiSaverRate"
+          ></Radio>
+          <Label htmlFor="kiwiSaverRate">3%</Label>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.04"
+            checked={formData.kiwiSaverRate === '0.04'}
+            onChange={(e) => radioHandler(e)}
+            name="kiwiSaverRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+            4%
+          </Label>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.06"
+            checked={formData.kiwiSaverRate === '0.06'}
+            onChange={(e) => radioHandler(e)}
+            name="kiwiSaverRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+            6%
+          </Label>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.08"
+            checked={formData.kiwiSaverRate === '0.08'}
+            onChange={(e) => radioHandler(e)}
+            name="kiwiSaverRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+            8%
+          </Label>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.10"
+            checked={formData.kiwiSaverRate === '0.10'}
+            onChange={(e) => radioHandler(e)}
+            name="kiwiSaverRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
+            10%
+          </Label>
+        </Dropdown.Item>
+      </div>
+    )
+  }
+
+  const displayStudentLoan = () => {
+    return (
+      <div
+        id="sl-rate"
+        className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
+      >
+        <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
+          Student Loan Rate
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="0.12"
+            checked={formData.studentLoanRate === '0.12'}
+            onChange={(e) => radioHandler(e)}
+            name="studentLoanRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="studentLoanRate">
+            12%
+          </Label>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={(e) => nearRadioHandler(e)} className="gap-4">
+          <Radio
+            value="custom"
+            checked={formData.studentLoanRate !== '0.12'}
+            onChange={(e) => radioHandler(e)}
+            name="studentLoanRate"
+          ></Radio>
+          <Label className="cursor-pointer" htmlFor="studentLoanRate">
+            Custom
+          </Label>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <TextInput
+            type="number"
+            addon="%"
+            placeholder="Rate"
+            disabled={formData.studentLoanRate === '0.12'}
+            required={true}
+            name="studentLoanRate"
+            onChange={customRateHandler}
+          />
+        </Dropdown.Item>
+      </div>
+    )
+  }
+
   //  Update the incomeData state in App, rendering the Output component
   const submitHandler = (e: FormEvent) => {
     e.preventDefault()
@@ -283,86 +395,8 @@ function Input(props: Props) {
                 name="useKiwiSaver"
               />
               {formData.useKiwiSaver === true && displayToggleKS()}
-              {formData.display.KiwiSaver && (
-                <div
-                  id="ks-rate"
-                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
-                >
-                  <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
-                    KiwiSaver Rate
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.03"
-                      checked={formData.kiwiSaverRate === '0.03'}
-                      onChange={(e) => radioHandler(e)}
-                      name="kiwiSaverRate"
-                    ></Radio>
-                    <Label htmlFor="kiwiSaverRate">3%</Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.04"
-                      checked={formData.kiwiSaverRate === '0.04'}
-                      onChange={(e) => radioHandler(e)}
-                      name="kiwiSaverRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
-                      4%
-                    </Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.06"
-                      checked={formData.kiwiSaverRate === '0.06'}
-                      onChange={(e) => radioHandler(e)}
-                      name="kiwiSaverRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
-                      6%
-                    </Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.08"
-                      checked={formData.kiwiSaverRate === '0.08'}
-                      onChange={(e) => radioHandler(e)}
-                      name="kiwiSaverRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
-                      8%
-                    </Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.10"
-                      checked={formData.kiwiSaverRate === '0.10'}
-                      onChange={(e) => radioHandler(e)}
-                      name="kiwiSaverRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="kiwiSaverRate">
-                      10%
-                    </Label>
-                  </Dropdown.Item>
-                </div>
-              )}
+              {formData.display.KiwiSaver && displayKiwiSaver()}
             </div>
-
             <div className="flex relative items-center">
               <Label className="min-w-[93.5px]" htmlFor="useStudentLoan">
                 Student Loan
@@ -373,55 +407,7 @@ function Input(props: Props) {
                 name="useStudentLoan"
               />
               {formData.useStudentLoan === true && displayToggleSL()}
-              {formData.display.StudentLoan && (
-                <div
-                  id="sl-rate"
-                  className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
-                >
-                  <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
-                    Student Loan Rate
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="0.12"
-                      checked={formData.studentLoanRate === '0.12'}
-                      onChange={(e) => radioHandler(e)}
-                      name="studentLoanRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="studentLoanRate">
-                      12%
-                    </Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={(e) => nearRadioHandler(e)}
-                    className="gap-4"
-                  >
-                    <Radio
-                      value="custom"
-                      checked={formData.studentLoanRate !== '0.12'}
-                      onChange={(e) => radioHandler(e)}
-                      name="studentLoanRate"
-                    ></Radio>
-                    <Label className="cursor-pointer" htmlFor="studentLoanRate">
-                      Custom
-                    </Label>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <TextInput
-                      type="number"
-                      addon="%"
-                      placeholder="Rate"
-                      disabled={formData.studentLoanRate === '0.12'}
-                      required={true}
-                      name="studentLoanRate"
-                      onChange={customRateHandler}
-                    />
-                  </Dropdown.Item>
-                </div>
-              )}
+              {formData.display.StudentLoan && displayStudentLoan()}
             </div>
           </div>
           <div className="flex h-full items-center">
