@@ -68,9 +68,10 @@ input[type=number] {
   padding: 0;
 }
 
-#app > div.relative.flex.flex-col.md\:flex-row.mb-12 > div:nth-child(2) > div.w-fit {
+#app > div.relative.flex.flex-col.md\:flex-row.mb-12 > div:nth-child(2) > div.w-fit, #app > div.relative.flex.flex-col.md\:flex-row.mb-12 > div:nth-child(3) > div.w-fit {
   display: inline;
 }
+
 
 
 
