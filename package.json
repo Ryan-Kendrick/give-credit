@@ -89,6 +89,7 @@
     "flowbite-react": "^0.4.4",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.3.0",
+    "react-chartjs-2": "^5.2.0",
     "style-loader": "^3.3.2"
   },
   "prettier": {

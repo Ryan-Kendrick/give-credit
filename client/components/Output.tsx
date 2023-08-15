@@ -2,8 +2,7 @@ import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
 import { Badge, Tooltip } from 'flowbite-react'
 import Infocircle from './Infocircle'
-import Chart from 'chart.js/auto'
-
+import PieChart from './Piechart'
 interface Props {
   incomeData: IncomeData
   newSubmission: boolean
@@ -294,10 +293,6 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
     )
   }
 
-  const constructGraph = () => {
-    return <div>graph</div>
-  }
-
   const constructTable = () => {
     return (
       <>
@@ -308,7 +303,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
           {outputData.studentLoan && displayStudentLoan()}
           {outputData.takehome && displayTakeHomePay()}
         </ul>
-        {constructGraph()}
+        <PieChart />
       </>
     )
   }
