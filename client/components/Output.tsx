@@ -2,7 +2,7 @@ import { IncomeData, OutputData } from '../../common/interface'
 import { calculate } from '../../utils/utils'
 import { Badge, Tooltip } from 'flowbite-react'
 import Infocircle from './Infocircle'
-import PieChart from './Piechart'
+import Doughnut from './Doughnut'
 interface Props {
   incomeData: IncomeData
   newSubmission: boolean
@@ -303,7 +303,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
           {outputData.studentLoan && displayStudentLoan()}
           {outputData.takehome && displayTakeHomePay()}
         </ul>
-        <PieChart chartData={outputData} />
+        <Doughnut chartData={outputData} />
       </>
     )
   }
