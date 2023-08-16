@@ -1,8 +1,14 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  LinearScale,
+} from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 import { OutputData } from '../../common/interface'
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend, LinearScale)
 
 interface Props {
   chartData: OutputData
