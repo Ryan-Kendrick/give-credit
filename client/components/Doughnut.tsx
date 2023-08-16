@@ -40,7 +40,7 @@ const displayDoughnut = ({ chartData }: Props) => {
   }
 
   return (
-    <div className="m-auto relative w-[33vw]">
+    <div className="m-auto relative md:w-[33vw]">
       <Doughnut data={data} />
     </div>
   )
