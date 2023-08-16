@@ -303,7 +303,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
           {outputData.studentLoan && displayStudentLoan()}
           {outputData.takehome && displayTakeHomePay()}
         </ul>
-        <PieChart />
+        <PieChart chartData={outputData} />
       </>
     )
   }

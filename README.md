@@ -33,7 +33,7 @@ A work in progress that aims to:
 - [x] Fix to hide dropdown menus on submit
 - [ ] Graph
 - [ ] Animations
-- [ ] Rate column row for all outputdata (calculate as necessary i.e. effective paye rate, effective total tax rate)
+- [ ] Calculate percentages and display in chart tooltip
 - [ ] Error display
 - [ ] Reduce PAYE by a given donation amount
 - [ ] Display amount required to donate to fully refund PAYE
