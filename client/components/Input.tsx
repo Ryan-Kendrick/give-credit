@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from 'flowbite-react'
 import Infocircle from './Infocircle'
+import { motion, AnimatePresence, stagger } from 'framer-motion'
 
 interface Props {
   setIncome: (data: IncomeData) => void
@@ -232,7 +233,10 @@ function Input(props: Props) {
 
   const displayKiwiSaver = () => {
     return (
-      <div
+      <motion.div
+        initial={{ y: '-2.1rem', opacity: 0.5 }}
+        animate={{ y: 0, opacity: 1, speed: 2 }}
+        exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
         id="ks-rate"
         className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
       >
@@ -292,13 +296,16 @@ function Input(props: Props) {
             10%
           </Label>
         </Dropdown.Item>
-      </div>
+      </motion.div>
     )
   }
 
   const displayStudentLoan = () => {
     return (
-      <div
+      <motion.div
+        initial={{ y: '-2.1rem', opacity: 0.5 }}
+        animate={{ y: 0, opacity: 1, speed: 2 }}
+        exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
         id="sl-rate"
         className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
       >
@@ -338,7 +345,7 @@ function Input(props: Props) {
             onChange={customRateHandler}
           />
         </Dropdown.Item>
-      </div>
+      </motion.div>
     )
   }
 
@@ -395,7 +402,9 @@ function Input(props: Props) {
                 name="useKiwiSaver"
               />
               {formData.useKiwiSaver === true && displayToggleKS()}
-              {formData.display.KiwiSaver && displayKiwiSaver()}
+              <AnimatePresence>
+                {formData.display.KiwiSaver && displayKiwiSaver()}
+              </AnimatePresence>
             </div>
             <div className="flex relative items-center">
               <Label className="min-w-[93.5px]" htmlFor="useStudentLoan">
@@ -407,7 +416,9 @@ function Input(props: Props) {
                 name="useStudentLoan"
               />
               {formData.useStudentLoan === true && displayToggleSL()}
-              {formData.display.StudentLoan && displayStudentLoan()}
+              <AnimatePresence>
+                {formData.display.StudentLoan && displayStudentLoan()}
+              </AnimatePresence>
             </div>
           </div>
           <div className="flex h-full items-center">
