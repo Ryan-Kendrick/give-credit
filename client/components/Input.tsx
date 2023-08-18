@@ -424,10 +424,12 @@ function Input(props: Props) {
           <div className="flex h-full items-center">
             <div className="flex h-1/2 items-center">
               <select
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                 onChange={(e) => periodHandler(e)}
               >
-                <option defaultValue="year">Annual</option>
+                <option className="" defaultValue="year">
+                  Annual
+                </option>
                 <option value="month">Monthly</option>
                 <option value="fortnight">Fortnightly</option>
                 <option value="week">Weekly</option>
