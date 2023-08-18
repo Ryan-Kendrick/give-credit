@@ -46,6 +46,6 @@ A work in progress that aims to:
 
 Mobile optimisations needed i.e. button size, spacing
 Typeerror in App
-
+Look at messing with the z-index of pay period select to achieve rolling out animation effect
 
 ### Bugs
