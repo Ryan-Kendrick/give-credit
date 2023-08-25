@@ -45,6 +45,7 @@ A work in progress that aims to:
 ## Notes
 
 Mobile optimisations needed i.e. button size, spacing
-
+Typeerror in App
+Roller door animation for pay period
 
 ### Bugs

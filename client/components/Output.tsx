@@ -3,6 +3,8 @@ import { calculate } from '../../utils/utils'
 import { Badge, Tooltip } from 'flowbite-react'
 import Infocircle from './Infocircle'
 import Doughnut from './Doughnut'
+import { motion } from 'framer-motion'
+
 interface Props {
   incomeData: IncomeData
   newSubmission: boolean
@@ -296,14 +298,24 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
   const constructTable = () => {
     return (
       <>
-        <ul className="basis-1/2 font-subheading md:w-48 mt-8 md:mt-4 bg-white border-gray-200">
+        <motion.ul
+          className="basis-1/2 font-subheading md:w-48 mt-8 md:mt-4 bg-white border-gray-200"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
           {displayPaye()}
           {outputData.acc && displayAcc()}
           {outputData.kiwiSaver && displayKiwiSaver()}
           {outputData.studentLoan && displayStudentLoan()}
           {outputData.takehome && displayTakeHomePay()}
-        </ul>
-        <Doughnut chartData={outputData} />
+        </motion.ul>
+        <div className="m-auto relative md:w-[33vw]">
+          <Doughnut chartData={outputData} />
+        </div>
       </>
     )
   }
