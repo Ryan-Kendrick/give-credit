@@ -423,19 +423,21 @@ function Input(props: Props) {
           </div>
           <div className="flex h-full items-center">
             <div className="flex h-1/2 items-center">
-              <select
-                className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                onChange={(e) => periodHandler(e)}
-              >
-                <option className="" defaultValue="year">
-                  Annual
-                </option>
-                <option value="month">Monthly</option>
-                <option value="fortnight">Fortnightly</option>
-                <option value="week">Weekly</option>
-                <option value="hour">Hourly</option>
-              </select>
-              <div className="relative w-full min-w-[15rem]">
+              <div className="overflow-hidden">
+                <select
+                  className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mr-[3.9rem] md:mr-16 lg:mr-[3.9rem]"
+                  onChange={(e) => periodHandler(e)}
+                >
+                  <option className="" defaultValue="year">
+                    Annual
+                  </option>
+                  <option value="month">Monthly</option>
+                  <option value="fortnight">Fortnightly</option>
+                  <option value="week">Weekly</option>
+                  <option value="hour">Hourly</option>
+                </select>
+              </div>
+              <div className="relative w-full min-w-[12rem]">
                 <div className="flex relative">
                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300">
                     $
@@ -443,7 +445,7 @@ function Input(props: Props) {
 
                   <input
                     type="number"
-                    className="block p-2.5 pl-[2px] rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="block p-2.5 pl-[2px] rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 "
                     placeholder="0"
                     name="income"
                     onChange={incomeHandler}

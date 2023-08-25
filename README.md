@@ -46,5 +46,6 @@ A work in progress that aims to:
 
 Mobile optimisations needed i.e. button size, spacing
 Typeerror in App
-Overflow-hidden div to achieve roller door effect
+Roller door animation for pay period
+
 ### Bugs
