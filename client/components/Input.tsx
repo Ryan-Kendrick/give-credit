@@ -147,7 +147,7 @@ function Input(props: Props) {
 
   const displayToggleKS = () => {
     return (
-      <div className="absolute top-[6rem] right-[2rem] md:right-[2.7rem] md:top-[1.9rem]">
+      <div className="absolute top-[6.75rem] right-[3.4rem] md:right-[2.7rem] md:top-[1.9rem] scale-150">
         <button
           id="kiwisaver-dropdown-toggle"
           type="button"
@@ -190,7 +190,7 @@ function Input(props: Props) {
 
   const displayToggleSL = () => {
     return (
-      <div className="absolute top-[6rem] right-6rem md:right-9 md:top-[1.9rem]">
+      <div className="absolute top-[6.75rem] right-[2.7rem] md:right-9 md:top-[1.9rem] scale-150">
         <button
           id="studentloan-dropdown-toggle"
           type="button"
@@ -238,7 +238,7 @@ function Input(props: Props) {
         animate={{ y: 0, opacity: 1, speed: 2 }}
         exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
         id="ks-rate"
-        className="absolute top-[7.2rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
+        className="absolute top-[8.3rem] md:top-[3.2rem] right-[1rem] md:right-[0.3rem] border-2 bg-white z-50"
       >
         <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
           KiwiSaver Rate
@@ -307,7 +307,7 @@ function Input(props: Props) {
         animate={{ y: 0, opacity: 1, speed: 2 }}
         exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
         id="sl-rate"
-        className="absolute top-[7.2rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
+        className="absolute top-[8.3rem] md:top-[3.2rem] right-[-2.3rem] md:right-[-2.5rem] border-2 w-[11rem] bg-white z-50"
       >
         <Dropdown.Item className="gap-4 border-b-2 font-bold cursor-default hover:bg-inherit">
           Student Loan Rate
@@ -368,7 +368,7 @@ function Input(props: Props) {
   return (
     <>
       <form
-        className="flex min-h-[5rem] py-4 border-y bg-stone-200 shadow-md"
+        className="flex min-h-[5rem] py-4 pb-8 md:pb-0 border-y bg-stone-200 shadow-md"
         onSubmit={submitHandler}
       >
         <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] min-w-[420px] mx-auto">
