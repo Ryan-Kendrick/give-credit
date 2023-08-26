@@ -174,7 +174,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
   const displayPlaceholder = () => {
     return (
       <>
-        <div className="basis-1/2 font-subheading mt-2 ml-3 mr-4 bg-white leading-5">
+        <div className="basis-1/2 font-subheading my-8 md:my-0 md:mt-2 ml-3 mr-4 bg-white leading-5">
           <h2 className="font-bold">
             Getting a refund is easier than you might think
           </h2>
@@ -182,8 +182,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
             All you have to do is click a button to open a donation tax credit
             account, upload receipts and you&apos;re done.
           </p>
-
-          <ol className="items-start sm:flex py-2">
+          <ol className="items-start sm:flex md:py-2">
             <li className="relative sm:basis-1/3 mb-6 sm:mb-0">
               <div className="mr-1 sm:mr-0 inline-flex sm:flex items-center">
                 <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
@@ -241,7 +240,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
                 </p>
               </div>
             </li>
-            <li className="relative sm:basis-1/3 mb-6 sm:mb-0">
+            <li className="relative sm:basis-1/3">
               <div className="mr-1 sm:mr-0 inline-flex sm:flex items-center">
                 <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                   <svg
@@ -268,7 +267,7 @@ function Output({ incomeData, newSubmission, setNewSubmission }: Props) {
             </li>
           </ol>
         </div>
-        <div className="basis-1/2 mt-2 ml-3 mr-4 font-subheading leading-5">
+        <div className="basis-1/2 mb-8 md:mb-0 md:mt-2 ml-3 mr-4 font-subheading leading-5">
           <h2 className="font-bold">More info</h2>
           <p className="py-1">
             You can be refunded 33.33 cents for every dollar donated to{' '}
