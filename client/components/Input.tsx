@@ -368,11 +368,11 @@ function Input(props: Props) {
   return (
     <>
       <form
-        className="flex min-h-[5rem] py-4 pb-8 md:pb-0 border-y bg-stone-200 shadow-md"
+        className="flex min-h-[5rem] py-4 pb-8 md:pb-4 border-y bg-stone-200 shadow-md"
         onSubmit={submitHandler}
       >
-        <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] min-w-[420px] mx-auto">
-          <div className="flex relative items-center gap-8">
+        <div className="flex flex-col md:flex-row md:place-content-evenly items-center gap-8 w-[80vw] mx-auto">
+          <div className="flex relative items-center gap-2 md:gap-4 lg:gap-8">
             <div className="inline-flex items-center">
               <Label htmlFor="ietc">IETC</Label>
               <Tooltip
@@ -390,14 +390,14 @@ function Input(props: Props) {
                 defaultChecked
                 onChange={(e) => checkboxHandler(e)}
                 name="ietc"
-                className="mx-1"
+                className="mx-1 scale-125 md:scale-100"
               />
             </div>
 
             <div className="flex relative items-center">
               <Label htmlFor="useKiwiSaver">KiwiSaver</Label>
               <Checkbox
-                className="mx-1"
+                className="mx-1 scale-125 md:scale-100"
                 onChange={(e) => checkboxHandler(e)}
                 name="useKiwiSaver"
               />
@@ -411,7 +411,7 @@ function Input(props: Props) {
                 Student Loan
               </Label>
               <Checkbox
-                className="mx-1"
+                className="mx-1 scale-125 md:scale-100"
                 onChange={(e) => checkboxHandler(e)}
                 name="useStudentLoan"
               />
@@ -425,19 +425,17 @@ function Input(props: Props) {
             <div className="flex h-1/2 items-center">
               <div className="overflow-hidden">
                 <select
-                  className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mr-[3.9rem] md:mr-16 lg:mr-[3.9rem]"
+                  className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mr-[5.6rem] sm:mr-[3.9rem] md:mr-16 lg:mr-[3.9rem] xl:mr-[3.8rem]"
                   onChange={(e) => periodHandler(e)}
                 >
-                  <option className="" defaultValue="year">
-                    Annual
-                  </option>
+                  <option defaultValue="year">Annual</option>
                   <option value="month">Monthly</option>
                   <option value="fortnight">Fortnightly</option>
                   <option value="week">Weekly</option>
                   <option value="hour">Hourly</option>
                 </select>
               </div>
-              <div className="relative w-full min-w-[12rem]">
+              <div className="relative w-full md:min-w-[12rem]">
                 <div className="flex relative">
                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300">
                     $
@@ -445,7 +443,7 @@ function Input(props: Props) {
 
                   <input
                     type="number"
-                    className="block p-2.5 pl-[2px] rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 "
+                    className="block p-2.5 rounded-none rounded-r-lg border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 w-[4rem] sm:w-full text-sm border-gray-300 p-2.5 "
                     placeholder="0"
                     name="income"
                     onChange={incomeHandler}
