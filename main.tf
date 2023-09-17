@@ -14,5 +14,9 @@ provider "aws" {
 }
 
 resource "aws_ecr_repository" "app_ecr_repo" {
-  name = "app-repo"
+  name = "give-credit-repo"
+}
+
+resource "aws_ecs_cluster" "my_cluster" {
+  name = "give-credit-cluster" # Name your cluster here
 }
