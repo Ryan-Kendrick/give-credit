@@ -162,3 +162,43 @@ resource "aws_security_group" "service_security_group" {
 output "app_url" {
   value = aws_alb.application_load_balancer.dns_name
 }
+
+resource "aws_route53_zone" "my_hosted_zone" {
+  name = "give-credit.co.nz"
+}
+
+resource "aws_acm_certificate" "my_certificate_request" {
+  domain_name               = "give-credit.co.nz"
+    subject_alternative_names = ["*.give-credit.co.nz"]
+
+  validation_method         = "DNS"
+
+  tags = {
+    Name : "give-credit.co.nz"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "random_id" "server" {
+  byte_length = 8
+}
+
+resource "aws_route53_record" "my_validation_record" {
+
+ for_each = {
+    for option in aws_acm_certificate.my_certificate_request.domain_validation_options: option.domain_name => {
+      name   = random_id.server.id
+      records = option.resource_record_value
+      type   = option.resource_record_type
+    }
+ }
+name = each.value.name
+records = [each.value.records]
+type = each.value.type
+ttl = "60"
+
+  zone_id = aws_route53_zone.my_hosted_zone.zone_id
+}
