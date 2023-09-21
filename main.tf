@@ -169,8 +169,6 @@ resource "aws_route53_zone" "my_hosted_zone" {
 
 resource "aws_acm_certificate" "my_certificate_request" {
   domain_name               = "give-credit.co.nz"
-    subject_alternative_names = ["*.give-credit.co.nz"]
-
   validation_method         = "DNS"
 
   tags = {
@@ -182,20 +180,15 @@ resource "aws_acm_certificate" "my_certificate_request" {
   }
 }
 
-resource "random_id" "server" {
-  byte_length = 8
-}
-
 resource "aws_route53_record" "my_validation_record" {
-
  for_each = {
-    for option in aws_acm_certificate.my_certificate_request.domain_validation_options: option.domain_name => {
-      name   = random_id.server.id
+    for idx, option in aws_acm_certificate.my_certificate_request.domain_validation_options: option.domain_name =>  {
+      name   = "${option.resource_record_name}"
       records = option.resource_record_value
       type   = option.resource_record_type
     }
  }
-name = each.value.name
+name = "${each.value.name}${each.key}"
 records = [each.value.records]
 type = each.value.type
 ttl = "60"
