@@ -91,8 +91,8 @@ resource "aws_alb" "application_load_balancer" {
 
 resource "aws_security_group" "load_balancer_security_group" {
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -113,10 +113,26 @@ resource "aws_lb_target_group" "target_group" {
   vpc_id      = "${aws_default_vpc.default_vpc.id}"
 }
 
-resource "aws_lb_listener" "listener" {
+resource "aws_lb_listener" "http" {
   load_balancer_arn = "${aws_alb.application_load_balancer.arn}"
   port              = "80"
   protocol          = "HTTP"
+   default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = "${aws_alb.application_load_balancer.arn}"
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn = aws_acm_certificate_validation.cert_validation.certificate_arn
   default_action {
     type             = "forward"
     target_group_arn = "${aws_lb_target_group.target_group.arn}"
@@ -164,20 +180,43 @@ output "app_url" {
 }
 
 resource "aws_route53_zone" "my_hosted_zone" {
-  name = "give-credit.co.nz"
+  name = var.domain_name
 }
 
 resource "aws_acm_certificate" "my_certificate_request" {
-  domain_name               = "give-credit.co.nz"
-  subject_alternative_names = ["www.give-credit.co.nz"]
+  domain_name               = var.domain_name
+  subject_alternative_names = local.cert_sans
   validation_method         = "DNS"
 
   tags = {
-    Name : "give-credit.co.nz"
+    Name : var.domain_name
   }
 
   lifecycle {
     create_before_destroy = true
+  }
+}
+
+
+resource "aws_route53_record" "cert_validations" {
+  count = length(local.cert_sans) + 1
+
+
+  zone_id  = aws_route53_zone.my_hosted_zone.zone_id
+  allow_overwrite = true
+  name            = element(aws_acm_certificate.my_certificate_request.domain_validation_options.*.resource_record_name, count.index)
+  type            = element(aws_acm_certificate.my_certificate_request.domain_validation_options.*.resource_record_type, count.index)
+  records         = [element(aws_acm_certificate.my_certificate_request.domain_validation_options.*.resource_record_value, count.index)]
+  ttl             = 60
+}
+
+# This tells terraform to cause the route53 validation to happen
+resource "aws_acm_certificate_validation" "cert_validation" {
+  certificate_arn         = aws_acm_certificate.my_certificate_request.arn
+  validation_record_fqdns = aws_route53_record.cert_validations.*.fqdn
+
+  timeouts {
+    create = "120m"
   }
 }
 
@@ -204,3 +243,4 @@ name = aws_alb.application_load_balancer.dns_name
 evaluate_target_health = true
 }
 }
+
