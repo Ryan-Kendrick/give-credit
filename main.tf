@@ -80,7 +80,7 @@ resource "aws_default_subnet" "default_subnet_b" {
 }
 
 resource "aws_alb" "application_load_balancer" {
-  name               = "load-balancer-dev" #load balancer name
+  name               = "load-balancer-dev"
   load_balancer_type = "application"
   subnets = [ 
     "${aws_default_subnet.default_subnet_a.id}",
@@ -169,6 +169,7 @@ resource "aws_route53_zone" "my_hosted_zone" {
 
 resource "aws_acm_certificate" "my_certificate_request" {
   domain_name               = "give-credit.co.nz"
+  subject_alternative_names = ["www.give-credit.co.nz"]
   validation_method         = "DNS"
 
   tags = {
@@ -180,18 +181,26 @@ resource "aws_acm_certificate" "my_certificate_request" {
   }
 }
 
-resource "aws_route53_record" "my_validation_record" {
- for_each = {
-    for idx, option in aws_acm_certificate.my_certificate_request.domain_validation_options: option.domain_name =>  {
-      name   = "${option.resource_record_name}"
-      records = option.resource_record_value
-      type   = option.resource_record_type
-    }
- }
-name = "${each.value.name}${each.key}"
-records = [each.value.records]
-type = each.value.type
-ttl = "60"
+resource "aws_route53_record" "root" {
+name = "give-credit.co.nz"
+type = "A"
+zone_id = aws_route53_zone.my_hosted_zone.zone_id
 
-  zone_id = aws_route53_zone.my_hosted_zone.zone_id
+alias {
+zone_id = aws_alb.application_load_balancer.zone_id
+name = aws_alb.application_load_balancer.dns_name
+evaluate_target_health = true
+}
+}
+
+resource "aws_route53_record" "www" {
+name = "www.give-credit.co.nz"
+type = "A"
+
+zone_id = aws_route53_zone.my_hosted_zone.zone_id
+alias {
+zone_id = aws_alb.application_load_balancer.zone_id
+name = aws_alb.application_load_balancer.dns_name
+evaluate_target_health = true
+}
 }
