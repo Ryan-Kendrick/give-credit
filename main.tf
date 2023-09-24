@@ -182,7 +182,7 @@ resource "aws_acm_certificate" "my_certificate_request" {
 }
 
 resource "aws_route53_record" "root" {
-name = "give-credit.co.nz"
+name = aws_route53_zone.my_hosted_zone.name
 type = "A"
 zone_id = aws_route53_zone.my_hosted_zone.zone_id
 
@@ -194,7 +194,7 @@ evaluate_target_health = true
 }
 
 resource "aws_route53_record" "www" {
-name = "www.give-credit.co.nz"
+name = "www.${aws_route53_zone.my_hosted_zone.name}"
 type = "A"
 
 zone_id = aws_route53_zone.my_hosted_zone.zone_id
