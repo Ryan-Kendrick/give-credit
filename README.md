@@ -32,7 +32,7 @@ A work in progress that aims to:
 - [x] Add toggle to display info in Output component
 - [x] Fix to hide dropdown menus on submit
 - [x] Graph
-- [ ] Animations
+- [x] Animations
 - [ ] Calculate percentages and display in chart tooltip
 - [ ] Mobile optimisations
 - [ ] Error display
@@ -46,6 +46,8 @@ A work in progress that aims to:
 
 Mobile optimisations needed i.e. button size, spacing
 Typeerror in App
-Roller door animation for pay period
+Roller door animation for pay period - would need to be remade as controlled divs rather than select
+Miro customer journey illustration?
+Use the concept of leverage as a basis for selling the idea of claiming donations to donate more?
 
 ### Bugs
