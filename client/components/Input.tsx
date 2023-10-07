@@ -423,18 +423,60 @@ function Input(props: Props) {
           </div>
           <div className="flex h-full items-center">
             <div className="flex h-1/2 items-center">
-              <div className="overflow-hidden">
-                <select
-                  className="z-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mr-[5.6rem] sm:mr-[3.9rem] md:mr-16 lg:mr-[3.9rem] xl:mr-[3.8rem]"
-                  onChange={(e) => periodHandler(e)}
+              <select
+                className="z-20 relative overflow-hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mr-[5.6rem] sm:mr-[3.9rem] md:mr-16 lg:mr-[3.9rem] xl:mr-[3.8rem]"
+                onChange={(e) => periodHandler(e)}
+              >
+                <motion.option
+                  initial={{ y: '-2.1rem', opacity: 0.5 }}
+                  animate={{ y: 0, opacity: 1, speed: 2 }}
+                  exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
+                  className="border-2 bg-white z-50"
+                  defaultValue="year"
                 >
-                  <option defaultValue="year">Annual</option>
-                  <option value="month">Monthly</option>
-                  <option value="fortnight">Fortnightly</option>
-                  <option value="week">Weekly</option>
-                  <option value="hour">Hourly</option>
-                </select>
-              </div>
+                  Annual
+                </motion.option>
+                <motion.option
+                  initial={{ y: '-2.1rem', opacity: 0.5 }}
+                  animate={{ y: 0, opacity: 1, speed: 2 }}
+                  exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
+                  className="border-2 bg-white z-50"
+                  defaultValue="year"
+                  value="month"
+                >
+                  Monthly
+                </motion.option>
+                <motion.option
+                  initial={{ y: '-2.1rem', opacity: 0.5 }}
+                  animate={{ y: 0, opacity: 1, speed: 2 }}
+                  exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
+                  className="border-2 bg-white z-50"
+                  defaultValue="year"
+                  value="fortnight"
+                >
+                  Fortnightly
+                </motion.option>
+                <motion.option
+                  initial={{ y: '-2.1rem', opacity: 0.5 }}
+                  animate={{ y: 0, opacity: 1, speed: 2 }}
+                  exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
+                  className="border-2 bg-white z-50"
+                  defaultValue="year"
+                  value="week"
+                >
+                  Weekly
+                </motion.option>
+                <motion.option
+                  initial={{ y: '-2.1rem', opacity: 0.5 }}
+                  animate={{ y: 0, opacity: 1, speed: 2 }}
+                  exit={{ y: '-2.1rem', opacity: 0, speed: 2 }}
+                  className="border-2 bg-white z-50"
+                  defaultValue="year"
+                  value="hour"
+                >
+                  Hourly
+                </motion.option>
+              </select>
               <div className="relative w-full md:min-w-[12rem]">
                 <div className="flex relative">
                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300">
